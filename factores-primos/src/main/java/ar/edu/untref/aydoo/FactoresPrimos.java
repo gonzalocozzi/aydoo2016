@@ -9,7 +9,7 @@ package ar.edu.untref.aydoo;
 public class FactoresPrimos {
 
 	private Integer numero_a_factorizar;	
-	private String factorizacion;
+	private String factorizacion = "";
 
 	/**
 	 * @post se indica si el numero es primo
