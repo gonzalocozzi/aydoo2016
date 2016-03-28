@@ -12,7 +12,17 @@ public class TestMaquinaDeCafe {
 		Vaso vaso = new Vaso();
 		azucarero.ponerNEnEsteVaso(2, vaso);
 		
-		Assert.assertEquals("EL azucarero agrego con exito azucar al vaso", 2, vaso.getAzucar());
+		Assert.assertEquals("El azucarero no agrego azucar al vaso", 2, vaso.getAzucar());
+	}
+	
+	@Test
+	public void testCafeteroAgregaCafeAlVaso(){
+		
+		Cafetero cafetero = new Cafetero();
+		Vaso vaso = new Vaso();
+		cafetero.prepararEnEsteVaso(vaso);
+		
+		Assert.assertTrue("El cafetero no agrego cafe al vaso", vaso.getCafe());
 	}
 
 }
