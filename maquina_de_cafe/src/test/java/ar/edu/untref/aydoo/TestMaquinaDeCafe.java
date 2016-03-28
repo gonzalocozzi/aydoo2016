@@ -86,4 +86,13 @@ public class TestMaquinaDeCafe {
 		Assert.assertFalse("El cafetero agrego cafe al vaso", vaso.getCafe());
 	}
 	
+	@Test
+	public void testMaquinaExpendedoraNoPreparaTeSiSeLePideCafe(){
+		
+		MaquinaExpendedoraDeBebidas maquina = new MaquinaExpendedoraDeBebidas();		
+		Vaso vaso = maquina.hacerCafeConLecheConNDeAzucar(3);
+		
+		Assert.assertFalse("El cafetero agrego te al vaso", vaso.getTe());
+	}
+	
 }
