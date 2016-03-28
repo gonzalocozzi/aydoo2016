@@ -23,4 +23,12 @@ public class TestFactoresPrimos{
 		Assert.assertEquals("La prueba es exitosa", "el numero 5 es primo.", factorizador.getFactorizacion());
 	}
 	
+	@Test
+	public void test_se_indica_que_numero_diecisiete_es_primo(){
+		
+		factorizador.setNumero_a_factorizar(17);
+		factorizador.calcular_factores_primos();
+		Assert.assertEquals("La prueba es exitosa", "el numero 17 es primo.", factorizador.getFactorizacion());
+	}
+	
 }
