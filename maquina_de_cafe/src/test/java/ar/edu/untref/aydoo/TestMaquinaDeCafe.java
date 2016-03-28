@@ -63,8 +63,7 @@ public class TestMaquinaDeCafe {
 		
 		Assert.assertEquals("El azucarero no agrego azucar al vaso", 2, vaso.getAzucar());
 		Assert.assertTrue("El hacedor de te no agrego te al vaso", vaso.getTe());
-		Assert.assertTrue("El lechero no agrego leche al vaso", vaso.getLeche());
-		Assert.assertFalse("El cafetero agrego cafe al vaso", vaso.getCafe());
+		Assert.assertTrue("El lechero no agrego leche al vaso", vaso.getLeche());		
 	}
 	
 	@Test
@@ -76,7 +75,15 @@ public class TestMaquinaDeCafe {
 		Assert.assertEquals("El azucarero no agrego azucar al vaso", 3, vaso.getAzucar());
 		Assert.assertTrue("El cafetero no agrego cafe al vaso", vaso.getCafe());
 		Assert.assertTrue("El lechero no agrego leche al vaso", vaso.getLeche());
-		Assert.assertFalse("El hacedor de te agrego te al vaso", vaso.getTe());
+	}
+	
+	@Test
+	public void testMaquinaExpendedoraNoPreparaCafeSiSeLePideTe(){
+		
+		MaquinaExpendedoraDeBebidas maquina = new MaquinaExpendedoraDeBebidas();		
+		Vaso vaso = maquina.hacerTeConLecheConNDeAzucar(2);
+		
+		Assert.assertFalse("El cafetero agrego cafe al vaso", vaso.getCafe());
 	}
 	
 }
