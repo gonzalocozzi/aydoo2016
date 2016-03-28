@@ -24,5 +24,15 @@ public class TestMaquinaDeCafe {
 		
 		Assert.assertTrue("El cafetero no agrego cafe al vaso", vaso.getCafe());
 	}
+	
+	@Test
+	public void testHacedorDeTeAgregaTeALVaso(){
+		
+		HacedorDeTe hacedorDeTe = new HacedorDeTe();
+		Vaso vaso = new Vaso();
+		hacedorDeTe.prepararEnEsteVaso(vaso);
+		
+		Assert.assertTrue("El hacedor de te no agrego te al vaso", vaso.getTe());
+	}
 
 }
