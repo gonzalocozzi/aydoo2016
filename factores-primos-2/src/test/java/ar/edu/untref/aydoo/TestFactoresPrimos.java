@@ -47,4 +47,12 @@ public class TestFactoresPrimos{
 		Assert.assertEquals("La prueba es exitosa", "el numero 719 es primo.", factorizador.getFactorizacion());
 	}
 	
+	@Test
+	public void test_factorizacion_correcta_del_numero_90(){
+		
+		factorizador.setNumero_a_factorizar(90);
+		factorizador.calcular_factores_primos();
+		Assert.assertEquals("La prueba es exitosa", "2 3 3 5 ", factorizador.getFactorizacion());
+	}
+	
 }
