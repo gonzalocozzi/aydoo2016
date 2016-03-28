@@ -21,7 +21,9 @@ public class FactoresPrimos {
 		boolean es_primo = true;
 
 		for(int i = 2; i < numero_a_factorizar; i++){
-			if(numero_a_factorizar % i == 0){					
+			
+			if(numero_a_factorizar % i == 0){	
+				
 				es_primo = false;
 			}
 		}
@@ -36,11 +38,15 @@ public class FactoresPrimos {
 
 		int numero_factorizado = this.getNumero_a_factorizar();
 
-		if(es_primo(numero_a_factorizar)){				
+		if(es_primo(numero_a_factorizar)){	
+			
 			this.factorizacion = "el numero " + numero_a_factorizar + " es primo.";
-		} else {	
-			for(Integer i = 2; i < numero_a_factorizar; i++){			
-				while(numero_factorizado%i == 0){				
+		} else {
+			
+			for(Integer i = 2; i < numero_a_factorizar; i++){
+				
+				while(numero_factorizado%i == 0){
+					
 					numero_factorizado = numero_factorizado/i;					
 					this.factorizacion += i.toString();
 					this.factorizacion += " ";					
@@ -51,18 +57,22 @@ public class FactoresPrimos {
 	}	
 
 	public Integer getNumero_a_factorizar() {
+		
 		return numero_a_factorizar;
 	}
 
 	public void setNumero_a_factorizar(Integer numero_ingresado) {
+		
 		this.numero_a_factorizar = numero_ingresado;
 	}
 
 	public String getFactorizacion() {
+		
 		return factorizacion;
 	}
 
 	public void setFactorizacion(String factorizacion) {
+		
 		this.factorizacion = factorizacion;
 	}
 
