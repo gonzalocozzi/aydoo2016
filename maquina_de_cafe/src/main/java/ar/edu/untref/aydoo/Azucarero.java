@@ -1,7 +1,6 @@
 package ar.edu.untref.aydoo;
 
-public class Azucarero {	
-	
+public class Azucarero {		
 	
 	public Vaso ponerNEnEsteVaso(int cucharadasDeAzucar, Vaso vaso){
 		

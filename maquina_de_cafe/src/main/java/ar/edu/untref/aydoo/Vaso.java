@@ -5,19 +5,14 @@ public class Vaso {
 	private int cucharadasDeAzucar;
 	private boolean cafe;
 	private boolean leche;
-	private boolean te;
-	private boolean teChino;
 
 	public Vaso(){
-
 		this.setAzucar(0);
 		this.setCafe(false);
 		this.setLeche(false);
-		this.setTe(false);
-		this.setTeChino(false);
 	}
 
-	public int getAzucar() {
+	public int getAzucar() {		
 		return cucharadasDeAzucar;
 	}
 
@@ -50,20 +45,5 @@ public class Vaso {
 	public void setLeche(boolean leche) {
 		this.leche = leche;
 	}
-
-	public boolean getTe() {
-		return te;
-	}
-
-	public void setTe(boolean te) {
-		this.te = te;
-	}
-
-	public boolean getTeChino() {
-		return teChino;
-	}
-
-	public void setTeChino(boolean teChino) {
-		this.teChino = teChino;		
-	}
+	
 }

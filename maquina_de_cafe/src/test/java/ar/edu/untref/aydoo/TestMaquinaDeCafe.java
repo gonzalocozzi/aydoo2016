@@ -26,26 +26,6 @@ public class TestMaquinaDeCafe {
 	}
 	
 	@Test
-	public void testHacedorDeTeAgregaTeALVaso(){
-		
-		HacedorDeTe hacedorDeTe = new HacedorDeTe();
-		Vaso vaso = new Vaso();
-		hacedorDeTe.prepararEnEsteVaso(vaso);
-		
-		Assert.assertTrue("El hacedor de te no agrego te al vaso", vaso.getTe());
-	}
-	
-	@Test
-	public void testHacedorDeTeChinoAgregaTeChinoAlVaso(){
-		
-		HacedorDeTeChino hacedorDeTeChino = new HacedorDeTeChino();
-		Vaso vaso = new Vaso();
-		hacedorDeTeChino.prepararEnEsteVaso(vaso);
-		
-		Assert.assertTrue("El hacedor de te chino no agrego te chino al vaso", vaso.getTeChino());
-	}
-	
-	@Test
 	public void testLecheroAgregaLecheAlVaso(){
 		
 		Lechero lechero = new Lechero();
@@ -53,17 +33,6 @@ public class TestMaquinaDeCafe {
 		lechero.prepararEnEsteVaso(vaso);
 		
 		Assert.assertTrue("El lechero no agrego leche al vaso", vaso.getLeche());
-	}
-	
-	@Test
-	public void testMaquinaExpendedoraPreparaTeConLecheConNDeAzucar(){
-		
-		MaquinaExpendedoraDeBebidas maquina = new MaquinaExpendedoraDeBebidas();		
-		Vaso vaso = maquina.hacerTeConLecheConNDeAzucar(2);
-		
-		Assert.assertEquals("El azucarero no agrego azucar al vaso", 2, vaso.getAzucar());
-		Assert.assertTrue("El hacedor de te no agrego te al vaso", vaso.getTe());
-		Assert.assertTrue("El lechero no agrego leche al vaso", vaso.getLeche());		
 	}
 	
 	@Test
@@ -75,24 +44,6 @@ public class TestMaquinaDeCafe {
 		Assert.assertEquals("El azucarero no agrego azucar al vaso", 3, vaso.getAzucar());
 		Assert.assertTrue("El cafetero no agrego cafe al vaso", vaso.getCafe());
 		Assert.assertTrue("El lechero no agrego leche al vaso", vaso.getLeche());
-	}
-	
-	@Test
-	public void testMaquinaExpendedoraNoPreparaCafeSiSeLePideTe(){
-		
-		MaquinaExpendedoraDeBebidas maquina = new MaquinaExpendedoraDeBebidas();		
-		Vaso vaso = maquina.hacerTeConLecheConNDeAzucar(2);
-		
-		Assert.assertFalse("El cafetero agrego cafe al vaso", vaso.getCafe());
-	}
-	
-	@Test
-	public void testMaquinaExpendedoraNoPreparaTeSiSeLePideCafe(){
-		
-		MaquinaExpendedoraDeBebidas maquina = new MaquinaExpendedoraDeBebidas();		
-		Vaso vaso = maquina.hacerCafeConLecheConNDeAzucar(3);
-		
-		Assert.assertFalse("El cafetero agrego te al vaso", vaso.getTe());
 	}
 	
 }
