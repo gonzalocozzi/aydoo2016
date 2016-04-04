@@ -17,5 +17,18 @@ public class VotoTest {
 		
 		Assert.assertEquals(chubut, voto.getProvincia());
 	}
+	
+	@Test
+	public void testSeCreaVotoConCandidatoCorrecto(){
+		
+		Provincia santaFe = new Provincia("santa fe");
+		Partido socialismo = new Partido("partido socialista");
+		Candidato stolbizer = new Candidato("margarita stolbizer", socialismo);
+		santaFe.agregarPartido(socialismo);
+		
+		Voto voto = new Voto(stolbizer, santaFe);
+		
+		Assert.assertEquals(stolbizer, voto.getCandidato());
+	}
 
 }
