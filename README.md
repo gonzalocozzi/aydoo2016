@@ -1,2 +1,2 @@
 # aydoo2016
-Respositorio de Gonzalo Alejandro Cozzi para AyDOO 2016.
+Repositorio de Gonzalo Alejandro Cozzi para AyDOO 2016.
