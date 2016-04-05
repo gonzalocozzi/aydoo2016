@@ -135,4 +135,32 @@ public class JuntaElectoralTest {
 		Assert.assertEquals(1, chubut.getPartido(renovador).getNumeroDeVotosRecibidos());
 	}
 
+	@Test
+	public void testJuntaElectoralRecibeVariosVotosParaUnCandidatoEnUnaProvinciaYLosCuenta() throws Exception{
+
+		JuntaElectoral juntaElectoral = new JuntaElectoral();
+		//Definicion del candidato
+		Partido renovador = new Partido("frente renovador");
+		Candidato massa = new Candidato("sergio massa", renovador);
+		juntaElectoral.agregarCandidato(massa);
+		//Definicion de la provincia
+		Provincia mendoza = new Provincia("mendoza");		
+		mendoza.agregarPartido(renovador);
+		juntaElectoral.agregarProvincia(mendoza);
+		//Creacion de los votos
+		Voto voto1 = new Voto(massa, mendoza);
+		Voto voto2 = new Voto(massa, mendoza);
+		Voto voto3 = new Voto(massa, mendoza);
+		Voto voto4 = new Voto(massa, mendoza);
+		Voto voto5 = new Voto(massa, mendoza);
+
+		juntaElectoral.emitirVoto(voto1);
+		juntaElectoral.emitirVoto(voto2);
+		juntaElectoral.emitirVoto(voto3);
+		juntaElectoral.emitirVoto(voto4);
+		juntaElectoral.emitirVoto(voto5);
+
+		Assert.assertEquals(5, massa.getNumeroDeVotosRecibidos());
+	}
+
 }
