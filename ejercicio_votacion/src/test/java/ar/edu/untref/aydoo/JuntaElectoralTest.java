@@ -6,7 +6,7 @@ import org.junit.Test;
 public class JuntaElectoralTest {
 
 	@Test
-	public void testJuntaElectoralRecibeCandidato(){
+	public void testJuntaElectoralAlmacenaCandidato(){
 
 		JuntaElectoral juntaElectoral = new JuntaElectoral();		
 
@@ -18,7 +18,7 @@ public class JuntaElectoralTest {
 	}
 
 	@Test
-	public void testJuntaElectoralRecibeVariosCandidatos(){
+	public void testJuntaElectoralAlmacenaVariosCandidatos(){
 
 		JuntaElectoral juntaElectoral = new JuntaElectoral();
 
@@ -35,6 +35,26 @@ public class JuntaElectoralTest {
 		juntaElectoral.agregarCandidato(macri);
 
 		Assert.assertTrue(juntaElectoral.tieneCandidato(scioli));		
+	}
+
+	@Test
+	public void testJuntaElectoralInformaNumeroDeCandidatos(){
+
+		JuntaElectoral juntaElectoral = new JuntaElectoral();
+
+		Partido renovador = new Partido("frente renovador");
+		Candidato massa = new Candidato("sergio massa", renovador);
+		juntaElectoral.agregarCandidato(massa);
+
+		Partido fpv = new Partido("frente para la victoria");
+		Candidato scioli = new Candidato("daniel scioli", fpv);
+		juntaElectoral.agregarCandidato(scioli);
+
+		Partido pro = new Partido("pro");
+		Candidato macri = new Candidato("macri", pro);
+		juntaElectoral.agregarCandidato(macri);
+
+		Assert.assertEquals(3, juntaElectoral.getNumeroDeCandidatos());
 	}
 
 }
