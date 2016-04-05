@@ -6,7 +6,7 @@ import org.junit.Test;
 public class JuntaElectoralTest {
 
 	@Test
-	public void testJuntaElectoralAlmacenaCandidato(){
+	public void testJuntaElectoralAlmacenaCandidatoHabilitadoParaElComicio(){
 
 		JuntaElectoral juntaElectoral = new JuntaElectoral();		
 
@@ -18,7 +18,7 @@ public class JuntaElectoralTest {
 	}
 
 	@Test
-	public void testJuntaElectoralAlmacenaVariosCandidatos(){
+	public void testJuntaElectoralAlmacenaVariosCandidatosHabilitadosParaeLcOmicio(){
 
 		JuntaElectoral juntaElectoral = new JuntaElectoral();
 
@@ -38,7 +38,7 @@ public class JuntaElectoralTest {
 	}
 
 	@Test
-	public void testJuntaElectoralInformaNumeroDeCandidatos(){
+	public void testJuntaElectoralInformaNumeroDeCandidatosHabilitadosParaElComicio(){
 
 		JuntaElectoral juntaElectoral = new JuntaElectoral();
 
@@ -58,7 +58,7 @@ public class JuntaElectoralTest {
 	}
 
 	@Test
-	public void testJuntaElectoralAgregaProvinciaHabilitadaParaELComicio(){
+	public void testJuntaElectoralAgregaProvinciaHabilitadasParaElComicio(){
 
 		JuntaElectoral juntaElectoral = new JuntaElectoral();
 
@@ -97,6 +97,24 @@ public class JuntaElectoralTest {
 		juntaElectoral.agregarProvincia(mendoza);
 
 		Assert.assertEquals(2, juntaElectoral.getNumeroDeProvincias());
+	}
+
+	@Test
+	public void testJuntaElectoralRecibeVotoYLoEnviaAlCandidatoCorrecto() throws Exception{
+
+		JuntaElectoral juntaElectoral = new JuntaElectoral();
+
+		Partido renovador = new Partido("frente renovador");
+		Candidato massa = new Candidato("sergio massa", renovador);
+		juntaElectoral.agregarCandidato(massa);
+		Provincia chubut = new Provincia("chubut");		
+		chubut.agregarPartido(renovador);
+		juntaElectoral.agregarProvincia(chubut);
+		Voto voto = new Voto(massa, chubut);
+
+		juntaElectoral.emitirVoto(voto);
+
+		Assert.assertEquals(1, massa.getNumeroDeVotosRecibidos());
 	}
 
 }
