@@ -22,5 +22,18 @@ public class CandidatoTest {
 		
 		Assert.assertEquals(socialismo, stolbizer.getPartido());
 	}
+	
+	@Test
+	public void testCandidatoAlmacenaVotoRecibidoCorrectamente(){
+		
+		Partido fpv = new Partido("frente para la victoria");		
+		Candidato scioli = new Candidato("scioli", fpv);
+		Provincia sanjuan = new Provincia("san juan");
+		Voto voto = new Voto(scioli, sanjuan);
+		
+		scioli.agregarVoto(voto);
+		
+		Assert.assertTrue(scioli.getColeccionDeVotosRecibidos().contains(voto));
+	}
 
 }
