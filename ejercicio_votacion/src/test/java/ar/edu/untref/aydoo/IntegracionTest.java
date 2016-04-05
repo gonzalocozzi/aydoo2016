@@ -172,5 +172,17 @@ public class IntegracionTest {
 
 		juntaElectoral.emitirVoto(voto);
 	}
-	
+
+	@Test(expected=Exception.class)
+	public void testNoSePermiteVotarAUnPartidoNoHabilitadoEnUnaProvincia() throws Exception{
+
+		Partido mpn = new Partido("movimiento popular neuquino");
+		Candidato gutierrez = new Candidato("gutierrez", mpn);
+		juntaElectoral.agregarCandidato(gutierrez);
+
+		Voto voto = new Voto(gutierrez, entrerios);
+
+		juntaElectoral.emitirVoto(voto);
+	}
+
 }
