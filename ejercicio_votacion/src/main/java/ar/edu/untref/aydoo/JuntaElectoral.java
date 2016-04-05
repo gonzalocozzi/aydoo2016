@@ -4,10 +4,16 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
 
-public class CentroDeComputos {
+public class JuntaElectoral {
 
-	private List<Candidato> coleccionDeCandidatos = new LinkedList<Candidato>();
-	private List<Provincia> coleccionDeProvincias = new LinkedList<Provincia>();
+	private List<Candidato> coleccionDeCandidatos;
+	private List<Provincia> coleccionDeProvincias;
+	
+	public JuntaElectoral(){
+		
+		this.coleccionDeCandidatos = new LinkedList<Candidato>();
+		this.coleccionDeProvincias = new LinkedList<Provincia>();
+	}
 
 	public void agregarCandidato(Candidato candidato) {
 		// TODO Auto-generated method stub
