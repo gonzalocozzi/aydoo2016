@@ -45,4 +45,14 @@ public class ProvinciaTest {
 		sanluis.eliminarPartido(pj);
 	}
 
+	@Test
+	public void testProvinciaIndicaQueTieneElPartidoIndicado(){
+
+		Provincia cordoba = new Provincia("cordoba");
+		Partido fpv = new Partido("frente para la victoria");		
+		cordoba.agregarPartido(fpv);
+
+		Assert.assertTrue(cordoba.tienePartido(fpv));
+	}
+
 }
