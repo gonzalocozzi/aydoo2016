@@ -1,9 +1,14 @@
 package ar.edu.untref.aydoo;
 
 import org.junit.Assert;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 public class PartidoTest {
+	
+	@Rule
+	public ExpectedException expectedEx = ExpectedException.none();
 
 	@Test
 	public void testPartidoSeCreaConNombreCorrecto(){
@@ -23,8 +28,8 @@ public class PartidoTest {
 	}
 
 	@Test
-	public void testProvinciaEliminaCandidato(){
-
+	public void testProvinciaEliminaCandidato() throws Exception{
+		
 		Partido justicialista = new Partido("justicialista");
 		Candidato filmus = new Candidato("daniel filmus", justicialista);
 
@@ -33,4 +38,17 @@ public class PartidoTest {
 		Assert.assertFalse(justicialista.tieneCandidato(filmus));	
 	}
 	
+	@Test
+	public void testPartidoNoEliminaCandidatoQueNoPosee() throws Exception{
+		
+		expectedEx.expect(Exception.class);
+		expectedEx.expectMessage("No puede eliminarse el candidato porque no se ha postulado en el partido");
+		
+		Partido pro = new Partido("pro");
+		Partido justicialista = new Partido("justicialista");
+		Candidato filmus = new Candidato("daniel filmus", justicialista);
+
+		pro.eliminarCandidato(filmus);
+	}
+
 }
