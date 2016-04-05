@@ -6,24 +6,28 @@ public class Voto {
 	private Provincia provincia;
 
 	public Voto(Candidato candidato, Provincia provincia) {
-		// TODO Auto-generated constructor stub
+		
 		this.setCandidato(candidato);		
 		this.setProvincia(provincia);	
 	}
 	
 	public Candidato getCandidato() {
+		
 		return candidato;
 	}
 
 	public void setCandidato(Candidato candidato) {
+		
 		this.candidato = candidato;		
 	}
 
 	public Provincia getProvincia() {
+		
 		return provincia;
 	}
 
 	public void setProvincia(Provincia provincia) {
+		
 		this.provincia = provincia;
 	}
 

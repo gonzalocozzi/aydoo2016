@@ -10,10 +10,12 @@ public class Provincia {
 	private List<Partido> coleccionDePartidos = new LinkedList<Partido>();
 
 	public Provincia(String string) {
+		
 		this.setNombre(string);
 	}
 
 	public boolean tienePartido(Partido partido){
+		
 		return this.coleccionDePartidos.contains(partido);
 	}
 
@@ -44,7 +46,8 @@ public class Provincia {
 		return partidoObtenido;
 	}
 
-	public void agregarPartido(Partido partido){		
+	public void agregarPartido(Partido partido){
+		
 		this.coleccionDePartidos.add(partido);
 	}
 
@@ -82,18 +85,22 @@ public class Provincia {
 	}
 
 	public String getNombre() {
+		
 		return nombre;
 	}
 
 	public void setNombre(String nombre) {
-		this.nombre = nombre.toLowerCase();
+		
+		this.nombre = nombre;
 	}
 
 	public List<Partido> getColeccionDePartidos() {
+		
 		return coleccionDePartidos;
 	}
 
 	public void setColeccionDePartidos(List<Partido> coleccionDePartidos) {
+		
 		this.coleccionDePartidos = coleccionDePartidos;
 	}
 
