@@ -100,7 +100,7 @@ public class JuntaElectoralTest {
 	}
 
 	@Test
-	public void testJuntaElectoralRecibeVotoYLoEnviaAlCandidatoCorrecto() throws Exception{
+	public void testJuntaElectoralRecibeVotoYLoEnviaAlCandidatoCorrespondiente() throws Exception{
 
 		JuntaElectoral juntaElectoral = new JuntaElectoral();
 
@@ -115,6 +115,24 @@ public class JuntaElectoralTest {
 		juntaElectoral.emitirVoto(voto);
 
 		Assert.assertEquals(1, massa.getNumeroDeVotosRecibidos());
+	}
+
+	@Test
+	public void testJuntaElectoralRecibeVotoYLoEnviaALaProvinciaCorrespondiente() throws Exception{
+
+		JuntaElectoral juntaElectoral = new JuntaElectoral();
+
+		Partido renovador = new Partido("frente renovador");
+		Candidato massa = new Candidato("sergio massa", renovador);
+		juntaElectoral.agregarCandidato(massa);
+		Provincia chubut = new Provincia("chubut");		
+		chubut.agregarPartido(renovador);
+		juntaElectoral.agregarProvincia(chubut);
+		Voto voto = new Voto(massa, chubut);
+
+		juntaElectoral.emitirVoto(voto);
+
+		Assert.assertEquals(1, chubut.getPartido(renovador).getNumeroDeVotosRecibidos());
 	}
 
 }
