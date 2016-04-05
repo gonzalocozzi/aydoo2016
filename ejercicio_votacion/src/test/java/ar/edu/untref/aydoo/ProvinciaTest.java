@@ -78,4 +78,16 @@ public class ProvinciaTest {
 		Assert.assertEquals(1, chubut.getColeccionDePartidos().get(0).getNumeroDeVotosRecibidos());
 	}
 
+	@Test(expected=Exception.class)
+	public void testProvinciaNoAgregaVotoAUnPartidoQueNoPosee() throws Exception{
+
+		Provincia tierradelfuego = new Provincia("tierra del fuego");
+		Partido fpv = new Partido("frente para la victoria");
+		Candidato scioli = new Candidato("daniel scioli", fpv);
+
+		Voto voto = new Voto(scioli, tierradelfuego);
+
+		tierradelfuego.agregarVotoAlPartido(fpv, voto);
+	}
+
 }
