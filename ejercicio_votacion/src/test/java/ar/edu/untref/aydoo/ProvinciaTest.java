@@ -35,5 +35,14 @@ public class ProvinciaTest {
 
 		Assert.assertFalse(neuquen.tienePartido(ucr));
 	}
-	
+
+	@Test(expected=Exception.class)
+	public void testProvinciaNoEliminaPartidoQueNoPosee() throws Exception{
+
+		Provincia sanluis = new Provincia("san luis");
+		Partido pj = new Partido("justicialista");
+
+		sanluis.eliminarPartido(pj);
+	}
+
 }
