@@ -90,4 +90,49 @@ public class ProvinciaTest {
 		tierradelfuego.agregarVotoAlPartido(fpv, voto);
 	}
 
+	@Test
+	public void testProvinciaIndicaCualEsElPartidoMasVotadoEnSuTerritorio() throws Exception{
+
+		//Definicion de los candidatos y partidos
+		Partido pro = new Partido("pro");
+		Candidato macri = new Candidato("mauricio macri", pro);	
+		Partido renovador = new Partido("frente renovador");
+		Candidato massa = new Candidato("sergio massa", renovador);
+		Partido fpv = new Partido("frente para la victoria");
+		Candidato scioli = new Candidato("daniel scioli", fpv);
+		//Definicion de la provincia	
+		Provincia mendoza = new Provincia("mendoza");
+		mendoza.agregarPartido(pro);
+		mendoza.agregarPartido(renovador);
+		mendoza.agregarPartido(fpv);
+		//Creacion de los votos
+		Voto voto1 = new Voto(macri, mendoza);
+		Voto voto2 = new Voto(macri, mendoza);
+		Voto voto3 = new Voto(massa, mendoza);
+		Voto voto4 = new Voto(massa, mendoza);
+		Voto voto5 = new Voto(scioli, mendoza);
+		Voto voto6 = new Voto(massa, mendoza);
+		Voto voto7 = new Voto(macri, mendoza);
+		Voto voto8 = new Voto(massa, mendoza);
+		Voto voto9 = new Voto(scioli, mendoza);
+		Voto voto10 = new Voto(scioli, mendoza);
+		Voto voto11 = new Voto(macri, mendoza);
+		Voto voto12 = new Voto(macri, mendoza);
+		
+		mendoza.agregarVotoAlPartido(pro, voto1);
+		mendoza.agregarVotoAlPartido(pro, voto2);
+		mendoza.agregarVotoAlPartido(renovador, voto3);
+		mendoza.agregarVotoAlPartido(renovador, voto4);		
+		mendoza.agregarVotoAlPartido(fpv, voto5);
+		mendoza.agregarVotoAlPartido(renovador, voto6);
+		mendoza.agregarVotoAlPartido(pro, voto7);
+		mendoza.agregarVotoAlPartido(renovador, voto8);		
+		mendoza.agregarVotoAlPartido(fpv, voto9);
+		mendoza.agregarVotoAlPartido(fpv, voto10);
+		mendoza.agregarVotoAlPartido(pro, voto11);
+		mendoza.agregarVotoAlPartido(pro, voto12);		
+		
+		Assert.assertEquals(pro, mendoza.getPartidoMasVotado());
+	}
+
 }
