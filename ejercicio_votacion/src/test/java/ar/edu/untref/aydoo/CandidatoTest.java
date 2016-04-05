@@ -52,5 +52,16 @@ public class CandidatoTest {
 		
 		Assert.assertEquals(3, scioli.getNumeroDeVotosRecibidos());
 	}
+	
+	@Test
+	public void testCandidatoSeAgregaASuPartido(){
+		
+		Partido fpv = new Partido("frente para la victoria");		
+		Candidato scioli = new Candidato("scioli", fpv);
+		
+		Partido partidoDelCandidato = scioli.getPartido();
+		
+		Assert.assertTrue(partidoDelCandidato.getColeccionDeCandidatos().contains(scioli));
+	}
 
 }
