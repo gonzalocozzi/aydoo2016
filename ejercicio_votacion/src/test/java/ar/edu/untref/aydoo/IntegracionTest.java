@@ -6,7 +6,7 @@ import org.junit.Test;
 
 public class IntegracionTest {	
 
-	JuntaElectoral centroDeComputos = new JuntaElectoral();		
+	JuntaElectoral juntaElectoral = new JuntaElectoral();		
 
 	//Definicion de los candidatos y sus partidos		
 	Partido pro = new Partido("pro");
@@ -40,24 +40,50 @@ public class IntegracionTest {
 		entrerios.agregarPartido(fpv);
 
 		//Incorporacion de los candidatos habilitados al centro de computos
-		centroDeComputos.agregarCandidato(macri);		
-		centroDeComputos.agregarCandidato(massa);		
-		centroDeComputos.agregarCandidato(scioli);
+		juntaElectoral.agregarCandidato(macri);		
+		juntaElectoral.agregarCandidato(massa);		
+		juntaElectoral.agregarCandidato(scioli);
 
 		//Incorporacion de las provincias habilitadas al centro de computos
-		centroDeComputos.agregarProvincia(mendoza);
-		centroDeComputos.agregarProvincia(buenosaires);
-		centroDeComputos.agregarProvincia(rionegro);
-		centroDeComputos.agregarProvincia(entrerios);
+		juntaElectoral.agregarProvincia(mendoza);
+		juntaElectoral.agregarProvincia(buenosaires);
+		juntaElectoral.agregarProvincia(rionegro);
+		juntaElectoral.agregarProvincia(entrerios);
 	}	
 
 	@Test
-	public void testSeEmiteVotoYCandidatoLoRecibeCorrectamente() throws Exception{
+	public void testSeEmiteVotoYCandidatoLoRecibe() throws Exception{
 
 		Voto voto = new Voto(macri, buenosaires);
-		centroDeComputos.emitirVoto(voto);
+		juntaElectoral.emitirVoto(voto);
 
 		Assert.assertEquals(1, macri.getNumeroDeVotosRecibidos());
+	}
+
+	@Test
+	public void testSeEmitenVariosVotosAlMismoCandidatoYEsteLosCuenta() throws Exception{
+
+		Voto voto1 = new Voto(massa, mendoza);
+		Voto voto2 = new Voto(massa, mendoza);
+		Voto voto3 = new Voto(massa, entrerios);
+		Voto voto4 = new Voto(massa, entrerios);
+		Voto voto5 = new Voto(massa, buenosaires);
+		Voto voto6 = new Voto(massa, buenosaires);
+		Voto voto7 = new Voto(massa, buenosaires);
+		Voto voto8 = new Voto(massa, buenosaires);
+		Voto voto9 = new Voto(massa, rionegro);
+
+		juntaElectoral.emitirVoto(voto1);		
+		juntaElectoral.emitirVoto(voto2);	
+		juntaElectoral.emitirVoto(voto3);	
+		juntaElectoral.emitirVoto(voto4);	
+		juntaElectoral.emitirVoto(voto5);	
+		juntaElectoral.emitirVoto(voto6);	
+		juntaElectoral.emitirVoto(voto7);	
+		juntaElectoral.emitirVoto(voto8);	
+		juntaElectoral.emitirVoto(voto9);
+
+		Assert.assertEquals(9, massa.getNumeroDeVotosRecibidos());
 	}
 
 }
