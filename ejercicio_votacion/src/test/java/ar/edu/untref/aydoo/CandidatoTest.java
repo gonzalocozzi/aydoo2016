@@ -35,5 +35,22 @@ public class CandidatoTest {
 		
 		Assert.assertTrue(scioli.getColeccionDeVotosRecibidos().contains(voto));
 	}
+	
+	@Test
+	public void testCandidatoIndicaCorrectamenteElNumeroDeVotosQueRecibio(){
+		
+		Partido fpv = new Partido("frente para la victoria");		
+		Candidato scioli = new Candidato("scioli", fpv);
+		Provincia sanjuan = new Provincia("san juan");
+		Voto voto1 = new Voto(scioli, sanjuan);
+		Voto voto2 = new Voto(scioli, sanjuan);
+		Voto voto3 = new Voto(scioli, sanjuan);
+		
+		scioli.agregarVoto(voto1);
+		scioli.agregarVoto(voto2);
+		scioli.agregarVoto(voto3);
+		
+		Assert.assertEquals(3, scioli.getNumeroDeVotosRecibidos());
+	}
 
 }
