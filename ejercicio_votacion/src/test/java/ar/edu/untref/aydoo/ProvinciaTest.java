@@ -64,4 +64,18 @@ public class ProvinciaTest {
 		Assert.assertFalse(misiones.tienePartido(pro));
 	}
 
+	@Test
+	public void testProvinciaAgregaVotoAUnPartido() throws Exception{
+
+		Provincia chubut = new Provincia("chubut");
+		Partido renovador = new Partido("frente renovador");
+		Candidato massa = new Candidato("sergio massa", renovador);
+		chubut.agregarPartido(renovador);
+		Voto voto = new Voto(massa, chubut);
+
+		chubut.agregarVotoAlPartido(renovador, voto);
+
+		Assert.assertEquals(1, chubut.getColeccionDePartidos().get(0).getNumeroDeVotosRecibidos());
+	}
+
 }
