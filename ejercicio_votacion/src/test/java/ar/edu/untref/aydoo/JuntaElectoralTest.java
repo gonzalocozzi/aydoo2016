@@ -58,7 +58,7 @@ public class JuntaElectoralTest {
 	}
 
 	@Test
-	public void testJuntaElectoralAgregaProvincia(){
+	public void testJuntaElectoralAgregaProvinciaHabilitadaParaELComicio(){
 
 		JuntaElectoral juntaElectoral = new JuntaElectoral();
 
@@ -69,7 +69,7 @@ public class JuntaElectoralTest {
 	}
 
 	@Test
-	public void testJuntaElectoralAgregaVariasProvincias(){
+	public void testJuntaElectoralAgregaVariasProvinciasHabilitadasParaElComicio(){
 
 		JuntaElectoral juntaElectoral = new JuntaElectoral();
 
@@ -83,6 +83,20 @@ public class JuntaElectoralTest {
 		juntaElectoral.agregarProvincia(corrientes);
 
 		Assert.assertTrue(juntaElectoral.tieneProvincia(corrientes));
+	}
+
+	@Test
+	public void testJuntaElectoralInformaElNumeroDeProvinciasHabilitadasParaElComicio(){
+
+		JuntaElectoral juntaElectoral = new JuntaElectoral();
+
+		Provincia chubut = new Provincia("chubut");		
+		juntaElectoral.agregarProvincia(chubut);
+
+		Provincia mendoza = new Provincia("mendoza");
+		juntaElectoral.agregarProvincia(mendoza);
+
+		Assert.assertEquals(2, juntaElectoral.getNumeroDeProvincias());
 	}
 
 }
