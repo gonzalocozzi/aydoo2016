@@ -50,5 +50,18 @@ public class PartidoTest {
 
 		pro.eliminarCandidato(filmus);
 	}
+	
+	@Test
+	public void testPartidoIndicaQueRecibioUnVoto(){
+		
+		Partido pro = new Partido("pro");
+		Candidato macri = new Candidato("mauricio macri", pro);
+		Provincia mendoza = new Provincia("mendoza");		
+		Voto voto = new Voto(macri, mendoza);
+		
+		pro.agregarVoto(voto);
+		
+		Assert.assertEquals(1, pro.getNumeroDeVotosRecibidos());
+	}
 
 }
