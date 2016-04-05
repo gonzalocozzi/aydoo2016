@@ -1,15 +1,10 @@
 package ar.edu.untref.aydoo;
 
 import org.junit.Assert;
-import org.junit.Rule;
 import org.junit.Test;
-import org.junit.rules.ExpectedException;
 
 public class PartidoTest {
 	
-	@Rule
-	public ExpectedException expectedEx = ExpectedException.none();
-
 	@Test
 	public void testPartidoSeCreaConNombreCorrecto(){
 
@@ -41,9 +36,6 @@ public class PartidoTest {
 	@Test(expected=Exception.class)
 	public void testPartidoNoEliminaCandidatoQueNoPosee() throws Exception{
 		
-		expectedEx.expect(Exception.class);
-		expectedEx.expectMessage("No puede eliminarse el candidato porque no se ha postulado en el partido");
-		
 		Partido pro = new Partido("pro");
 		Partido justicialista = new Partido("justicialista");
 		Candidato filmus = new Candidato("daniel filmus", justicialista);
@@ -62,6 +54,30 @@ public class PartidoTest {
 		pro.agregarVoto(voto);
 		
 		Assert.assertEquals(1, pro.getNumeroDeVotosRecibidos());
+	}
+	
+	@Test
+	public void testPartidoIndicaQueRecibioVariosVotosDeVariosCandidatos(){
+		
+		Partido pro = new Partido("pro");
+		Candidato macri = new Candidato("mauricio macri", pro);
+		Candidato michetti = new Candidato("gabriela michetti", pro);
+		Provincia mendoza = new Provincia("mendoza");		
+		Voto voto1 = new Voto(macri, mendoza);
+		Voto voto2 = new Voto(macri, mendoza);
+		Voto voto3 = new Voto(michetti, mendoza);
+		Voto voto4 = new Voto(macri, mendoza);
+		Voto voto5 = new Voto(macri, mendoza);
+		Voto voto6 = new Voto(michetti, mendoza);
+		
+		pro.agregarVoto(voto1);
+		pro.agregarVoto(voto2);
+		pro.agregarVoto(voto3);
+		pro.agregarVoto(voto4);
+		pro.agregarVoto(voto5);
+		pro.agregarVoto(voto6);
+		
+		Assert.assertEquals(6, pro.getNumeroDeVotosRecibidos());
 	}
 
 }
