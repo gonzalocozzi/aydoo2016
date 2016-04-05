@@ -38,7 +38,7 @@ public class PartidoTest {
 		Assert.assertFalse(justicialista.tieneCandidato(filmus));	
 	}
 	
-	@Test
+	@Test(expected=Exception.class)
 	public void testPartidoNoEliminaCandidatoQueNoPosee() throws Exception{
 		
 		expectedEx.expect(Exception.class);
