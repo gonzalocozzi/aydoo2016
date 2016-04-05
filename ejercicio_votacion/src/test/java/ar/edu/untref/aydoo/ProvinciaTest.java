@@ -55,4 +55,13 @@ public class ProvinciaTest {
 		Assert.assertTrue(cordoba.tienePartido(fpv));
 	}
 
+	@Test
+	public void testProvinciaIndicaQueNoTieneElPartidoIndicado(){
+
+		Provincia misiones = new Provincia("misiones");
+		Partido pro = new Partido("pro");
+
+		Assert.assertFalse(misiones.tienePartido(pro));
+	}
+
 }
