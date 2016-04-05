@@ -86,4 +86,30 @@ public class IntegracionTest {
 		Assert.assertEquals(9, massa.getNumeroDeVotosRecibidos());
 	}
 
+	@Test
+	public void testSeEmitenVariosVotosADiferentesCandidatosEnLaMismaProvinciaYLaJuntaElectoralIndicaCualEsElPartidoMasVotado() throws Exception{
+
+		Voto voto1 = new Voto(macri, rionegro);
+		Voto voto2 = new Voto(macri, rionegro);
+		Voto voto3 = new Voto(scioli, rionegro);
+		Voto voto4 = new Voto(massa, rionegro);
+		Voto voto5 = new Voto(massa, rionegro);
+		Voto voto6 = new Voto(scioli, rionegro);
+		Voto voto7 = new Voto(massa, rionegro);
+		Voto voto8 = new Voto(macri, rionegro);
+		Voto voto9 = new Voto(massa, rionegro);
+
+		juntaElectoral.emitirVoto(voto1);		
+		juntaElectoral.emitirVoto(voto2);	
+		juntaElectoral.emitirVoto(voto3);	
+		juntaElectoral.emitirVoto(voto4);	
+		juntaElectoral.emitirVoto(voto5);	
+		juntaElectoral.emitirVoto(voto6);	
+		juntaElectoral.emitirVoto(voto7);	
+		juntaElectoral.emitirVoto(voto8);	
+		juntaElectoral.emitirVoto(voto9);
+
+		Assert.assertEquals(renovador, juntaElectoral.getPartidoMasVotadoEn(rionegro));
+	}
+
 }
