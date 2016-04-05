@@ -68,4 +68,21 @@ public class JuntaElectoralTest {
 		Assert.assertTrue(juntaElectoral.tieneProvincia(chubut));
 	}
 
+	@Test
+	public void testJuntaElectoralAgregaVariasProvincias(){
+
+		JuntaElectoral juntaElectoral = new JuntaElectoral();
+
+		Provincia chubut = new Provincia("chubut");		
+		juntaElectoral.agregarProvincia(chubut);
+
+		Provincia mendoza = new Provincia("mendoza");
+		juntaElectoral.agregarProvincia(mendoza);
+
+		Provincia corrientes = new Provincia("corrientes");
+		juntaElectoral.agregarProvincia(corrientes);
+
+		Assert.assertTrue(juntaElectoral.tieneProvincia(corrientes));
+	}
+
 }
