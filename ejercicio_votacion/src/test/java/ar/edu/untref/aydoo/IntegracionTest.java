@@ -87,7 +87,7 @@ public class IntegracionTest {
 	}
 
 	@Test
-	public void testSeEmitenVariosVotosADiferentesCandidatosEnLaMismaProvinciaYLaJuntaElectoralIndicaCualEsElPartidoMasVotado() throws Exception{
+	public void testSeEmitenVariosVotosADiferentesCandidatosEnLaMismaProvinciaYLaJuntaElectoralIndicaCualEsElPartidoMasVotadoEnElla() throws Exception{
 
 		Voto voto1 = new Voto(macri, rionegro);
 		Voto voto2 = new Voto(macri, rionegro);
@@ -110,6 +110,42 @@ public class IntegracionTest {
 		juntaElectoral.emitirVoto(voto9);
 
 		Assert.assertEquals(renovador, juntaElectoral.getPartidoMasVotadoEn(rionegro));
+	}
+
+	@Test
+	public void testSeEmitenVotosADiferentesCandidatosEnVariasProvinciasYLaJuntaElectoralIndicaCualFueElMasVotadoEnElPais() throws Exception{
+
+		Voto voto1 = new Voto(macri, mendoza);
+		Voto voto2 = new Voto(macri, rionegro);
+		Voto voto3 = new Voto(massa, buenosaires);
+		Voto voto4 = new Voto(massa, buenosaires);
+		Voto voto5 = new Voto(scioli, buenosaires);
+		Voto voto6 = new Voto(massa, mendoza);
+		Voto voto7 = new Voto(macri, entrerios);
+		Voto voto8 = new Voto(massa, entrerios);
+		Voto voto9 = new Voto(scioli, entrerios);
+		Voto voto10 = new Voto(scioli, buenosaires);
+		Voto voto11 = new Voto(macri, mendoza);
+		Voto voto12 = new Voto(macri, mendoza);
+		Voto voto13 = new Voto(scioli, rionegro);
+		Voto voto14 = new Voto(macri, buenosaires);
+
+		juntaElectoral.emitirVoto(voto1);		
+		juntaElectoral.emitirVoto(voto2);	
+		juntaElectoral.emitirVoto(voto3);	
+		juntaElectoral.emitirVoto(voto4);	
+		juntaElectoral.emitirVoto(voto5);	
+		juntaElectoral.emitirVoto(voto6);	
+		juntaElectoral.emitirVoto(voto7);	
+		juntaElectoral.emitirVoto(voto8);	
+		juntaElectoral.emitirVoto(voto9);
+		juntaElectoral.emitirVoto(voto10);		
+		juntaElectoral.emitirVoto(voto11);
+		juntaElectoral.emitirVoto(voto12);
+		juntaElectoral.emitirVoto(voto13);	
+		juntaElectoral.emitirVoto(voto14);	
+
+		Assert.assertEquals(macri, juntaElectoral.getCandidatoMasVotado());		
 	}
 
 }
