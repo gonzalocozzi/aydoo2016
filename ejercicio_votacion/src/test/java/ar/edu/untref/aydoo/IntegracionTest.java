@@ -148,4 +148,16 @@ public class IntegracionTest {
 		Assert.assertEquals(macri, juntaElectoral.getCandidatoMasVotado());		
 	}
 
+	@Test(expected=Exception.class)
+	public void testNoSePermiteVotarAUnCandidatoNoHabilitado() throws Exception{
+
+		Partido socialista = new Partido("partido socialista");
+		Candidato binner = new Candidato("hermes binner", socialista);
+		mendoza.agregarPartido(socialista);
+
+		Voto voto = new Voto(binner, mendoza);		
+
+		juntaElectoral.emitirVoto(voto);	
+	}
+
 }
