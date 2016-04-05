@@ -22,4 +22,15 @@ public class PartidoTest {
 		Assert.assertTrue(justicialista.tieneCandidato(filmus));		
 	}
 
+	@Test
+	public void testProvinciaEliminaCandidato(){
+
+		Partido justicialista = new Partido("justicialista");
+		Candidato filmus = new Candidato("daniel filmus", justicialista);
+
+		justicialista.eliminarCandidato(filmus);
+
+		Assert.assertFalse(justicialista.tieneCandidato(filmus));	
+	}
+	
 }
