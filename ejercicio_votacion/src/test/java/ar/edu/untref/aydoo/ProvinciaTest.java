@@ -23,5 +23,17 @@ public class ProvinciaTest {
 
 		Assert.assertTrue(santiagodelestero.tienePartido(ucr));
 	}
+
+	@Test
+	public void testProvinciaEliminaPartidoIndicado() throws Exception{
+
+		Provincia neuquen = new Provincia("neuquen");
+		Partido ucr = new Partido("union civica radical");
+
+		neuquen.agregarPartido(ucr);
+		neuquen.eliminarPartido(ucr);
+
+		Assert.assertFalse(neuquen.tienePartido(ucr));
+	}
 	
 }
