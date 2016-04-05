@@ -13,5 +13,14 @@ public class CandidatoTest {
 		
 		Assert.assertEquals("stolbizer", stolbizer.getNombre());
 	}
+	
+	@Test
+	public void testCandidatoSeCreaConPartidoCorrecto(){
+		
+		Partido socialismo = new Partido("partido socialista");		
+		Candidato stolbizer = new Candidato("stolbizer", socialismo);
+		
+		Assert.assertEquals(socialismo, stolbizer.getPartido());
+	}
 
 }
