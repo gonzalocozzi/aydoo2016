@@ -57,4 +57,15 @@ public class JuntaElectoralTest {
 		Assert.assertEquals(3, juntaElectoral.getNumeroDeCandidatos());
 	}
 
+	@Test
+	public void testJuntaElectoralAgregaProvincia(){
+
+		JuntaElectoral juntaElectoral = new JuntaElectoral();
+
+		Provincia chubut = new Provincia("chubut");		
+		juntaElectoral.agregarProvincia(chubut);
+
+		Assert.assertTrue(juntaElectoral.tieneProvincia(chubut));
+	}
+
 }
