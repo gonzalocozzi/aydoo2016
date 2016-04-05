@@ -163,4 +163,49 @@ public class JuntaElectoralTest {
 		Assert.assertEquals(5, massa.getNumeroDeVotosRecibidos());
 	}
 
+	@Test
+	public void testJuntaElectoralRecibeVariosVotosParaUnCandidatoEnVariasProvinciasYLosCuentaCorrectamente() throws Exception{
+
+		JuntaElectoral juntaElectoral = new JuntaElectoral();
+		//Definicion del candidato
+		Partido pro = new Partido("pro");
+		Candidato macri = new Candidato("mauricio macri", pro);
+		juntaElectoral.agregarCandidato(macri);
+		//Definicion de las provincias
+		Provincia mendoza = new Provincia("mendoza");	
+		Provincia buenosaires = new Provincia("buenos aires");
+		Provincia rionegro = new Provincia("rio negro");
+		Provincia entrerios = new Provincia("entre rios");
+		mendoza.agregarPartido(pro);
+		buenosaires.agregarPartido(pro);
+		rionegro.agregarPartido(pro);
+		entrerios.agregarPartido(pro);
+		juntaElectoral.agregarProvincia(mendoza);
+		juntaElectoral.agregarProvincia(buenosaires);
+		juntaElectoral.agregarProvincia(rionegro);
+		juntaElectoral.agregarProvincia(entrerios);
+		//Creacion de los votos
+		Voto voto1 = new Voto(macri, mendoza);
+		Voto voto2 = new Voto(macri, mendoza);
+		Voto voto3 = new Voto(macri, mendoza);
+		Voto voto4 = new Voto(macri, buenosaires);
+		Voto voto5 = new Voto(macri, buenosaires);
+		Voto voto6 = new Voto(macri, rionegro);
+		Voto voto7 = new Voto(macri, entrerios);
+		Voto voto8 = new Voto(macri, entrerios);
+		Voto voto9 = new Voto(macri, entrerios);
+
+		juntaElectoral.emitirVoto(voto1);
+		juntaElectoral.emitirVoto(voto2);
+		juntaElectoral.emitirVoto(voto3);
+		juntaElectoral.emitirVoto(voto4);
+		juntaElectoral.emitirVoto(voto5);
+		juntaElectoral.emitirVoto(voto6);
+		juntaElectoral.emitirVoto(voto7);
+		juntaElectoral.emitirVoto(voto8);
+		juntaElectoral.emitirVoto(voto9);
+
+		Assert.assertEquals(9, macri.getNumeroDeVotosRecibidos());
+	}
+
 }
