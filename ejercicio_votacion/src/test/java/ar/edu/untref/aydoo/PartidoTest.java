@@ -13,4 +13,13 @@ public class PartidoTest {
 		Assert.assertEquals("union civica radical", ucr.getNombre());
 	}
 
+	@Test
+	public void testPartidoIndicaQuePoseeCandidato(){
+
+		Partido justicialista = new Partido("justicialista");
+		Candidato filmus = new Candidato("daniel filmus", justicialista);	
+
+		Assert.assertTrue(justicialista.tieneCandidato(filmus));		
+	}
+
 }
