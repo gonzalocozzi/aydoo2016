@@ -267,4 +267,54 @@ public class JuntaElectoralTest {
 		Assert.assertEquals(massa, juntaElectoral.getCandidatoMasVotado());
 	}
 
+	@Test
+	public void testJuntaElectoralIndicaPartidoMasVotadoEnUnaProvincia() throws Exception{
+
+		JuntaElectoral juntaElectoral = new JuntaElectoral();
+		//Definicion de los candidatos y partidos
+		Partido pro = new Partido("pro");
+		Candidato macri = new Candidato("mauricio macri", pro);
+		juntaElectoral.agregarCandidato(macri);		
+		Partido renovador = new Partido("frente renovador");
+		Candidato massa = new Candidato("sergio massa", renovador);
+		juntaElectoral.agregarCandidato(massa);		
+		Partido fpv = new Partido("frente para la victoria");
+		Candidato scioli = new Candidato("daniel scioli", fpv);
+		juntaElectoral.agregarCandidato(scioli);
+		//Definicion de la provincia	
+		Provincia mendoza = new Provincia("mendoza");
+		mendoza.agregarPartido(pro);
+		mendoza.agregarPartido(renovador);
+		mendoza.agregarPartido(fpv);
+		juntaElectoral.agregarProvincia(mendoza);
+		//Creacion de los votos
+		Voto voto1 = new Voto(macri, mendoza);
+		Voto voto2 = new Voto(macri, mendoza);
+		Voto voto3 = new Voto(massa, mendoza);
+		Voto voto4 = new Voto(massa, mendoza);
+		Voto voto5 = new Voto(scioli, mendoza);
+		Voto voto6 = new Voto(massa, mendoza);
+		Voto voto7 = new Voto(macri, mendoza);
+		Voto voto8 = new Voto(massa, mendoza);
+		Voto voto9 = new Voto(scioli, mendoza);
+		Voto voto10 = new Voto(scioli, mendoza);
+		Voto voto11 = new Voto(macri, mendoza);
+		Voto voto12 = new Voto(macri, mendoza);
+		
+		juntaElectoral.emitirVoto(voto1);
+		juntaElectoral.emitirVoto(voto2);
+		juntaElectoral.emitirVoto(voto3);
+		juntaElectoral.emitirVoto(voto4);
+		juntaElectoral.emitirVoto(voto5);
+		juntaElectoral.emitirVoto(voto6);
+		juntaElectoral.emitirVoto(voto7);
+		juntaElectoral.emitirVoto(voto8);
+		juntaElectoral.emitirVoto(voto9);
+		juntaElectoral.emitirVoto(voto10);
+		juntaElectoral.emitirVoto(voto11);
+		juntaElectoral.emitirVoto(voto12);
+
+		Assert.assertEquals(pro, juntaElectoral.getPartidoMasVotadoEn(mendoza));
+	}
+
 }
