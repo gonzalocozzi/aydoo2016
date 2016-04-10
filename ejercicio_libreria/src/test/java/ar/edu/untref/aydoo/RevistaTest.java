@@ -21,5 +21,13 @@ public class RevistaTest {
 		
 		Assert.assertEquals(2, barcelona.getPeriodicidad(), 0.0);
 	}
+	
+	@Test
+	public void seAgregaNombreALaRevistaAlSerCreada() {
+		
+		Revista barcelona = new Revista("barcelona", null, null);
+		
+		Assert.assertEquals("barcelona", barcelona.getNombre());
+	}
 
 }
