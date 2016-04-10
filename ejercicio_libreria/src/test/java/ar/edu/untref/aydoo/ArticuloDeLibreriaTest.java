@@ -12,5 +12,13 @@ public class ArticuloDeLibreriaTest {
 		
 		Assert.assertEquals(1.05, lapicera.getIVA(), 0.0);
 	}
+	
+	@Test
+	public void seAgregaNombreAlArticuloDeLibreriaAlSerCreado(){
+		
+		ArticuloDeLibreria lapicera = new ArticuloDeLibreria("bic", 0.0);
+		
+		Assert.assertEquals("bic", lapicera.getNombre());
+	}
 
 }
