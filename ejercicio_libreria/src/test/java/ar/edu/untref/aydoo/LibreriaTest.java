@@ -8,37 +8,48 @@ public class LibreriaTest {
 	@Test
 	public void seAgregaNombreALaLibreria() {
 
-		Libreria elpapiro = new Libreria(null, null);
+		Libreria libreria = new Libreria(null, null);
 
-		elpapiro.setNombre("el papiro");
+		libreria.setNombre("el papiro");
 
-		Assert.assertEquals("el papiro", elpapiro.getNombre());
+		Assert.assertEquals("el papiro", libreria.getNombre());
 	}
 
 	@Test
 	public void seAgregaDirecccionALaLibreria() {
 
-		Libreria elpapiro = new Libreria(null, null);
+		Libreria libreria = new Libreria(null, null);
 
-		elpapiro.setDireccion("Gelly y Obes 2740, CABA");
+		libreria.setDireccion("Gelly y Obes 2740, CABA");
 
-		Assert.assertEquals("Gelly y Obes 2740, CABA", elpapiro.getDireccion());
+		Assert.assertEquals("Gelly y Obes 2740, CABA", libreria.getDireccion());
 	}
 	
 	@Test
 	public void seAgregaNombreALaLibreriaAlSerCreada() {
 
-		Libreria elpapiro = new Libreria("el papiro", null);
+		Libreria libreria = new Libreria("el papiro", null);
 
-		Assert.assertEquals("el papiro", elpapiro.getNombre());
+		Assert.assertEquals("el papiro", libreria.getNombre());
 	}
 	
 	@Test
 	public void seAgregaDirecccionALaLibreriaAlSerCreada() {
 
-		Libreria elpapiro = new Libreria(null, "Gelly y Obes 2740, CABA");
+		Libreria libreria = new Libreria(null, "Gelly y Obes 2740, CABA");
 
-		Assert.assertEquals("Gelly y Obes 2740, CABA", elpapiro.getDireccion());
+		Assert.assertEquals("Gelly y Obes 2740, CABA", libreria.getDireccion());
+	}
+	
+	@Test
+	public void libreriaAgregaClienteASuListaDeClientesRegistrados() {
+		
+		Libreria libreria = new Libreria("el papiro", "Gelly y Obes 2740, CABA");
+		Cliente cliente = new Cliente("juan perez", "Montes de Oca 4720, CABA");
+		
+		libreria.agregarCliente(cliente);
+		
+		Assert.assertTrue(libreria.esClienteRegistrado(cliente));
 	}
 
 }
