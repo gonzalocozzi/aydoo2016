@@ -55,7 +55,7 @@ public class Suscripcion extends Compra {
 		return precio;
 	}
 
-	public void setAnual() {
+	public void hacerAnual() {
 
 		this.esAnual = true;
 	}

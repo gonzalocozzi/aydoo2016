@@ -71,5 +71,24 @@ public class LibreriaTest {
 		
 		Assert.assertEquals(92.1, libreria.calcularMontoACobrar(cliente,  Mes.AGOSTO), 0.0);
 	}
+	
+	@Test
+	public void libreriaIndicaElMontoACobrarAUnClienteConSuscripcionAnualEnUnMesDeterminado() throws Exception{
+		
+		Libreria libreria = new Libreria("el papiro", "Gelly y Obes 2740, CABA");
+		Cliente cliente = new Cliente("maria gutierrez", "Nueva York 1572, CABA");
+		libreria.agregarCliente(cliente);
+		Compra compra = new Compra(Mes.ENERO);
+		Compra suscripcion = new Suscripcion(Mes.ENERO);
+		((Suscripcion) suscripcion).hacerAnual();
+		cliente.agregarCompra(compra);
+		cliente.agregarCompra(suscripcion);
+		Producto barcelona = new Revista("barcelona", 20.0, 2);
+		Producto pagina12 = new Periodico("pagina 12", 12.0, 30);
+		suscripcion.agregarProducto(barcelona);
+		compra.agregarProducto(pagina12);
+		
+		Assert.assertEquals(44.0, libreria.calcularMontoACobrar(cliente,  Mes.ENERO), 0.0);
+	}
 
 }

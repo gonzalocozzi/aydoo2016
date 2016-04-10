@@ -95,7 +95,7 @@ public class SuscripcionTest {
 	public void seCreaSuscripcionAnual(){
 		
 		Suscripcion suscripcion = new Suscripcion(Mes.ENERO);
-		suscripcion.setAnual();
+		suscripcion.hacerAnual();
 		
 		Assert.assertTrue(suscripcion.esAnual());
 	}
@@ -104,7 +104,7 @@ public class SuscripcionTest {
 	public void suscripcionAnualInformaSuPrecioConUnaRevistaQuincenal() throws Exception {
 		
 		Suscripcion suscripcion = new Suscripcion(Mes.ENERO);
-		suscripcion.setAnual();
+		suscripcion.hacerAnual();
 		Producto barcelona = new Revista("barcelona", 20.0, 2);
 		
 		suscripcion.agregarProducto(barcelona);	
@@ -116,7 +116,7 @@ public class SuscripcionTest {
 	public void suscripcionAnualInformaSuPrecioConUnDiario() throws Exception {
 		
 		Suscripcion suscripcion = new Suscripcion(Mes.ENERO);
-		suscripcion.setAnual();
+		suscripcion.hacerAnual();
 		Producto pagina12 = new Periodico("pagina 12", 12.0, 30);
 		
 		suscripcion.agregarProducto(pagina12);	
@@ -128,7 +128,7 @@ public class SuscripcionTest {
 	public void suscripcionAnualInformaSuPrecioConVariosProductos() throws Exception {
 		
 		Suscripcion suscripcion = new Suscripcion(Mes.ENERO);
-		suscripcion.setAnual();
+		suscripcion.hacerAnual();
 		Producto pagina12 = new Periodico("pagina 12", 12.0, 30);
 		Producto barcelona = new Revista("barcelona", 20.0, 2);
 		Producto elgrafico = new Revista("el grafico", 30.0, 1);
