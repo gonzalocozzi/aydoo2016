@@ -44,5 +44,12 @@ public class RevistaTest {
 		@SuppressWarnings("unused")
 		Revista barcelona = new Revista(null, null, 0);
 	}
+	
+	@Test (expected=Exception.class)
+	public void seImpideAgregarPeriodicidadNegativaALaRevista() throws Exception {
+		
+		@SuppressWarnings("unused")
+		Revista barcelona = new Revista(null, null, -1);
+	}
 
 }
