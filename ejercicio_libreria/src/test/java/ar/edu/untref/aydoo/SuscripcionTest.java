@@ -141,12 +141,21 @@ public class SuscripcionTest {
 	}
 	
 	@Test (expected=Exception.class)
-	public void suscripcionNoDejaAgregarALaListaDeProductosLibros() throws Exception {
+	public void suscripcionNoDejaAgregarLibrosALaListaDeProductos() throws Exception {
 		
 		Suscripcion suscripcion = new Suscripcion(Mes.ENERO);
 		Producto elquijote = new Libro("el quijote de la mancha", 175.0);
 		
 		suscripcion.agregarProducto(elquijote);
+	}
+	
+	@Test (expected=Exception.class)
+	public void suscripcionNoDejaAgregarSrticulosDeLibreriaALaListaDeProductos() throws Exception {
+		
+		Suscripcion suscripcion = new Suscripcion(Mes.ENERO);
+		Producto lapicera = new ArticuloDeLibreria("bic", 5.0);
+		
+		suscripcion.agregarProducto(lapicera);
 	}
 
 }

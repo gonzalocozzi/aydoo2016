@@ -12,9 +12,9 @@ public class Suscripcion extends Compra {
 	
 	public void agregarProducto(Producto producto) throws Exception {
 		
-		if(producto instanceof Libro){
+		if(producto instanceof Libro || producto instanceof ArticuloDeLibreria){
 			
-			throw new Exception("No puede suscribirse a un libro");
+			throw new Exception("No puede suscribirse a un libro o articulo de libreria");
 		}
 		
 		super.agregarProducto(producto);
