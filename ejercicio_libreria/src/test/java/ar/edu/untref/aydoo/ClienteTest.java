@@ -8,7 +8,7 @@ public class ClienteTest {
 	@Test
 	public void seAgregaNombreAlCliente() {
 
-		Cliente cliente = new Cliente(null);
+		Cliente cliente = new Cliente(null, null);
 
 		cliente.setNombre("juan perez");
 
@@ -18,7 +18,7 @@ public class ClienteTest {
 	@Test
 	public void seAgregaDireccionAlCliente(){
 
-		Cliente cliente = new Cliente(null);
+		Cliente cliente = new Cliente(null, null);
 
 		cliente.setDireccion("Montes de Oca 4720, CABA");
 
@@ -28,9 +28,17 @@ public class ClienteTest {
 	@Test
 	public void seAgregaNombreAlClienteCuandoEsCreado(){
 
-		Cliente cliente = new Cliente("juan perez");
+		Cliente cliente = new Cliente("juan perez", null);
 
 		Assert.assertEquals("juan perez", cliente.getNombre());
+	}
+	
+	@Test
+	public void seAgregaDireccionAlClienteCuandoEsCreado(){
+
+		Cliente cliente = new Cliente(null, "Montes de Oca 4720, CABA");
+
+		Assert.assertEquals("Montes de Oca 4720, CABA", cliente.getDireccion());
 	}
 
 }

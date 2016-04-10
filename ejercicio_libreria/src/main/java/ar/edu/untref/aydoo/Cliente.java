@@ -5,9 +5,10 @@ public class Cliente {
 	private String nombre;
 	private String direccion;
 
-	public Cliente(String nombre) {
+	public Cliente(String nombre, String direccion) {
 
 		this.setNombre(nombre);
+		this.setDireccion(direccion);
 	}
 
 	public void setNombre(String nombre) {
