@@ -29,5 +29,13 @@ public class RevistaTest {
 		
 		Assert.assertEquals("barcelona", barcelona.getNombre());
 	}
+	
+	@Test
+	public void seAgregaPrecioALaRevistaAlSerCreada() {
+		
+		Revista barcelona = new Revista(null, 20.0, null);
+		
+		Assert.assertEquals(20.0, barcelona.getPrecio(), 0.0);
+	}
 
 }
