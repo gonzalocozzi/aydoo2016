@@ -29,5 +29,13 @@ public class PeriodicoTest {
 		
 		Assert.assertEquals("pagina 12", pagina12.getNombre());
 	}
+	
+	@Test
+	public void seAgregaPrecioAlPeriodicoAlSerCreado() {
+		
+		Periodico pagina12 = new Periodico(null, 20.0, null);
+		
+		Assert.assertEquals(20.0, pagina12.getPrecio(), 0.0);
+	}
 
 }
