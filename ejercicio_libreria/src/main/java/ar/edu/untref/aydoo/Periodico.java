@@ -4,9 +4,10 @@ public class Periodico extends Producto {
 
 	private Integer periodicidad;
 	
-	public Periodico(String nombre, Double precio) {
+	public Periodico(String nombre, Double precio, Integer periodicidad) {
 		
 		super(nombre, precio);
+		this.setPeriodicidad(periodicidad);
 	}
 
 	public void setPeriodicidad(Integer periodicidad) {
@@ -17,8 +18,6 @@ public class Periodico extends Producto {
 	public Integer getPeriodicidad() {
 		
 		return this.periodicidad;
-	}
-	
-	
+	}	
 
 }
