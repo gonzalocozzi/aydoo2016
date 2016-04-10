@@ -5,6 +5,11 @@ public class Producto {
 	private String nombre;
 	private Double precio;
 
+	public Producto(String nombre) {
+		
+		this.setNombre(nombre);
+	}
+
 	public void setNombre(String string) {	
 		
 		this.nombre = string;
