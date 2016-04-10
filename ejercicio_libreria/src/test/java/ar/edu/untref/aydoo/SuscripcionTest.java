@@ -15,26 +15,26 @@ public class SuscripcionTest {
 	}	
 	
 	@Test
-	public void suscripcionAgregaProductoASuListaDeProductos() {
+	public void suscripcionAgregaProductoASuListaDeProductos() throws Exception {
 		
 		Suscripcion suscripcion = new Suscripcion(null);
-		Producto quijote = new Libro("el quijote de la mancha", 175.0);
+		Producto barcelona = new Revista("barcelona", 20.0, 2);
 		
-		suscripcion.agregarProducto(quijote);
+		suscripcion.agregarProducto(barcelona);
 		
-		Assert.assertTrue(suscripcion.contiene(quijote));
+		Assert.assertTrue(suscripcion.contiene(barcelona));
 	}
 	
 	@Test
 	public void suscripcionEliminaProductoDeSuListaDeProductos() throws Exception {
 		
 		Suscripcion suscripcion = new Suscripcion(null);
-		Producto quijote = new Libro("el quijote de la mancha", 175.0);
+		Producto barcelona = new Revista("barcelona", 20.0, 2);
 		
-		suscripcion.agregarProducto(quijote);
-		suscripcion.eliminarProducto(quijote);
+		suscripcion.agregarProducto(barcelona);
+		suscripcion.eliminarProducto(barcelona);
 		
-		Assert.assertFalse(suscripcion.contiene(quijote));
+		Assert.assertFalse(suscripcion.contiene(barcelona));
 	}
 	
 	@Test(expected=Exception.class)
@@ -138,6 +138,15 @@ public class SuscripcionTest {
 		suscripcion.agregarProducto(elgrafico);
 		
 		Assert.assertEquals(344.0, suscripcion.getPrecio(), 0.0);
+	}
+	
+	@Test (expected=Exception.class)
+	public void suscripcionNoDejaAgregarALaListaDeProductosLibros() throws Exception {
+		
+		Suscripcion suscripcion = new Suscripcion(Mes.ENERO);
+		Producto elquijote = new Libro("el quijote de la mancha", 175.0);
+		
+		suscripcion.agregarProducto(elquijote);
 	}
 
 }

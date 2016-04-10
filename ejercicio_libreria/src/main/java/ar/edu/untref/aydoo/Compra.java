@@ -24,9 +24,9 @@ public class Compra {
 		return this.mes;
 	}
 
-	public void agregarProducto(Producto quijote) {
+	public void agregarProducto(Producto producto) throws Exception {
 		
-		this.listaDeProductos.add(quijote);
+		this.listaDeProductos.add(producto);
 	}
 
 	public boolean contiene(Producto producto) {

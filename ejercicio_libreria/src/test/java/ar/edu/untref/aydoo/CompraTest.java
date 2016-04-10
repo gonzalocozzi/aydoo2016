@@ -15,7 +15,7 @@ public class CompraTest {
 	}
 	
 	@Test
-	public void compraAgregaProductoASuListaDeProductos() {
+	public void compraAgregaProductoASuListaDeProductos() throws Exception {
 		
 		Compra compra = new Compra(null);
 		Producto quijote = new Libro("el quijote de la mancha", 175.0);

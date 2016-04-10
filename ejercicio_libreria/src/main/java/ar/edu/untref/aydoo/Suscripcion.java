@@ -9,6 +9,16 @@ public class Suscripcion extends Compra {
 		super(mes);
 		this.esAnual = false;
 	}
+	
+	public void agregarProducto(Producto producto) throws Exception {
+		
+		if(producto instanceof Libro){
+			
+			throw new Exception("No puede suscribirse a un libro");
+		}
+		
+		super.agregarProducto(producto);
+	}
 
 	public Double getPrecio() {
 
