@@ -14,11 +14,19 @@ public class ArticuloDeLibreriaTest {
 	}
 	
 	@Test
-	public void seAgregaNombreAlArticuloDeLibreriaAlSerCreado(){
+	public void seAgregaNombreAlArticuloDeLibreriaAlSerCreado() {
 		
 		ArticuloDeLibreria lapicera = new ArticuloDeLibreria("bic", 0.0);
 		
 		Assert.assertEquals("bic", lapicera.getNombre());
+	}
+	
+	@Test
+	public void seAgregaPrecioAlArticuloDeLibreriaAlSerCreado() {
+		
+		ArticuloDeLibreria lapicera = new ArticuloDeLibreria(null, 5.0);
+		
+		Assert.assertEquals(5.0, lapicera.getPrecio(), 0.0);
 	}
 
 }
