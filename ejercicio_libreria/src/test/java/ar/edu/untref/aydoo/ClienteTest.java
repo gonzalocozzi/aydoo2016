@@ -51,5 +51,16 @@ public class ClienteTest {
 		
 		Assert.assertTrue(cliente.haComprado(compra));
 	}
+	
+	@Test
+	public void clienteAgregaSuscripcionASuListaDeCompras() throws Exception{
+		
+		Cliente cliente = new Cliente("juan perez", "Montes de Oca 4720, CABA");
+		Suscripcion suscripcion = new Suscripcion(Mes.MARZO);
+		
+		cliente.agregarCompra(suscripcion);
+		
+		Assert.assertTrue(cliente.haComprado(suscripcion));
+	}
 
 }
