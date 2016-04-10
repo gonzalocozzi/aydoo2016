@@ -40,5 +40,16 @@ public class ClienteTest {
 
 		Assert.assertEquals("Montes de Oca 4720, CABA", cliente.getDireccion());
 	}
+	
+	@Test
+	public void clienteAgregaCompraASuListaDeCompras() throws Exception{
+		
+		Cliente cliente = new Cliente("juan perez", "Montes de Oca 4720, CABA");
+		Compra compra = new Compra(Mes.AGOSTO);
+		
+		cliente.agregarCompra(compra);
+		
+		Assert.assertTrue(cliente.haComprado(compra));
+	}
 
 }

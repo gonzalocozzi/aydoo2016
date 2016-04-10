@@ -29,7 +29,6 @@ public class Suscripcion extends Compra {
 		if(this.esAnual()){
 
 			precio *= 0.8;
-
 		}
 
 		return precio;	
@@ -50,7 +49,6 @@ public class Suscripcion extends Compra {
 			} else {
 
 				precio += c.getPrecio();
-
 			}
 		}
 		

@@ -1,14 +1,19 @@
 package ar.edu.untref.aydoo;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Cliente {
 
 	private String nombre;
 	private String direccion;
+	private List<Compra> listaDeCompras;
 
 	public Cliente(String nombre, String direccion) {
 
 		this.setNombre(nombre);
 		this.setDireccion(direccion);
+		this.listaDeCompras = new ArrayList<Compra>();
 	}
 
 	public void setNombre(String nombre) {
@@ -29,6 +34,16 @@ public class Cliente {
 	public Object getDireccion() {
 
 		return this.direccion;
+	}
+
+	public void agregarCompra(Compra compra) {
+		
+		this.listaDeCompras.add(compra);
+	}
+
+	public boolean haComprado(Compra compra) {
+		
+		return this.listaDeCompras.contains(compra);
 	}
 
 }
