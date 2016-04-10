@@ -22,11 +22,11 @@ public class ArticuloDeLibreriaTest {
 	}
 	
 	@Test
-	public void seAgregaPrecioAlArticuloDeLibreriaAlSerCreado() {
+	public void seAgregaPrecioConIVAAlArticuloDeLibreriaAlSerCreado() {
 		
 		ArticuloDeLibreria lapicera = new ArticuloDeLibreria(null, 5.0);
 		
-		Assert.assertEquals(5.0, lapicera.getPrecio(), 0.0);
+		Assert.assertEquals(6.05, lapicera.getPrecio(), 0.0);
 	}
 
 }

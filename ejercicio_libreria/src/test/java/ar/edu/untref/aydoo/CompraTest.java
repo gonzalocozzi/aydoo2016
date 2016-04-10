@@ -25,6 +25,18 @@ public class CompraTest {
 		Assert.assertTrue(compra.contiene(quijote));
 	}
 	
+	/**@Test
+	public void compraEliminaProductoDeSuListaDeProductos() {
+		
+		Compra compra = new Compra();
+		Producto quijote = new Libro("el quijote de la mancha", 175.0);
+		
+		compra.agregarProducto(quijote);
+		compra.eliminarProducto(quijote);
+		
+		Assert.assertFalse(compra.contiene(quijote));
+	}*/
+	
 	@Test
 	public void compraInformaSuPrecioConVariosProductosSinSuscripcion() throws Exception {
 		
