@@ -55,8 +55,23 @@ public class Cliente {
 			
 		} else {
 			
-			throw new Exception("EL cliente no ha hecho la compra que desea eliminar");
+			throw new Exception("El cliente no ha hecho la compra que desea eliminar");
 		}
+	}
+
+	public List<Compra> getComprasDelMes(Mes mes) {
+		
+		List<Compra> comprasDelMes = new ArrayList<Compra>();
+		
+		for(Compra c : this.listaDeCompras){
+			
+			if(c.getMes() == mes){
+				
+				comprasDelMes.add(c);
+			}
+		}
+		
+		return comprasDelMes;
 	}
 
 }

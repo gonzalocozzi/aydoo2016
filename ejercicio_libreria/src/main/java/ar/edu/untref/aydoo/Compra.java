@@ -38,9 +38,9 @@ public class Compra {
 		
 		Double precio = 0.0;
 		
-		for(Producto c : this.listaDeProductos){
+		for(Producto p : this.listaDeProductos){
 			
-			precio += c.getPrecio();
+			precio += p.getPrecio();
 		}
 		
 		return precio;
