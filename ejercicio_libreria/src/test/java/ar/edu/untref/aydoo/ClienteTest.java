@@ -62,5 +62,17 @@ public class ClienteTest {
 		
 		Assert.assertTrue(cliente.haComprado(suscripcion));
 	}
+	
+	@Test
+	public void clienteEliminaCompraDeSuListaDeCompras() throws Exception{
+		
+		Cliente cliente = new Cliente("juan perez", "Montes de Oca 4720, CABA");
+		Compra compra = new Compra(Mes.AGOSTO);
+		
+		cliente.agregarCompra(compra);
+		cliente.eliminarCompra(compra);
+		
+		Assert.assertFalse(cliente.haComprado(compra));
+	}
 
 }

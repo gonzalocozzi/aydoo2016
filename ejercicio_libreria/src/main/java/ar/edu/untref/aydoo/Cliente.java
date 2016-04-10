@@ -46,4 +46,10 @@ public class Cliente {
 		return this.listaDeCompras.contains(compra);
 	}
 
+	public void eliminarCompra(Compra compra) {
+		
+		int posicionDeLaCompraEnLaLista = this.listaDeCompras.indexOf(compra);
+		this.listaDeCompras.remove(posicionDeLaCompraEnLaLista);
+	}
+
 }
