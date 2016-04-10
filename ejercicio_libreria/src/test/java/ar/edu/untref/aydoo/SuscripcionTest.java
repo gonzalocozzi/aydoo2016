@@ -24,5 +24,17 @@ public class SuscripcionTest {
 		
 		Assert.assertTrue(suscripcion.contiene(quijote));
 	}
+	
+	@Test
+	public void suscripcionEliminaProductoDeSuListaDeProductos() throws Exception {
+		
+		Suscripcion suscripcion = new Suscripcion(null);
+		Producto quijote = new Libro("el quijote de la mancha", 175.0);
+		
+		suscripcion.agregarProducto(quijote);
+		suscripcion.eliminarProducto(quijote);
+		
+		Assert.assertFalse(suscripcion.contiene(quijote));
+	}
 
 }
