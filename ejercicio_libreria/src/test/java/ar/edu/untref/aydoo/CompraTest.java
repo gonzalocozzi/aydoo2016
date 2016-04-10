@@ -25,7 +25,7 @@ public class CompraTest {
 		Assert.assertTrue(compra.contiene(quijote));
 	}
 	
-	/**@Test
+	@Test
 	public void compraEliminaProductoDeSuListaDeProductos() {
 		
 		Compra compra = new Compra();
@@ -35,7 +35,7 @@ public class CompraTest {
 		compra.eliminarProducto(quijote);
 		
 		Assert.assertFalse(compra.contiene(quijote));
-	}*/
+	}
 	
 	@Test
 	public void compraInformaSuPrecioConVariosProductosSinSuscripcion() throws Exception {

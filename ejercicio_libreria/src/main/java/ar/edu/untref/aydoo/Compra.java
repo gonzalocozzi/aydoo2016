@@ -45,4 +45,10 @@ public class Compra {
 		return precio;
 	}
 
+	public void eliminarProducto(Producto producto) {
+		
+		int posicionDelProductoEnLaLista = this.listaDeProductos.indexOf(producto);
+		this.listaDeProductos.remove(posicionDelProductoEnLaLista);
+	}
+
 }
