@@ -41,6 +41,7 @@ public class FactoresPrimos {
 		if(es_primo(numero_a_factorizar)){	
 			
 			this.factorizacion = "el numero " + numero_a_factorizar + " es primo.";
+			
 		} else {
 			
 			for(Integer i = 2; i < numero_a_factorizar; i++){
