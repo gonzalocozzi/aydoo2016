@@ -19,5 +19,10 @@ public class ArticuloDeLibreria extends Producto {
 		
 		return this.IVA;
 	}	
+	
+	public Double getPrecio(){
+		
+		return super.getPrecio() + this.getIVA();
+	}
 
 }
