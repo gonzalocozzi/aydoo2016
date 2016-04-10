@@ -111,5 +111,17 @@ public class SuscripcionTest {
 		
 		Assert.assertEquals(32.0, suscripcion.getPrecio(), 0.0);
 	}
+	
+	@Test
+	public void suscripcionAnualInformaSuPrecioConUnDiario() throws Exception {
+		
+		Suscripcion suscripcion = new Suscripcion(Mes.ENERO);
+		suscripcion.setAnual();
+		Producto pagina12 = new Periodico("pagina 12", 12.0, 30);
+		
+		suscripcion.agregarProducto(pagina12);	
+		
+		Assert.assertEquals(288.0, suscripcion.getPrecio(), 0.0);
+	}
 
 }
