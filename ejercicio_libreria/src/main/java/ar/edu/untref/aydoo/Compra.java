@@ -55,8 +55,7 @@ public class Compra {
 			
 		} else {
 			
-			throw new Exception("La compra no incluye el producto que desea eliminar");
-			
+			throw new Exception("La compra no incluye el producto que desea eliminar");			
 		}
 		
 	}
