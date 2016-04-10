@@ -51,5 +51,25 @@ public class LibreriaTest {
 		
 		Assert.assertTrue(libreria.esClienteRegistrado(cliente));
 	}
+	
+	@Test
+	public void libreriaIndicaElMontoACobrarAUnClienteSinSuscripcionesEnUnMesDeterminado() throws Exception{
+		
+		Libreria libreria = new Libreria("el papiro", "Gelly y Obes 2740, CABA");
+		Cliente cliente = new Cliente("juan perez", "Montes de Oca 4720, CABA");
+		libreria.agregarCliente(cliente);
+		Compra compra = new Compra(Mes.AGOSTO);
+		cliente.agregarCompra(compra);
+		Producto elhobbit = new Libro("el hobbit", 50.0);
+		Producto lapicera1 = new ArticuloDeLibreria("bic", 5.0);
+		Producto lapicera2 = new ArticuloDeLibreria("bic", 5.0);
+		Producto elgrafico = new Revista("el grafico", 30.0, 1);
+		compra.agregarProducto(elhobbit);
+		compra.agregarProducto(lapicera1);
+		compra.agregarProducto(lapicera2);
+		compra.agregarProducto(elgrafico);
+		
+		Assert.assertEquals(92.1, libreria.calcularMontoACobrar(cliente,  Mes.AGOSTO), 0.0);
+	}
 
 }

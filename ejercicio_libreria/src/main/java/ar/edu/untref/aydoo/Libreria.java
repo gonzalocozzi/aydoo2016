@@ -41,9 +41,23 @@ public class Libreria {
 		this.listaDeClientesRegistrados.add(cliente);
 	}
 
-	public boolean esClienteRegistrado(Cliente cliente) {
+	public Boolean esClienteRegistrado(Cliente cliente) {
 		
 		return this.listaDeClientesRegistrados.contains(cliente);
+	}
+
+	public Double calcularMontoACobrar(Cliente cliente, Mes mes) {
+		
+		List<Compra> comprasDelMes;
+		comprasDelMes = cliente.getComprasDelMes(mes);
+		Double monto = 0.0;
+		
+		for(Compra c : comprasDelMes){
+			
+			monto += c.getPrecio();
+		}
+		
+		return monto;
 	}
 
 }
