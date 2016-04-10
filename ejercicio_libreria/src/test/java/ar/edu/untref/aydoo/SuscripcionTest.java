@@ -36,5 +36,14 @@ public class SuscripcionTest {
 		
 		Assert.assertFalse(suscripcion.contiene(quijote));
 	}
+	
+	@Test(expected=Exception.class)
+	public void suscripcionNoEliminaProductoDeSuListaDeProductosSiNoLoPosee() throws Exception {
+		
+		Suscripcion suscripcion = new Suscripcion(null);
+		Producto quijote = new Libro("el quijote de la mancha", 175.0);
+		
+		suscripcion.eliminarProducto(quijote);
+	}
 
 }
