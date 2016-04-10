@@ -6,7 +6,7 @@ import java.util.List;
 public class Compra {
 
 	private Mes mes;
-	private List<Producto> listaDeProductos;
+	protected List<Producto> listaDeProductos;
 	
 	public Compra(Mes mes) {
 		

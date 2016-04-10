@@ -45,5 +45,16 @@ public class SuscripcionTest {
 		
 		suscripcion.eliminarProducto(quijote);
 	}
+	
+	@Test
+	public void suscripcionNoAnualInformaSuPrecioConUnaRevistaQuincenal() throws Exception {
+		
+		Suscripcion suscripcion = new Suscripcion(null);
+		Producto barcelona = new Revista("barcelona", 20.0, 2);
+		
+		suscripcion.agregarProducto(barcelona);	
+		
+		Assert.assertEquals(40.0, suscripcion.getPrecio(), 0.0);
+	}
 
 }
