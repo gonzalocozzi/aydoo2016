@@ -5,9 +5,10 @@ public class Libreria {
 	private String nombre;
 	private String direccion;
 
-	public Libreria(String nombre) {
+	public Libreria(String nombre, String direccion) {
 		
 		this.setNombre(nombre);
+		this.setDireccion(direccion);
 	}
 
 	public void setNombre(String nombre) {
