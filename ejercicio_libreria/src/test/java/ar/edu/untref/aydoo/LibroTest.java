@@ -6,6 +6,15 @@ import org.junit.Test;
 public class LibroTest {
 	
 	@Test
+	public void seAgregaNombreAlLibro(){
+		
+		Libro quijote = new Libro(null, null);
+		quijote.setNombre("el quijote de la mancha");
+		
+		Assert.assertEquals("el quijote de la mancha", quijote.getNombre());
+	}
+	
+	@Test
 	public void seAgregaNombreAlLibroAlSerCreado() {
 		
 		Libro quijote = new Libro("el quijote de la mancha", null);
