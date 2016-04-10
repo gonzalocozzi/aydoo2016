@@ -26,7 +26,7 @@ public class CompraTest {
 	}
 	
 	@Test
-	public void compraEliminaProductoDeSuListaDeProductos() {
+	public void compraEliminaProductoDeSuListaDeProductos() throws Exception {
 		
 		Compra compra = new Compra();
 		Producto quijote = new Libro("el quijote de la mancha", 175.0);
@@ -35,6 +35,15 @@ public class CompraTest {
 		compra.eliminarProducto(quijote);
 		
 		Assert.assertFalse(compra.contiene(quijote));
+	}
+	
+	@Test(expected=Exception.class)
+	public void compraNoEliminaProductoDeSuListaDeProductosSiNoLoPosee() throws Exception {
+		
+		Compra compra = new Compra();
+		Producto quijote = new Libro("el quijote de la mancha", 175.0);
+		
+		compra.eliminarProducto(quijote);
 	}
 	
 	@Test

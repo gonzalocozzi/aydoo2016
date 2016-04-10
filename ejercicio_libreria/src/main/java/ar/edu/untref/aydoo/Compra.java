@@ -45,10 +45,19 @@ public class Compra {
 		return precio;
 	}
 
-	public void eliminarProducto(Producto producto) {
+	public void eliminarProducto(Producto producto) throws Exception {
 		
-		int posicionDelProductoEnLaLista = this.listaDeProductos.indexOf(producto);
-		this.listaDeProductos.remove(posicionDelProductoEnLaLista);
+		if(this.contiene(producto)){
+			
+			int posicionDelProductoEnLaLista = this.listaDeProductos.indexOf(producto);
+			this.listaDeProductos.remove(posicionDelProductoEnLaLista);
+			
+		} else {
+			
+			throw new Exception("La compra no incluye el producto que desea eliminar");
+			
+		}
+		
 	}
 
 }
