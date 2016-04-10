@@ -15,6 +15,15 @@ public class LibroTest {
 	}
 	
 	@Test
+	public void seAgregaPrecioAlLibro(){
+		
+		Libro quijote = new Libro(null, null);
+		quijote.setPrecio(125.0);
+		
+		Assert.assertEquals(125.0, quijote.getPrecio(), 0.0);
+	}
+	
+	@Test
 	public void seAgregaNombreAlLibroAlSerCreado() {
 		
 		Libro quijote = new Libro("el quijote de la mancha", null);
