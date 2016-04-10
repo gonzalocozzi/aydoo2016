@@ -8,7 +8,7 @@ public class LibreriaTest {
 	@Test
 	public void seAgregaNombreALaLibreria() {
 
-		Libreria elpapiro = new Libreria();
+		Libreria elpapiro = new Libreria(null);
 
 		elpapiro.setNombre("el papiro");
 
@@ -18,11 +18,19 @@ public class LibreriaTest {
 	@Test
 	public void seAgregaDirecccionALaLibreria() {
 
-		Libreria elpapiro = new Libreria();
+		Libreria elpapiro = new Libreria(null);
 
 		elpapiro.setDireccion("Gelly y Obes 2740, CABA");
 
 		Assert.assertEquals("Gelly y Obes 2740, CABA", elpapiro.getDireccion());
+	}
+	
+	@Test
+	public void seAgregaNombreALaLibreriaAlSerCreada() {
+
+		Libreria elpapiro = new Libreria("el papiro");
+
+		Assert.assertEquals("el papiro", elpapiro.getNombre());
 	}
 
 }
