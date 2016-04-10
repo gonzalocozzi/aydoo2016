@@ -8,7 +8,7 @@ public class CompraTest {
 	@Test
 	public void compraAgregaMesEnElCualFueHecha() {
 		
-		Compra compra = new Compra();
+		Compra compra = new Compra(null);
 		compra.setMes(Mes.AGOSTO);
 		
 		Assert.assertEquals(Mes.AGOSTO, compra.getMes());
@@ -17,7 +17,7 @@ public class CompraTest {
 	@Test
 	public void compraAgregaProductoASuListaDeProductos() {
 		
-		Compra compra = new Compra();
+		Compra compra = new Compra(null);
 		Producto quijote = new Libro("el quijote de la mancha", 175.0);
 		
 		compra.agregarProducto(quijote);
@@ -28,7 +28,7 @@ public class CompraTest {
 	@Test
 	public void compraEliminaProductoDeSuListaDeProductos() throws Exception {
 		
-		Compra compra = new Compra();
+		Compra compra = new Compra(null);
 		Producto quijote = new Libro("el quijote de la mancha", 175.0);
 		
 		compra.agregarProducto(quijote);
@@ -40,16 +40,16 @@ public class CompraTest {
 	@Test(expected=Exception.class)
 	public void compraNoEliminaProductoDeSuListaDeProductosSiNoLoPosee() throws Exception {
 		
-		Compra compra = new Compra();
+		Compra compra = new Compra(null);
 		Producto quijote = new Libro("el quijote de la mancha", 175.0);
 		
 		compra.eliminarProducto(quijote);
 	}
 	
 	@Test
-	public void compraInformaSuPrecioConVariosProductosSinSuscripcion() throws Exception {
+	public void compraInformaSuPrecioConVariosProductos() throws Exception {
 		
-		Compra compra = new Compra();
+		Compra compra = new Compra(null);
 		Producto elhobbit = new Libro("el hobbit", 50.0);
 		Producto lapicera = new ArticuloDeLibreria("bic", 5.0);
 		Producto elgrafico = new Revista("el grafico", 30.0, 1);
@@ -60,6 +60,14 @@ public class CompraTest {
 		compra.agregarProducto(elgrafico);		
 		
 		Assert.assertEquals(92.1, compra.getPrecio(), 0.0);
+	}
+	
+	@Test
+	public void compraAgregaMesEnElCualFueHechaAlSerCreada(){
+		
+		Compra compra = new Compra(Mes.AGOSTO);
+		
+		Assert.assertEquals(Mes.AGOSTO, compra.getMes());
 	}
 
 }

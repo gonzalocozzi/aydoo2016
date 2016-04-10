@@ -8,9 +8,10 @@ public class Compra {
 	private Mes mes;
 	private List<Producto> listaDeProductos;
 	
-	public Compra() {
+	public Compra(Mes mes) {
 		
 		this.listaDeProductos = new ArrayList<Producto>();
+		this.setMes(mes);
 	}
 
 	public void setMes(Mes mes) {
