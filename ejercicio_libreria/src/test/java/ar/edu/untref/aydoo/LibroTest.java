@@ -12,5 +12,13 @@ public class LibroTest {
 		
 		Assert.assertEquals("el quijote de la mancha", quijote.getNombre());
 	}
+	
+	@Test
+	public void seAgregaPrecioAlLibroAlSerCreado() {
+		
+		Libro quijote = new Libro(null, 125.0);
+		
+		Assert.assertEquals(125.0, quijote.getPrecio(), 0.0);
+	}
 
 }
