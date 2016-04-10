@@ -44,5 +44,12 @@ public class PeriodicoTest {
 		@SuppressWarnings("unused")
 		Periodico pagina12 = new Periodico(null, null, 0);
 	}
+	
+	@Test (expected=Exception.class)
+	public void seImpideAgregarPeriodicidadNegativaAlPeriodico() throws Exception {
+		
+		@SuppressWarnings("unused")
+		Periodico pagina12 = new Periodico(null, null, -1);
+	}
 
 }
