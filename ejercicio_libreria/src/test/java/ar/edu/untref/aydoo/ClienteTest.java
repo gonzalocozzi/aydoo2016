@@ -74,5 +74,14 @@ public class ClienteTest {
 		
 		Assert.assertFalse(cliente.haComprado(compra));
 	}
+	
+	@Test(expected=Exception.class)
+	public void clienteNoEliminaCompraDeSuListaDeComprasSiNoLaHaHecho() throws Exception {
+		
+		Cliente cliente = new Cliente("juan perez", "Montes de Oca 4720, CABA");
+		Compra compra = new Compra(Mes.AGOSTO);
+		
+		cliente.eliminarCompra(compra);
+	}
 
 }

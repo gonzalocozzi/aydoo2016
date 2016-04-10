@@ -46,10 +46,17 @@ public class Cliente {
 		return this.listaDeCompras.contains(compra);
 	}
 
-	public void eliminarCompra(Compra compra) {
+	public void eliminarCompra(Compra compra) throws Exception {
 		
-		int posicionDeLaCompraEnLaLista = this.listaDeCompras.indexOf(compra);
-		this.listaDeCompras.remove(posicionDeLaCompraEnLaLista);
+		if(this.listaDeCompras.contains(compra)){
+			
+			int posicionDeLaCompraEnLaLista = this.listaDeCompras.indexOf(compra);
+			this.listaDeCompras.remove(posicionDeLaCompraEnLaLista);
+			
+		} else {
+			
+			throw new Exception("EL cliente no ha hecho la compra que desea eliminar");
+		}
 	}
 
 }
