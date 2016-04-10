@@ -9,14 +9,14 @@ public class Suscripcion extends Compra {
 		super(mes);
 		this.esAnual = false;
 	}
-	
+
 	public void agregarProducto(Producto producto) throws Exception {
-		
+
 		if(producto instanceof Libro || producto instanceof ArticuloDeLibreria){
-			
+
 			throw new Exception("No puede suscribirse a un libro o articulo de libreria");
 		}
-		
+
 		super.agregarProducto(producto);
 	}
 
@@ -35,23 +35,19 @@ public class Suscripcion extends Compra {
 	}
 
 	private Double calcularPrecio(Double precio) {
-		
+
 		for(Producto c : this.listaDeProductos){
 
-			if(c instanceof Revista){
+			if (c instanceof Revista){
 
 				precio += c.getPrecio()* ((Revista) c).getPeriodicidad();
 
-			} else if (c instanceof Periodico){
-
-				precio += c.getPrecio()* ((Periodico) c).getPeriodicidad();			
-
 			} else {
 
-				precio += c.getPrecio();
+				precio += c.getPrecio()* ((Periodico) c).getPeriodicidad();	
 			}
 		}
-		
+
 		return precio;
 	}
 
