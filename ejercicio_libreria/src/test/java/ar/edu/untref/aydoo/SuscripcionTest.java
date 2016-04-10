@@ -150,7 +150,7 @@ public class SuscripcionTest {
 	}
 	
 	@Test (expected=Exception.class)
-	public void suscripcionNoDejaAgregarSrticulosDeLibreriaALaListaDeProductos() throws Exception {
+	public void suscripcionNoDejaAgregarArticulosDeLibreriaALaListaDeProductos() throws Exception {
 		
 		Suscripcion suscripcion = new Suscripcion(Mes.ENERO);
 		Producto lapicera = new ArticuloDeLibreria("bic", 5.0);
