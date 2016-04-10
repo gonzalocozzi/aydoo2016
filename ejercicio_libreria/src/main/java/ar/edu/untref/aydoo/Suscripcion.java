@@ -1,10 +1,13 @@
 package ar.edu.untref.aydoo;
 
 public class Suscripcion extends Compra {
+	
+	private Boolean esAnual;
 
 	public Suscripcion(Mes mes) {
 
 		super(mes);
+		this.esAnual = false;
 	}
 
 	public Double getPrecio() {
@@ -30,5 +33,15 @@ public class Suscripcion extends Compra {
 
 		return precio;
 	}
+
+	public void setAnual() {
+		
+		this.esAnual = true;
+	}
+
+	public boolean esAnual() {
+		
+		return this.esAnual;
+	}	
 
 }

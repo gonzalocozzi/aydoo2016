@@ -6,7 +6,7 @@ import org.junit.Test;
 public class SuscripcionTest {
 	
 	@Test
-	public void suscripcionAgregaMesEnElCualFueHecha() {
+	public void suscripcionAgregaMesEnElCualFueComprada() {
 		
 		Suscripcion suscripcion = new Suscripcion(null);
 		suscripcion.setMes(Mes.ENERO);
@@ -47,7 +47,7 @@ public class SuscripcionTest {
 	}
 	
 	@Test
-	public void suscripcionAgregaMesEnElCualFueHechaAlSerCreada() {
+	public void suscripcionAgregaMesEnElCualFueCompradaAlSerCreada() {
 		
 		Suscripcion suscripcion = new Suscripcion(Mes.ENERO);
 		
@@ -57,7 +57,7 @@ public class SuscripcionTest {
 	@Test
 	public void suscripcionNoAnualInformaSuPrecioConUnaRevistaQuincenal() throws Exception {
 		
-		Suscripcion suscripcion = new Suscripcion(null);
+		Suscripcion suscripcion = new Suscripcion(Mes.ENERO);
 		Producto barcelona = new Revista("barcelona", 20.0, 2);
 		
 		suscripcion.agregarProducto(barcelona);	
@@ -68,7 +68,7 @@ public class SuscripcionTest {
 	@Test
 	public void suscripcionNoAnualInformaSuPrecioConUnDiario() throws Exception {
 		
-		Suscripcion suscripcion = new Suscripcion(null);
+		Suscripcion suscripcion = new Suscripcion(Mes.ENERO);
 		Producto pagina12 = new Periodico("pagina 12", 12.0, 30);
 		
 		suscripcion.agregarProducto(pagina12);	
@@ -79,7 +79,7 @@ public class SuscripcionTest {
 	@Test
 	public void suscripcionNoAnualInformaSuPrecioConVariosProductos() throws Exception {
 		
-		Suscripcion suscripcion = new Suscripcion(null);
+		Suscripcion suscripcion = new Suscripcion(Mes.ENERO);
 		Producto pagina12 = new Periodico("pagina 12", 12.0, 30);
 		Producto barcelona = new Revista("barcelona", 20.0, 2);
 		Producto elgrafico = new Revista("el grafico", 30.0, 1);
@@ -89,6 +89,15 @@ public class SuscripcionTest {
 		suscripcion.agregarProducto(elgrafico);
 		
 		Assert.assertEquals(430.0, suscripcion.getPrecio(), 0.0);
+	}
+	
+	@Test
+	public void seCreaSuscripcionAnual(){
+		
+		Suscripcion suscripcion = new Suscripcion(Mes.ENERO);
+		suscripcion.setAnual();
+		
+		Assert.assertTrue(suscripcion.esAnual());
 	}
 
 }
