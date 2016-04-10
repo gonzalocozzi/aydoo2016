@@ -67,5 +67,20 @@ public class SuscripcionTest {
 		
 		Assert.assertEquals(360.0, suscripcion.getPrecio(), 0.0);
 	}
+	
+	@Test
+	public void suscripcionNoAnualInformaSuPrecioConVariosProductos() throws Exception {
+		
+		Suscripcion suscripcion = new Suscripcion(null);
+		Producto pagina12 = new Periodico("pagina 12", 12.0, 30);
+		Producto barcelona = new Revista("barcelona", 20.0, 2);
+		Producto elgrafico = new Revista("el grafico", 30.0, 1);
+		
+		suscripcion.agregarProducto(pagina12);	
+		suscripcion.agregarProducto(barcelona);
+		suscripcion.agregarProducto(elgrafico);
+		
+		Assert.assertEquals(430.0, suscripcion.getPrecio(), 0.0);
+	}
 
 }
