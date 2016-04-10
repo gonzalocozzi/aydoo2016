@@ -99,5 +99,17 @@ public class SuscripcionTest {
 		
 		Assert.assertTrue(suscripcion.esAnual());
 	}
+	
+	@Test
+	public void suscripcionAnualInformaSuPrecioConUnaRevistaQuincenal() throws Exception {
+		
+		Suscripcion suscripcion = new Suscripcion(Mes.ENERO);
+		suscripcion.setAnual();
+		Producto barcelona = new Revista("barcelona", 20.0, 2);
+		
+		suscripcion.agregarProducto(barcelona);	
+		
+		Assert.assertEquals(32.0, suscripcion.getPrecio(), 0.0);
+	}
 
 }
