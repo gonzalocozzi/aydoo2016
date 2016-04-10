@@ -6,10 +6,18 @@ import org.junit.Test;
 public class RevistaTest {
 	
 	@Test
-	public void seAgregaPeriodicidadALaRevista(){
+	public void seAgregaPeriodicidadALaRevista() {
 		
-		Revista barcelona = new Revista(null, null);
+		Revista barcelona = new Revista(null, null, null);
 		barcelona.setPeriodicidad(2);
+		
+		Assert.assertEquals(2, barcelona.getPeriodicidad(), 0.0);
+	}
+	
+	@Test
+	public void seAgregaPeriodicidadALaRevistaAlSerCreada() {
+		
+		Revista barcelona = new Revista(null, null, 2);
 		
 		Assert.assertEquals(2, barcelona.getPeriodicidad(), 0.0);
 	}
