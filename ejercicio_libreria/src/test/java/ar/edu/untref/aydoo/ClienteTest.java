@@ -34,7 +34,7 @@ public class ClienteTest {
 
 		Assert.assertEquals("juan perez", cliente.getNombre());
 	}
-	
+
 	@Test
 	public void seAgregaDireccionAlClienteCuandoEsCreado(){
 
@@ -42,53 +42,53 @@ public class ClienteTest {
 
 		Assert.assertEquals("Montes de Oca 4720, CABA", cliente.getDireccion());
 	}
-	
+
 	@Test
 	public void clienteAgregaCompraASuListaDeCompras() throws Exception{
-		
+
 		Cliente cliente = new Cliente("juan perez", "Montes de Oca 4720, CABA");
 		Compra compra = new Compra(Mes.AGOSTO);
-		
+
 		cliente.agregarCompra(compra);
-		
+
 		Assert.assertTrue(cliente.haComprado(compra));
 	}
-	
+
 	@Test
 	public void clienteAgregaSuscripcionASuListaDeCompras() throws Exception{
-		
+
 		Cliente cliente = new Cliente("juan perez", "Montes de Oca 4720, CABA");
 		Suscripcion suscripcion = new Suscripcion(Mes.MARZO);
-		
+
 		cliente.agregarCompra(suscripcion);
-		
+
 		Assert.assertTrue(cliente.haComprado(suscripcion));
 	}
-	
+
 	@Test
 	public void clienteEliminaCompraDeSuListaDeCompras() throws Exception{
-		
+
 		Cliente cliente = new Cliente("juan perez", "Montes de Oca 4720, CABA");
 		Compra compra = new Compra(Mes.AGOSTO);
-		
+
 		cliente.agregarCompra(compra);
 		cliente.eliminarCompra(compra);
-		
+
 		Assert.assertFalse(cliente.haComprado(compra));
 	}
-	
+
 	@Test(expected=Exception.class)
 	public void clienteNoEliminaCompraDeSuListaDeComprasSiNoLaHaHecho() throws Exception {
-		
+
 		Cliente cliente = new Cliente("juan perez", "Montes de Oca 4720, CABA");
 		Compra compra = new Compra(Mes.AGOSTO);
-		
+
 		cliente.eliminarCompra(compra);
 	}
-	
+
 	@Test
 	public void clienteDevuelveListaCompletaDeComprasDeUnMesDeterminado1() {
-		
+
 		Cliente cliente = new Cliente("juan perez", "Montes de Oca 4720, CABA");
 		Compra compra1 = new Compra(Mes.AGOSTO);
 		Compra compra2 = new Compra(Mes.JULIO);
@@ -100,16 +100,16 @@ public class ClienteTest {
 		cliente.agregarCompra(compra3);
 		cliente.agregarCompra(compra4);
 		cliente.agregarCompra(compra5);
-		
+
 		List<Compra> comprasDeJulio;
 		comprasDeJulio = cliente.getComprasDelMes(Mes.JULIO);
-		
+
 		Assert.assertTrue(comprasDeJulio.contains(compra2));
 	}
-	
+
 	@Test
 	public void clienteDevuelveListaCompletaDeComprasDeUnMesDeterminado2() {
-		
+
 		Cliente cliente = new Cliente("juan perez", "Montes de Oca 4720, CABA");
 		Compra compra1 = new Compra(Mes.AGOSTO);
 		Compra compra2 = new Compra(Mes.JULIO);
@@ -121,10 +121,10 @@ public class ClienteTest {
 		cliente.agregarCompra(compra3);
 		cliente.agregarCompra(compra4);
 		cliente.agregarCompra(compra5);
-		
+
 		List<Compra> comprasDeJulio;
 		comprasDeJulio = cliente.getComprasDelMes(Mes.JULIO);
-		
+
 		Assert.assertTrue(comprasDeJulio.contains(compra3));
 	}
 

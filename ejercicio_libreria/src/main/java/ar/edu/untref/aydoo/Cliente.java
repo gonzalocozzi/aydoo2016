@@ -37,40 +37,40 @@ public class Cliente {
 	}
 
 	public void agregarCompra(Compra compra) {
-		
+
 		this.listaDeCompras.add(compra);
 	}
 
 	public boolean haComprado(Compra compra) {
-		
+
 		return this.listaDeCompras.contains(compra);
 	}
 
 	public void eliminarCompra(Compra compra) throws Exception {
-		
+
 		if(this.listaDeCompras.contains(compra)){
-			
+
 			int posicionDeLaCompraEnLaLista = this.listaDeCompras.indexOf(compra);
 			this.listaDeCompras.remove(posicionDeLaCompraEnLaLista);
-			
+
 		} else {
-			
+
 			throw new Exception("El cliente no ha hecho la compra que desea eliminar");
 		}
 	}
 
 	public List<Compra> getComprasDelMes(Mes mes) {
-		
+
 		List<Compra> comprasDelMes = new ArrayList<Compra>();
-		
+
 		for(Compra c : this.listaDeCompras){
-			
+
 			if(c.getMes() == mes){
-				
+
 				comprasDelMes.add(c);
 			}
 		}
-		
+
 		return comprasDelMes;
 	}
 

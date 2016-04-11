@@ -4,52 +4,52 @@ import org.junit.Assert;
 import org.junit.Test;
 
 public class RevistaTest {
-	
+
 	@Test
 	public void seAgregaPeriodicidadALaRevista() throws Exception {
-		
-		Revista barcelona = new Revista(null, null, 2);
+
+		Revista barcelona = new Revista(null, 0.0, 2);
 		barcelona.setPeriodicidad(2);
-		
+
 		Assert.assertEquals(2, barcelona.getPeriodicidad(), 0.0);
 	}
-	
+
 	@Test
 	public void seAgregaPeriodicidadALaRevistaAlSerCreada() throws Exception {
-		
-		Revista barcelona = new Revista(null, null, 2);
-		
+
+		Revista barcelona = new Revista(null, 0.0, 2);
+
 		Assert.assertEquals(2, barcelona.getPeriodicidad(), 0.0);
 	}
-	
+
 	@Test
 	public void seAgregaNombreALaRevistaAlSerCreada() throws Exception {
-		
-		Revista barcelona = new Revista("barcelona", null, 2);
-		
+
+		Revista barcelona = new Revista("barcelona", 0.0, 2);
+
 		Assert.assertEquals("barcelona", barcelona.getNombre());
 	}
-	
+
 	@Test
 	public void seAgregaPrecioALaRevistaAlSerCreada() throws Exception {
-		
+
 		Revista barcelona = new Revista(null, 20.0, 2);
-		
+
 		Assert.assertEquals(20.0, barcelona.getPrecio(), 0.0);
 	}
-	
+
 	@Test (expected=Exception.class)
 	public void seImpideAgregarPeriodicidadNulaALaRevista() throws Exception {
-		
+
 		@SuppressWarnings("unused")
-		Revista barcelona = new Revista(null, null, 0);
+		Revista barcelona = new Revista(null, 0.0, 0);
 	}
-	
+
 	@Test (expected=Exception.class)
 	public void seImpideAgregarPeriodicidadNegativaALaRevista() throws Exception {
-		
+
 		@SuppressWarnings("unused")
-		Revista barcelona = new Revista(null, null, -1);
+		Revista barcelona = new Revista(null, 0.0, -1);
 	}
 
 }

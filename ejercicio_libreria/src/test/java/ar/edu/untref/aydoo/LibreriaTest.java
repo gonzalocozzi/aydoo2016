@@ -24,7 +24,7 @@ public class LibreriaTest {
 
 		Assert.assertEquals("Gelly y Obes 2740, CABA", libreria.getDireccion());
 	}
-	
+
 	@Test
 	public void seAgregaNombreALaLibreriaAlSerCreada() {
 
@@ -32,7 +32,7 @@ public class LibreriaTest {
 
 		Assert.assertEquals("el papiro", libreria.getNombre());
 	}
-	
+
 	@Test
 	public void seAgregaDirecccionALaLibreriaAlSerCreada() {
 
@@ -40,21 +40,21 @@ public class LibreriaTest {
 
 		Assert.assertEquals("Gelly y Obes 2740, CABA", libreria.getDireccion());
 	}
-	
+
 	@Test
 	public void libreriaAgregaClienteASuListaDeClientesRegistrados() {
-		
+
 		Libreria libreria = new Libreria("el papiro", "Gelly y Obes 2740, CABA");
 		Cliente cliente = new Cliente("juan perez", "Montes de Oca 4720, CABA");
-		
+
 		libreria.agregarCliente(cliente);
-		
+
 		Assert.assertTrue(libreria.esClienteRegistrado(cliente));
 	}
-	
+
 	@Test
 	public void libreriaIndicaElMontoACobrarAUnClienteSinSuscripcionesEnUnMesDeterminado() throws Exception{
-		
+
 		Libreria libreria = new Libreria("el papiro", "Gelly y Obes 2740, CABA");
 		Cliente cliente = new Cliente("juan perez", "Montes de Oca 4720, CABA");
 		libreria.agregarCliente(cliente);
@@ -68,13 +68,13 @@ public class LibreriaTest {
 		compra.agregarProducto(lapicera1);
 		compra.agregarProducto(lapicera2);
 		compra.agregarProducto(elgrafico);
-		
+
 		Assert.assertEquals(92.1, libreria.calcularMontoACobrar(cliente,  Mes.AGOSTO), 0.0);
 	}
-	
+
 	@Test
 	public void libreriaIndicaElMontoACobrarAUnClienteConSuscripcionAnualEnUnMesDeterminado() throws Exception{
-		
+
 		Libreria libreria = new Libreria("el papiro", "Gelly y Obes 2740, CABA");
 		Cliente cliente = new Cliente("maria gutierrez", "Nueva York 1572, CABA");
 		libreria.agregarCliente(cliente);
@@ -87,7 +87,7 @@ public class LibreriaTest {
 		Producto pagina12 = new Periodico("pagina 12", 12.0, 30);
 		suscripcion.agregarProducto(barcelona);
 		compra.agregarProducto(pagina12);
-		
+
 		Assert.assertEquals(44.0, libreria.calcularMontoACobrar(cliente,  Mes.ENERO), 0.0);
 	}
 

@@ -7,7 +7,7 @@ public class Revista extends Producto {
 	public Revista(String nombre, Double precio, Integer periodicidad) throws Exception {
 
 		super(nombre, precio);
-		
+
 		if(periodicidad > 0){
 
 			this.setPeriodicidad(periodicidad);	
