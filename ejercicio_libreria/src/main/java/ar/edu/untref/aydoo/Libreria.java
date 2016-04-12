@@ -54,7 +54,7 @@ public class Libreria {
 
 		for(Compra c : comprasDelMes){
 
-			monto += c.getPrecio();
+			monto += c.getPrecioDeLaCompra();
 		}
 
 		return monto;

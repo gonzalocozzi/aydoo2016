@@ -20,7 +20,7 @@ public class Suscripcion extends Compra {
 		super.agregarProducto(producto);
 	}
 
-	public Double getPrecio() {
+	public Double getPrecioDeLaCompra() {
 
 		Double precio = 0.0;
 

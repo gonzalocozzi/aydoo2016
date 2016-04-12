@@ -59,7 +59,7 @@ public class CompraTest {
 		compra.agregarProducto(lapicera);
 		compra.agregarProducto(elgrafico);		
 
-		Assert.assertEquals(92.1, compra.getPrecio(), 0.0);
+		Assert.assertEquals(92.1, compra.getPrecioDeLaCompra(), 0.0);
 	}
 
 	@Test

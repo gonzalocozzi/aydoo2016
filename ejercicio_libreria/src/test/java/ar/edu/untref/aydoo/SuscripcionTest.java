@@ -62,7 +62,7 @@ public class SuscripcionTest {
 
 		suscripcion.agregarProducto(barcelona);	
 
-		Assert.assertEquals(40.0, suscripcion.getPrecio(), 0.0);
+		Assert.assertEquals(40.0, suscripcion.getPrecioDeLaCompra(), 0.0);
 	}
 
 	@Test
@@ -73,7 +73,7 @@ public class SuscripcionTest {
 
 		suscripcion.agregarProducto(pagina12);	
 
-		Assert.assertEquals(360.0, suscripcion.getPrecio(), 0.0);
+		Assert.assertEquals(360.0, suscripcion.getPrecioDeLaCompra(), 0.0);
 	}
 
 	@Test
@@ -88,7 +88,7 @@ public class SuscripcionTest {
 		suscripcion.agregarProducto(barcelona);
 		suscripcion.agregarProducto(elgrafico);
 
-		Assert.assertEquals(430.0, suscripcion.getPrecio(), 0.0);
+		Assert.assertEquals(430.0, suscripcion.getPrecioDeLaCompra(), 0.0);
 	}
 
 	@Test
@@ -109,7 +109,7 @@ public class SuscripcionTest {
 
 		suscripcion.agregarProducto(barcelona);	
 
-		Assert.assertEquals(32.0, suscripcion.getPrecio(), 0.0);
+		Assert.assertEquals(32.0, suscripcion.getPrecioDeLaCompra(), 0.0);
 	}
 
 	@Test
@@ -121,7 +121,7 @@ public class SuscripcionTest {
 
 		suscripcion.agregarProducto(pagina12);	
 
-		Assert.assertEquals(288.0, suscripcion.getPrecio(), 0.0);
+		Assert.assertEquals(288.0, suscripcion.getPrecioDeLaCompra(), 0.0);
 	}
 
 	@Test
@@ -137,7 +137,7 @@ public class SuscripcionTest {
 		suscripcion.agregarProducto(barcelona);
 		suscripcion.agregarProducto(elgrafico);
 
-		Assert.assertEquals(344.0, suscripcion.getPrecio(), 0.0);
+		Assert.assertEquals(344.0, suscripcion.getPrecioDeLaCompra(), 0.0);
 	}
 
 	@Test (expected=Exception.class)

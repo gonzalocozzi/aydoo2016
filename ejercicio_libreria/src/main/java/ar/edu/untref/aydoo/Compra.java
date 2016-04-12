@@ -34,7 +34,7 @@ public class Compra {
 		return this.listaDeProductos.contains(producto);
 	}
 
-	public Double getPrecio() {
+	public Double getPrecioDeLaCompra() {
 
 		Double precio = 0.0;
 
