@@ -1,4 +1,4 @@
-	package ar.edu.untref.aydoo;
+package ar.edu.untref.aydoo;
 
 import java.io.IOException;
 
@@ -20,12 +20,11 @@ public class Program {
 			Integer numeroAFactorizar = Integer.parseInt(args[0]);	
 			
 			FactorizadorPrimo factorizadorPrimo = new FactorizadorPrimo(numeroAFactorizar);
-			String factorizacion = factorizadorPrimo.calcularFactoresPrimos();
+			Formateador formateador = new Formateador(args);			
+			factorizadorPrimo.setFormateador(formateador);
+			String factorizacion = factorizadorPrimo.getFactorizacionFormateada();
 			
-			Formateador formateador = new Formateador(numeroAFactorizar, factorizacion, args);
-			formateador.setFactorizacionFormateada();
-			
-			System.out.println(formateador.getFactorizacionFormateada());
+			System.out.println(factorizacion);
 		}
 	}		
 }   
