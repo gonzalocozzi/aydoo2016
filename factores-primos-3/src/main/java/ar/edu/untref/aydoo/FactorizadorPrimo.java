@@ -10,6 +10,12 @@ public class FactorizadorPrimo {
 	private Integer numeroAFactorizar;	
 	private String factorizacion = "";
 	
+	public FactorizadorPrimo(Integer numeroAFactorizar) {
+		
+		this.numeroAFactorizar = numeroAFactorizar;
+		
+	}
+
 	public boolean esPrimo(int numero){
 
 		boolean esPrimo = true;
@@ -25,7 +31,7 @@ public class FactorizadorPrimo {
 		return esPrimo;
 	}
 	
-	public void calcularFactoresPrimos(){
+	public String calcularFactoresPrimos(){
 
 		Integer numeroFactorizado = this.getNumeroAFactorizar();
 
@@ -45,22 +51,19 @@ public class FactorizadorPrimo {
 				}
 			}
 		}
+		
+		return this.factorizacion;
 
 	}	
 
 	public Integer getNumeroAFactorizar() {
 		
-		return numeroAFactorizar;
+		return this.numeroAFactorizar;
 	}
 
 	public void setNumeroAFactorizar(Integer numeroIngresado) {
 		
 		this.numeroAFactorizar = numeroIngresado;
-	}
-
-	public String getFactorizacion() {
-		
-		return factorizacion;
 	}
 
 }

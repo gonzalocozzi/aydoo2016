@@ -17,11 +17,10 @@ public class Program {
 			
 		} else {
 			
-			Integer numeroAFactorizar = Integer.parseInt(args[0]);			
-			FactorizadorPrimo factorizadorPrimo = new FactorizadorPrimo();
-			factorizadorPrimo.setNumeroAFactorizar(numeroAFactorizar);
-			factorizadorPrimo.calcularFactoresPrimos();
-			String factorizacion = factorizadorPrimo.getFactorizacion();
+			Integer numeroAFactorizar = Integer.parseInt(args[0]);	
+			
+			FactorizadorPrimo factorizadorPrimo = new FactorizadorPrimo(numeroAFactorizar);
+			String factorizacion = factorizadorPrimo.calcularFactoresPrimos();
 			
 			Formateador formateador = new Formateador(numeroAFactorizar, factorizacion, args);
 			formateador.setFactorizacionFormateada();
