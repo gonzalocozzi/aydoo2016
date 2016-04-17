@@ -5,11 +5,10 @@ package ar.edu.untref.aydoo;
  * @author gonzalo alejandro cozzi
  *
  */
-public class FactoresPrimos {
+public class FactorizadorPrimo {
 
 	private Integer numeroAFactorizar;	
 	private String factorizacion = "";
-
 	
 	public boolean esPrimo(int numero){
 
@@ -25,7 +24,6 @@ public class FactoresPrimos {
 
 		return esPrimo;
 	}
-
 	
 	public void calcularFactoresPrimos(){
 
@@ -63,11 +61,6 @@ public class FactoresPrimos {
 	public String getFactorizacion() {
 		
 		return factorizacion;
-	}
-
-	public void setFactorizacion(String factorizacion) {
-		
-		this.factorizacion = factorizacion;
 	}
 
 }
