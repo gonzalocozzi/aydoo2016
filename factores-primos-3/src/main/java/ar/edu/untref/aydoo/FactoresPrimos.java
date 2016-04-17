@@ -1,54 +1,47 @@
 package ar.edu.untref.aydoo;
 
 /**
- * Clase que devuelve un string con la factorizacion
- * en numeros primos de un valor indicado
- * @author gonzalo cozzi
+ * 
+ * @author gonzalo alejandro cozzi
  *
  */
 public class FactoresPrimos {
 
-	private Integer numero_a_factorizar;	
+	private Integer numeroAFactorizar;	
 	private String factorizacion = "";
 
-	/**
-	 * @post se indica si el numero es primo
-	 * @param numero a saber si es primo
-	 * @return si es primo (true o false)
-	 */
-	public boolean es_primo(int numero){
+	
+	public boolean esPrimo(int numero){
 
-		boolean es_primo = true;
+		boolean esPrimo = true;
 
-		for(int i = 2; i < numero_a_factorizar; i++){
+		for(int i = 2; i < numeroAFactorizar; i++){
 			
-			if(numero_a_factorizar % i == 0){	
+			if(numeroAFactorizar % i == 0){	
 				
-				es_primo = false;
+				esPrimo = false;
 			}
 		}
 
-		return es_primo;
+		return esPrimo;
 	}
 
-	/**
-	 * @post se calculan los factores primos del numero ingresado
-	 */
-	public void calcular_factores_primos(){
+	
+	public void calcularFactoresPrimos(){
 
-		Integer numero_factorizado = this.getNumero_a_factorizar();
+		Integer numeroFactorizado = this.getNumeroAFactorizar();
 
-		if(es_primo(numero_a_factorizar)){	
+		if(esPrimo(numeroAFactorizar)){	
 			
-			this.factorizacion = numero_factorizado.toString();
+			this.factorizacion = numeroFactorizado.toString();
 			
 		} else {
 			
-			for(Integer i = 2; i < numero_a_factorizar; i++){
+			for(Integer i = 2; i < numeroAFactorizar; i++){
 				
-				while(numero_factorizado%i == 0){
+				while(numeroFactorizado%i == 0){
 					
-					numero_factorizado = numero_factorizado/i;					
+					numeroFactorizado = numeroFactorizado/i;					
 					this.factorizacion += i.toString();
 					this.factorizacion += " ";					
 				}
@@ -57,14 +50,14 @@ public class FactoresPrimos {
 
 	}	
 
-	public Integer getNumero_a_factorizar() {
+	public Integer getNumeroAFactorizar() {
 		
-		return numero_a_factorizar;
+		return numeroAFactorizar;
 	}
 
-	public void setNumero_a_factorizar(Integer numero_ingresado) {
+	public void setNumeroAFactorizar(Integer numeroIngresado) {
 		
-		this.numero_a_factorizar = numero_ingresado;
+		this.numeroAFactorizar = numeroIngresado;
 	}
 
 	public String getFactorizacion() {

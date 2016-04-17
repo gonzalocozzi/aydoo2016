@@ -3,8 +3,7 @@ package ar.edu.untref.aydoo;
 import java.io.IOException;
 
 /**
- * Clase principal de ejecucion del programa
- * Intermedia entre la clase de factores primos y la terminal 
+ * 
  * @author gonzalo alejandro cozzi
  *
  */
@@ -24,8 +23,8 @@ public class Program {
 			Integer numero_a_factorizar = Integer.parseInt(args[0]);
 			
 			FactoresPrimos factores_primos = new FactoresPrimos();
-			factores_primos.setNumero_a_factorizar(numero_a_factorizar);
-			factores_primos.calcular_factores_primos();
+			factores_primos.setNumeroAFactorizar(numero_a_factorizar);
+			factores_primos.calcularFactoresPrimos();
 			
 			//Caso sin formato o PRETTY
 			if(args.length == 1 || args[1].equalsIgnoreCase("--format=pretty")){
