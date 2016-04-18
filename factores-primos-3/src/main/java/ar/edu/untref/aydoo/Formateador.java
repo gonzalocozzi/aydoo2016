@@ -5,15 +5,16 @@ public class Formateador {
 	private Integer numeroAFactorizar;
 	private String factorizacion;
 	private String factorizacionFormateada;
-	private String[] args;
-
-	public Formateador(String[] args) {
-
-		this.factorizacionFormateada = "";
-		this.args = args;
+	
+	public Formateador(Integer numeroAFactorizar){
+		
+		this.setNumeroAFactorizar(numeroAFactorizar);
+		this.factorizacionFormateada = "Factores primos " + this.numeroAFactorizar + ": ";
 	}	
 
-	public void formatearFactorizacion(){	
+	public String formatearFactorizacion(String[] args, String factorizacion){	
+		
+		this.setFactorizacion(factorizacion);
 
 		if(args.length == 1 || args[1].equalsIgnoreCase("--format=pretty")){
 
@@ -27,18 +28,17 @@ public class Formateador {
 
 			this.factorizacionFormateada = "Formato no aceptado. Las opciones posibles son: pretty o quiet.";
 		}
-
+		
+		return this.factorizacionFormateada;
 	}
 
 	private void formatoPretty() {
 
-		this.factorizacionFormateada = "Factores primos " + this.numeroAFactorizar + ": ";
-		this.factorizacionFormateada += factorizacion;	
+		this.factorizacionFormateada += this.factorizacion;	
 	}
 
 	private void formatoQuiet() {
 
-		this.factorizacionFormateada = "Factores primos " + this.numeroAFactorizar + ": ";
 		String[] arregloDeLaFactorizacion = this.factorizacion.split(" ");
 
 		for(int i = 0; i < arregloDeLaFactorizacion.length; i++){
@@ -48,32 +48,6 @@ public class Formateador {
 		}
 
 	}
-	
-	public void invertirFactorizacion() {
-		
-		if(args.length > 2 && args[2].equalsIgnoreCase("--sort:des")){
-			
-			String[] arregloDeLaFactorizacion = this.factorizacion.split(" ");
-			Integer longitudDelArreglo = arregloDeLaFactorizacion.length;
-			String[] arregloInvertidoDeLaFactorizacion = new String[longitudDelArreglo];
-			
-			for(int i = 0; i < longitudDelArreglo; i++){
-				
-				arregloInvertidoDeLaFactorizacion[i] = arregloDeLaFactorizacion[longitudDelArreglo - 1];
-				longitudDelArreglo--;
-			}
-			
-			this.factorizacion = "";
-			
-			for(int i = 0; i < arregloInvertidoDeLaFactorizacion.length; i++){
-				
-				this.factorizacion += arregloInvertidoDeLaFactorizacion[i];
-				this.factorizacion += " ";
-			}
-				
-		}
-		
-	}	
 
 	public void setNumeroAFactorizar(Integer numeroAFactorizar) {
 
@@ -83,11 +57,6 @@ public class Formateador {
 	public void setFactorizacion(String factorizacion) {
 
 		this.factorizacion = factorizacion;
-	}	
-
-	public String getFactorizacionFormateada(){
-
-		return this.factorizacionFormateada;
 	}
 
 }

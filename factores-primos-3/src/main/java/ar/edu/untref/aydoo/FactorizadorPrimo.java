@@ -9,7 +9,7 @@ public class FactorizadorPrimo {
 
 	private Integer numeroAFactorizar;	
 	private String factorizacion;
-	private Formateador formateador;
+	private ConfiguradorDeSalida configuradorDeFactorizacion;
 
 	public FactorizadorPrimo(Integer numeroAFactorizar) {
 
@@ -52,7 +52,7 @@ public class FactorizadorPrimo {
 				}
 			}
 		}
-
+		
 	}	
 
 	public Integer getNumeroAFactorizar() {
@@ -69,21 +69,13 @@ public class FactorizadorPrimo {
 
 		return this.factorizacion;
 	}
-
-	public void setFormateador(Formateador formateador) {
-		this.formateador = formateador;
-		this.formateador.setNumeroAFactorizar(numeroAFactorizar);
-	}
-
-	public String getFactorizacionFormateada(){
-
-		this.calcularFactoresPrimos();
+	
+	public String getFactorizacionFormateada(String[] args){
 		
-		this.formateador.setFactorizacion(this.factorizacion);
-		this.formateador.invertirFactorizacion();
-		this.formateador.formatearFactorizacion();
-
-		return this.formateador.getFactorizacionFormateada();
+		this.configuradorDeFactorizacion = new ConfiguradorDeSalida(this.numeroAFactorizar, args, this.factorizacion);
+		this.factorizacion = this.configuradorDeFactorizacion.getSalidaConfigurada();
+		
+		return this.factorizacion;
 	}
 
 }
