@@ -9,7 +9,7 @@ public class FactorizadorPrimo {
 
 	private Integer numeroAFactorizar;	
 	private String factorizacion;
-	private ConfiguradorDeSalida configuradorDeFactorizacion;
+	private AdministradorDeArgumentos configuradorDeFactorizacion;
 
 	public FactorizadorPrimo(Integer numeroAFactorizar) {
 
@@ -72,7 +72,7 @@ public class FactorizadorPrimo {
 	
 	public String getFactorizacionFormateada(String[] args){
 		
-		this.configuradorDeFactorizacion = new ConfiguradorDeSalida(this.numeroAFactorizar, args, this.factorizacion);
+		this.configuradorDeFactorizacion = new AdministradorDeArgumentos(this.numeroAFactorizar, args, this.factorizacion);
 		this.factorizacion = this.configuradorDeFactorizacion.getSalidaConfigurada();
 		
 		return this.factorizacion;

@@ -1,5 +1,7 @@
 package ar.edu.untref.aydoo;
 
+import java.util.List;
+
 public class Formateador {
 
 	private Integer numeroAFactorizar;
@@ -12,21 +14,21 @@ public class Formateador {
 		this.factorizacionFormateada = "Factores primos " + this.numeroAFactorizar + ": ";
 	}	
 
-	public String formatearFactorizacion(String[] args, String factorizacion){	
+	public String formatearFactorizacion(List<String> listaDeArgumentos, String factorizacion){	
 		
 		this.setFactorizacion(factorizacion);
 
-		if(args.length == 1 || args[1].equalsIgnoreCase("--format=pretty")){
+		if(listaDeArgumentos.size() == 1 || listaDeArgumentos.contains("--format=pretty")){
 
-			this.formatoPretty();		
+			this.formatoPretty();
 
-		} else if(args[1].equalsIgnoreCase("--format=quiet")){
+		} else if(listaDeArgumentos.contains("--format=quiet")) {
 
 			this.formatoQuiet();
-
-		} else {
-
-			this.factorizacionFormateada = "Formato no aceptado. Las opciones posibles son: pretty o quiet.";
+			
+		} else {			
+			
+			this.formatoPretty();
 		}
 		
 		return this.factorizacionFormateada;
