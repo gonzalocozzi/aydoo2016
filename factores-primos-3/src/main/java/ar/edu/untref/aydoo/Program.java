@@ -17,7 +17,7 @@ public class Program {
 			
 		} else {
 			
-			Integer numeroAFactorizar = Integer.parseInt(args[0]);				
+			Integer numeroAFactorizar = Math.abs(Integer.parseInt(args[0]));				
 			FactorizadorPrimo factorizadorPrimo = new FactorizadorPrimo(numeroAFactorizar);
 			factorizadorPrimo.calcularFactoresPrimos();			
 			String factorizacion = factorizadorPrimo.getFactorizacionFormateada(args);

@@ -1,5 +1,7 @@
 package ar.edu.untref.aydoo;
 
+import java.io.IOException;
+
 /**
  * 
  * @author gonzalo alejandro cozzi
@@ -70,7 +72,7 @@ public class FactorizadorPrimo {
 		return this.factorizacion;
 	}
 	
-	public String getFactorizacionFormateada(String[] args){
+	public String getFactorizacionFormateada(String[] args) throws IOException{
 		
 		this.configuradorDeFactorizacion = new AdministradorDeArgumentos(this.numeroAFactorizar, args, this.factorizacion);
 		this.factorizacion = this.configuradorDeFactorizacion.getSalidaConfigurada();
