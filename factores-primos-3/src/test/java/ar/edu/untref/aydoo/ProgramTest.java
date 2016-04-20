@@ -85,5 +85,14 @@ public class ProgramTest {
 		
 		Assert.assertTrue(outContent.toString().contains("La factorización del numero 150 fue almacenada en "));
 	}
+	
+	@Test
+	public void programIndicaEscrituraEnArchivoConArgumentosSortDesYFormatPrettyEnOrdenInvertido() throws IOException{
+		
+		String[] args = {"150", "--sort:des", "--format=pretty"};
+		Program.main(args);
+		
+		Assert.assertEquals("Factores primos 150: 5 5 3 2 \n", outContent.toString());
+	}
 
 }
