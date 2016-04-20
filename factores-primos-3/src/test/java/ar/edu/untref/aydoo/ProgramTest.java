@@ -51,6 +51,15 @@ public class ProgramTest {
 	}
 	
 	@Test
+	public void programIndicaIngresoDeArgumentoFormatErroneo() throws IOException{
+		
+		String[] args = {"150", "--format=invalido"};
+		Program.main(args);
+		
+		Assert.assertEquals("Formato no aceptado. Las opciones posibles son: pretty o quiet.\n", outContent.toString());
+	}
+	
+	@Test
 	public void programDevuelveFactorizacionDeUnNumeroConArgumentoSortDes() throws IOException{
 		
 		String[] args = {"150", "--sort:des"};
