@@ -10,13 +10,17 @@ public class OrdenadorTest {
 		
 		Ordenador ordenador = new Ordenador();
 		
-		Assert.assertEquals("", ordenador.getFactorizacionInvertida());
+		Assert.assertEquals("", ordenador.getStringInvertido());
 	}
 	
 	@Test
-	public void ordenadorInvierteString(){
+	public void ordenadorInvierteUnString(){
 		
+		Ordenador ordenador = new Ordenador();
 		
+		String invertido = ordenador.invertirString("a b c d e f");
+		
+		Assert.assertEquals("f e d c b a ", invertido);
 	}
 
 }

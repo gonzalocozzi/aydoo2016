@@ -11,34 +11,34 @@ import java.util.List;
  */
 public class Ordenador {
 	
-	private String factorizacionInvertida;
+	private String stringInvertido;
 	
 	public Ordenador(){
 		
-		this.factorizacionInvertida = "";
+		this.stringInvertido = "";
 	}
 
-	public String invertirFactorizacion(String factorizacion) {
+	public String invertirString(String string) {
 
-		//Se invierte la factorizacion convirtiendola en una lista de strings.
-		String[] arregloDeLaFactorizacion = factorizacion.split(" ");
-		List<String> listaDeLaFactorizacion = Arrays.asList(arregloDeLaFactorizacion);
-		Collections.reverse(listaDeLaFactorizacion);
-		String[] arregloInvertidoDeLafactorizacion = (String[]) listaDeLaFactorizacion.toArray();	
+		//Se invierte el string convirtiendolo en una lista de strings.
+		String[] arregloDelString = string.split(" ");
+		List<String> listaDeStrings = Arrays.asList(arregloDelString);
+		Collections.reverse(listaDeStrings);
+		String[] arregloInvertidoDelString = (String[]) listaDeStrings.toArray();	
 		
 		//Se convierte la lista de strings en un string nuevamente
-		for(int i = 0; i < arregloInvertidoDeLafactorizacion.length; i++){
+		for(int i = 0; i < arregloInvertidoDelString.length; i++){
 
-			this.factorizacionInvertida += arregloInvertidoDeLafactorizacion[i];
-			this.factorizacionInvertida += " ";
+			this.stringInvertido += arregloInvertidoDelString[i];
+			this.stringInvertido += " ";
 		}
 		
-		return this.getFactorizacionInvertida();
+		return this.getStringInvertido();
 	}
 	
-	public String getFactorizacionInvertida(){
+	public String getStringInvertido(){
 		
-		return this.factorizacionInvertida;
+		return this.stringInvertido;
 	}
 
 }

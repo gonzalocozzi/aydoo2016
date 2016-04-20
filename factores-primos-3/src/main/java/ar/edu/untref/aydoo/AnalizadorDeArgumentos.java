@@ -67,7 +67,7 @@ public class AnalizadorDeArgumentos {
 		if(this.listaDeArgumentos.contains("--sort:des")){
 
 			this.ordenador = new Ordenador();
-			this.factorizacion = this.ordenador.invertirFactorizacion(this.factorizacion);
+			this.factorizacion = this.ordenador.invertirString(this.factorizacion);
 		}
 	}
 
