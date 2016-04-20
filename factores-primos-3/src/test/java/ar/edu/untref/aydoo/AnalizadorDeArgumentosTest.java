@@ -90,6 +90,18 @@ public class AnalizadorDeArgumentosTest {
 	}
 	
 	@Test
+	public void analizadorDeArgumentosEncuentraParametroFormatPretty() throws IOException{
+		
+		String[] args = {"90", "--format=pretty"};
+		String factorizacion = "2 3 3 5 ";		
+		AnalizadorDeArgumentos analizador = new AnalizadorDeArgumentos(args, factorizacion);
+		
+		String salidaConfigurada = analizador.getSalidaConfigurada();
+		
+		Assert.assertEquals("Factores primos 90: 2 3 3 5 ", salidaConfigurada);
+	}
+	
+	@Test
 	public void analizadorDeArgumentosEncuentraParametroFormatIncorrecto() throws IOException{
 		
 		String[] args = {"90", "--format="};
@@ -100,5 +112,6 @@ public class AnalizadorDeArgumentosTest {
 		
 		Assert.assertEquals("Formato no aceptado. Las opciones posibles son: pretty o quiet.", salidaConfigurada);
 	}
+	
 
 }
