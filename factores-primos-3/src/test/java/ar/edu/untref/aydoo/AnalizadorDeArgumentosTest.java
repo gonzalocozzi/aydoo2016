@@ -102,6 +102,18 @@ public class AnalizadorDeArgumentosTest {
 	}
 	
 	@Test
+	public void analizadorDeArgumentosEncuentraParametroFormatQuiet() throws IOException{
+		
+		String[] args = {"90", "--format=quiet"};
+		String factorizacion = "2 3 3 5 ";		
+		AnalizadorDeArgumentos analizador = new AnalizadorDeArgumentos(args, factorizacion);
+		
+		String salidaConfigurada = analizador.getSalidaConfigurada();
+		
+		Assert.assertEquals("Factores primos 90: \n2\n3\n3\n5", salidaConfigurada);
+	}
+	
+	@Test
 	public void analizadorDeArgumentosEncuentraParametroFormatIncorrecto() throws IOException{
 		
 		String[] args = {"90", "--format="};
