@@ -36,10 +36,6 @@ public class FactorizadorPrimo {
 		return esPrimo;
 	}
 
-	/**
-	 * @pre el numero a factorizar es negativo
-	 * @post calcula la factorizacion en primos del numero a factorizar
-	 */
 	public void calcularFactoresPrimos(){
 
 		Integer numeroFactorizado = this.getNumeroAFactorizar();

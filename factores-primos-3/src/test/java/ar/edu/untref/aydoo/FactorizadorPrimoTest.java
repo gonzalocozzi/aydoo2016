@@ -92,17 +92,6 @@ public class FactorizadorPrimoTest{
 	}
 	
 	@Test
-	public void factorizadorPrimoDevuelveFactorizacionDelModuloDeUnNumeroNegativo(){
-		
-		FactorizadorPrimo factorizador = new FactorizadorPrimo(-90);
-		factorizador.calcularFactoresPrimos();
-
-		String factorizacion = factorizador.getFactorizacion();
-
-		Assert.assertEquals("2 3 3 5 ", factorizacion);
-	}
-	
-	@Test
 	public void factorizadorPrimoDevuelveFactorizacionFormateada() throws IOException{
 		
 		FactorizadorPrimo factorizador = new FactorizadorPrimo(360);
@@ -112,6 +101,17 @@ public class FactorizadorPrimoTest{
 		String factorizacionFormateada = factorizador.getFactorizacionFormateada(args);
 		
 		Assert.assertEquals("Factores primos 360: \n5\n3\n3\n2\n2\n2", factorizacionFormateada);
+	}
+	
+	@Test
+	public void factorizadorPrimoDevuelveFactorizacionDelModuloDeUnNumeroNegativo(){
+		
+		FactorizadorPrimo factorizador = new FactorizadorPrimo(-90);
+		factorizador.calcularFactoresPrimos();
+
+		String factorizacion = factorizador.getFactorizacion();
+
+		Assert.assertEquals("2 3 3 5 ", factorizacion);
 	}
 
 }
