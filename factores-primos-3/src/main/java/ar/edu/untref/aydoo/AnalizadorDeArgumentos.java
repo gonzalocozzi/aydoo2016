@@ -43,7 +43,7 @@ public class AnalizadorDeArgumentos {
 
 		} else {
 
-			this.setFactorizacion("Ha ingresado al menos un parámetro de más");
+			this.setFactorizacion("Ha ingresado al menos un parametro de mas");
 		}
 
 		return this.getFactorizacion();
