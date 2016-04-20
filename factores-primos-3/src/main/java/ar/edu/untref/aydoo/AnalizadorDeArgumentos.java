@@ -164,14 +164,4 @@ public class AnalizadorDeArgumentos {
 		return this.formateador;
 	}
 
-	public Ordenador getOrdenador() {
-
-		return this.ordenador;
-	}
-
-	public EscritorDeArchivo getEscritor() {
-
-		return this.escritor;
-	}
-
 }
