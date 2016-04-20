@@ -87,12 +87,21 @@ public class ProgramTest {
 	}
 	
 	@Test
-	public void programIndicaEscrituraEnArchivoConArgumentosSortDesYFormatPrettyEnOrdenInvertido() throws IOException{
+	public void programDevuelveFactorizacionConArgumentosSortDesYFormatPrettyEnOrdenInvertido() throws IOException{
 		
 		String[] args = {"150", "--sort:des", "--format=pretty"};
 		Program.main(args);
 		
 		Assert.assertEquals("Factores primos 150: 5 5 3 2 \n", outContent.toString());
+	}
+	
+	@Test
+	public void programDevuelveFactorizacionConArgumentosSortDesFormatPrettyYOutputFileEnCualquierOrden() throws IOException{
+		
+		String[] args = {"150", "--output-file=salida.txt", "--sort:des", "--format=pretty"};
+		Program.main(args);
+		
+		Assert.assertTrue(outContent.toString().contains("La factorización del numero 150 fue almacenada en "));
 	}
 
 }
