@@ -1,5 +1,7 @@
 package ar.edu.untref.aydoo;
 
+import java.io.IOException;
+
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -87,6 +89,29 @@ public class FactorizadorPrimoTest{
 		String factorizacion = factorizador.getFactorizacion();
 
 		Assert.assertEquals("2 2 2 3 3 5 ", factorizacion);
+	}
+	
+	@Test
+	public void factorizadorPrimoDevuelveFactorizacionDelModuloDeUnNumeroNegativo(){
+		
+		FactorizadorPrimo factorizador = new FactorizadorPrimo(-90);
+		factorizador.calcularFactoresPrimos();
+
+		String factorizacion = factorizador.getFactorizacion();
+
+		Assert.assertEquals("2 3 3 5 ", factorizacion);
+	}
+	
+	@Test
+	public void factorizadorPrimoDevuelveFactorizacionFormateada() throws IOException{
+		
+		FactorizadorPrimo factorizador = new FactorizadorPrimo(360);
+		String[] args = {"--sort:des", "--format=quiet"};
+		factorizador.calcularFactoresPrimos();
+
+		String factorizacionFormateada = factorizador.getFactorizacionFormateada(args);
+		
+		Assert.assertEquals("Factores primos 360: \n5\n3\n3\n2\n2\n2", factorizacionFormateada);
 	}
 
 }
