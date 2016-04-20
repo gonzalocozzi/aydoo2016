@@ -64,5 +64,17 @@ public class AnalizadorDeArgumentosTest {
 		
 		Assert.assertEquals("Factores primos 90: 2 3 3 5 ", salidaConfigurada);
 	}
+	
+	@Test
+	public void analizadorDeArgumentosRecibeUnArgumentoSortYLlamaAlOrdenador() throws IOException{
+		
+		String[] args = {"90", "--sort:des"};
+		String factorizacion = "2 3 3 5 ";		
+		AnalizadorDeArgumentos analizador = new AnalizadorDeArgumentos(args, factorizacion);
+		
+		String salidaConfigurada = analizador.getSalidaConfigurada();
+		
+		Assert.assertEquals("Factores primos 90: 5 3 3 2 ", salidaConfigurada);
+	}
 
 }
