@@ -66,7 +66,7 @@ public class AnalizadorDeArgumentosTest {
 	}
 	
 	@Test
-	public void analizadorDeArgumentosRecibeUnArgumentoSortYLlamaAlOrdenador() throws IOException{
+	public void analizadorDeArgumentosEncuentraUnArgumentoSortYLlamaAlOrdenador() throws IOException{
 		
 		String[] args = {"90", "--sort:des"};
 		String factorizacion = "2 3 3 5 ";		
@@ -88,6 +88,17 @@ public class AnalizadorDeArgumentosTest {
 		
 		Assert.assertEquals("Ha ingresado al menos un parametro de mas", salidaConfigurada);
 	}
-
+	
+	@Test
+	public void analizadorDeArgumentosEncuentraParametroFormatIncorrecto() throws IOException{
+		
+		String[] args = {"90", "--format="};
+		String factorizacion = "2 3 3 5 ";		
+		AnalizadorDeArgumentos analizador = new AnalizadorDeArgumentos(args, factorizacion);
+		
+		String salidaConfigurada = analizador.getSalidaConfigurada();
+		
+		Assert.assertEquals("Formato no aceptado. Las opciones posibles son: pretty o quiet.", salidaConfigurada);
+	}
 
 }
