@@ -8,7 +8,7 @@ import java.io.IOException;
 public class FactorizadorPrimo {
 
 	private Integer numeroAFactorizar;	
-	private String[] args;
+	private String[] argumentos;
 	private String factorizacion;
 	private AnalizadorDeArgumentos analizadorDeArgumentos;
 
@@ -20,7 +20,7 @@ public class FactorizadorPrimo {
 
 		this.setNumeroAFactorizar(Math.abs(Integer.parseInt(args[0])));
 		this.factorizacion = new String("");
-		this.setArgs(args);
+		this.setArgumentos(args);
 	}
 
 	public boolean esPrimo(int numero){
@@ -61,14 +61,14 @@ public class FactorizadorPrimo {
 		
 	}	
 
-	public String[] getArgs() {
+	public String[] getArgumentos() {
 		
-		return this.args;
+		return this.argumentos;
 	}
 
-	private void setArgs(String[] args) {
+	private void setArgumentos(String[] argumentos) {
 		
-		this.args = args;
+		this.argumentos = argumentos;
 	}
 
 	public Integer getNumeroAFactorizar() {
@@ -87,7 +87,7 @@ public class FactorizadorPrimo {
 	}
 	
 	/**
-	 * @param args son los argumentos ingresados por el usuario
+	 * @param argumentos son los argumentos ingresados por el usuario
 	 * para configurar la salida de la factorizacion
 	 * @return la factorizacion del numero a factorizar formateada en base a 
 	 * la configuracion indicada por el usuario con los argumentos
@@ -95,7 +95,7 @@ public class FactorizadorPrimo {
 	 */
 	public String getFactorizacionFormateada() throws IOException{
 		
-		this.analizadorDeArgumentos = new AnalizadorDeArgumentos(this.getArgs(), this.factorizacion);
+		this.analizadorDeArgumentos = new AnalizadorDeArgumentos(this.getArgumentos(), this.factorizacion);
 		this.factorizacion = this.analizadorDeArgumentos.getSalidaConfigurada();
 		
 		return this.factorizacion;

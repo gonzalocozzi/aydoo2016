@@ -45,7 +45,7 @@ public class FormateadorTest {
 	}
 	
 	@Test
-	public void formateadorRecibeNoRecibeParametroFormatYFormateaPretty(){
+	public void formateadorRecibeNoRecibeArgumentoFormatYFormateaPretty(){
 		
 		List<String> listaDeArgumentos = new ArrayList<String>();
 		listaDeArgumentos.add("360");
@@ -56,4 +56,18 @@ public class FormateadorTest {
 		
 		Assert.assertEquals("Factores primos 360: 2 2 2 3 3 5 ", factorizacionFormateada);	
 	}
+	
+	@Test
+	public void formateadorRecibeRecibeArgumentoFormatQuietYFormateaQuiet(){
+		
+		List<String> listaDeArgumentos = new ArrayList<String>();
+		listaDeArgumentos.add("360");
+		listaDeArgumentos.add("--format=quiet");
+		Formateador formateador = new Formateador(listaDeArgumentos);
+		formateador.formatearFactorizacion("2 2 2 3 3 5 ");
+		String factorizacionFormateada = formateador.getFactorizacionFormateada();
+		
+		Assert.assertEquals("Factores primos 360: \n2\n2\n2\n3\n3\n5", factorizacionFormateada);	
+	}
+	
 }
