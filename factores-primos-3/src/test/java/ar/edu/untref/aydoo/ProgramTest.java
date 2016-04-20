@@ -76,5 +76,14 @@ public class ProgramTest {
 		
 		Assert.assertEquals("Factores primos 150: 2 3 5 5 \n", outContent.toString());
 	}
+	
+	@Test
+	public void programIndicaEscrituraEnArchivoConArgumentoOutputFile() throws IOException{
+		
+		String[] args = {"150", "--output-file=salida.txt"};
+		Program.main(args);
+		
+		Assert.assertTrue(outContent.toString().contains("La factorización del numero 150 fue almacenada en "));
+	}
 
 }
