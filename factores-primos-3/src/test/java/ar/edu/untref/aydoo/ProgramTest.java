@@ -31,5 +31,14 @@ public class ProgramTest {
 		
 		Assert.assertEquals("Factores primos 82: 2 41 \n", outContent.toString());
 	}
+	
+	@Test
+	public void programDevuelveFactorizacionDeUnNumeroConArgumentoFormatQuiet() throws IOException{
+		
+		String[] args = {"150", "--format=quiet"};
+		Program.main(args);
+		
+		Assert.assertEquals("Factores primos 150: \n2\n3\n5\n5\n", outContent.toString());
+	}
 
 }
