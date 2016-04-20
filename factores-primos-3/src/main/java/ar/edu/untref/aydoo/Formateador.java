@@ -34,7 +34,7 @@ public class Formateador {
 			this.formatoPretty();
 		}
 
-		return this.factorizacionFormateada;
+		return this.getFactorizacionFormateada();
 	}
 
 	private void formatoPretty() {
@@ -58,14 +58,19 @@ public class Formateador {
 		return this.numeroAFactorizar;
 	}
 
-	public void setNumeroAFactorizar(Integer numeroAFactorizar) {
+	private void setNumeroAFactorizar(Integer numeroAFactorizar) {
 
 		this.numeroAFactorizar = numeroAFactorizar;
 	}
 
-	public void setFactorizacion(String factorizacion) {
+	private void setFactorizacion(String factorizacion) {
 
 		this.factorizacion = factorizacion;
+	}	
+
+	public String getFactorizacionFormateada() {
+		
+		return this.factorizacionFormateada;
 	}
 
 }

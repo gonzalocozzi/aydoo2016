@@ -15,4 +15,13 @@ public class FormateadorTest {
 		Assert.assertEquals(10, numeroAFactorizarAlmacenado, 0.0);		
 	}
 	
+	@Test
+	public void formateadorSeCreaYAgregaElEncabezadoALaFactorizacionFormateada(){
+		
+		Formateador formateador = new Formateador(10);
+		
+		String factorizacionFormateada = formateador.getFactorizacionFormateada();
+		
+		Assert.assertEquals("Factores primos 10: ", factorizacionFormateada);	
+	}
 }
