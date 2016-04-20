@@ -24,6 +24,15 @@ public class ProgramTest {
 	}
 	
 	@Test
+	public void programExigeElIngresoDeUnNumeroAFactorizar() throws IOException{
+		
+		String[] args = {};
+		Program.main(args);
+		
+		Assert.assertEquals("Por favor, ingrese el numero que desea factorizar.\n", outContent.toString());
+	}
+	
+	@Test
 	public void programDevuelveFactorizacionDeUnNumeroSinArgumentosAparteDelNumero() throws IOException{
 		
 		String[] args = {"82"};
