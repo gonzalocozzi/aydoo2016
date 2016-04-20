@@ -4,6 +4,11 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * 
+ * @author gonzalo alejandro cozzi
+ *
+ */
 public class Ordenador {
 	
 	private String factorizacionInvertida;
@@ -13,20 +18,25 @@ public class Ordenador {
 		this.factorizacionInvertida = "";
 	}
 
-	public String invertirSalida(String salida) {
+	public String invertirFactorizacion(String factorizacion) {
 
-		String[] arregloDeLaSalida = salida.split(" ");
-		List<String> list = Arrays.asList(arregloDeLaSalida);
-		Collections.reverse(list);
-		String[] arregloInvertidoDeLaSalida = (String[]) list.toArray();		
+		//Se invierte la factorizacion convirtiendola en una lista de strings.
+		String[] arregloDeLaFactorizacion = factorizacion.split(" ");
+		List<String> listaDeLaFactorizacion = Arrays.asList(arregloDeLaFactorizacion);
+		Collections.reverse(listaDeLaFactorizacion);
+		String[] arregloInvertidoDeLafactorizacion = (String[]) listaDeLaFactorizacion.toArray();	
+		
+		//Se convierte la lista de strings en un string nuevamente
+		for(int i = 0; i < arregloInvertidoDeLafactorizacion.length; i++){
 
-		this.factorizacionInvertida = "";
-
-		for(int i = 0; i < arregloInvertidoDeLaSalida.length; i++){
-
-			this.factorizacionInvertida += arregloInvertidoDeLaSalida[i];
+			this.factorizacionInvertida += arregloInvertidoDeLafactorizacion[i];
 			this.factorizacionInvertida += " ";
 		}
+		
+		return this.getFactorizacionInvertida();
+	}
+	
+	public String getFactorizacionInvertida(){
 		
 		return this.factorizacionInvertida;
 	}

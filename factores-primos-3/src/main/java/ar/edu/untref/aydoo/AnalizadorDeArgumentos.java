@@ -4,7 +4,12 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AdministradorDeArgumentos {
+/**
+ * Clase dedicada a configurar la salida de la factorizacion
+ * considerando los argumentos o parametros ingresados por el usuario
+ * @author gonzalo alejandro cozzi
+ */
+public class AnalizadorDeArgumentos {
 
 	private Integer numeroAFactorizar;
 	private String factorizacion;
@@ -13,7 +18,7 @@ public class AdministradorDeArgumentos {
 	private Ordenador ordenador;
 	private EscritorDeArchivo escritor;
 
-	public AdministradorDeArgumentos(Integer numeroAFactorizar, String[] args, String factorizacion){
+	public AnalizadorDeArgumentos(Integer numeroAFactorizar, String[] args, String factorizacion){
 
 		this.numeroAFactorizar = numeroAFactorizar;
 		this.factorizacion = factorizacion;		
@@ -46,14 +51,31 @@ public class AdministradorDeArgumentos {
 
 	private void analisisDeArgumentos() throws IOException {
 
-		//Argumento SORT
+		this.busquedaDeArgumentoSort();
+
+		this.busquedaDeArgumentoFormat();
+
+		this.busquedaDeArgumentoOutputFile();
+	}	
+
+	/**
+	 * @post busca el argumento "--sort" en los argumentos
+	 * y si lo encuentra envia la factorizacion al ordenador
+	 */
+	private void busquedaDeArgumentoSort() {
+
 		if(this.listaDeArgumentos.contains("--sort:des")){
 
 			this.ordenador = new Ordenador();
-			this.factorizacion = this.ordenador.invertirSalida(this.factorizacion);
+			this.factorizacion = this.ordenador.invertirFactorizacion(this.factorizacion);
 		}
+	}
 
-		//Argumento FORMAT
+	/**
+	 * @post envia la factorizacion al formateador
+	 */
+	private void busquedaDeArgumentoFormat() {
+
 		if(this.listaDeArgumentos.contains("--format=pretty") || this.listaDeArgumentos.contains("--format=quiet")){
 
 			this.factorizacion = this.formateador.formatearFactorizacion(this.listaDeArgumentos, this.factorizacion);
@@ -82,8 +104,15 @@ public class AdministradorDeArgumentos {
 			}
 
 		}
+	}
 
-		//Argumento OUTPUT FILE			
+	/**
+	 * @post busca el argumento "--output-file" en los argumentos
+	 * y si lo encuentra envia la factorizacion al escritor de archivo
+	 */
+	private void busquedaDeArgumentoOutputFile() throws IOException {
+
+		//Se busca si entre los argumentos se incluye "--output-file="
 		Boolean contieneDireccionDeArchivo = false;
 		Integer posicionDeLaDireccionDelArchivo = 0;
 
@@ -94,13 +123,14 @@ public class AdministradorDeArgumentos {
 				contieneDireccionDeArchivo = true;
 				posicionDeLaDireccionDelArchivo = i;
 			}
-
 		}
 
+		//Si entre los argumentos se incluye "--output-file=" se procede a escribir en archivo
 		if(contieneDireccionDeArchivo){			
 
 			this.escritor = new EscritorDeArchivo();
 			String parametroDeEscrituraEnArchivo = this.listaDeArgumentos.get(posicionDeLaDireccionDelArchivo);
+
 			this.factorizacion = escritor.escribirArchivo(this.numeroAFactorizar, parametroDeEscrituraEnArchivo, this.factorizacion);
 		}
 	}

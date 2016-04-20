@@ -3,19 +3,21 @@ package ar.edu.untref.aydoo;
 import java.io.IOException;
 
 /**
- * 
  * @author gonzalo alejandro cozzi
- *
  */
 public class FactorizadorPrimo {
 
 	private Integer numeroAFactorizar;	
 	private String factorizacion;
-	private AdministradorDeArgumentos configuradorDeFactorizacion;
+	private AnalizadorDeArgumentos configuradorDeFactorizacion;
 
+	/**
+	 * @post se almacena en la clase el valor absoluto del numero a factorizar
+	 * @param numeroAFactorizar
+	 */
 	public FactorizadorPrimo(Integer numeroAFactorizar) {
 
-		this.setNumeroAFactorizar(numeroAFactorizar);
+		this.setNumeroAFactorizar(Math.abs(numeroAFactorizar));
 		this.factorizacion = new String("");
 	}
 
@@ -34,6 +36,10 @@ public class FactorizadorPrimo {
 		return esPrimo;
 	}
 
+	/**
+	 * @pre el numero a factorizar es negativo
+	 * @post calcula la factorizacion en primos del numero a factorizar
+	 */
 	public void calcularFactoresPrimos(){
 
 		Integer numeroFactorizado = this.getNumeroAFactorizar();
@@ -72,9 +78,16 @@ public class FactorizadorPrimo {
 		return this.factorizacion;
 	}
 	
+	/**
+	 * @param args son los argumentos ingresados por el usuario
+	 * para configurar la salida de la factorizacion
+	 * @return la factorizacion del numero a factorizar formateada en base a 
+	 * la configuracion indicada por el usuario con los argumentos
+	 * @throws IOException
+	 */
 	public String getFactorizacionFormateada(String[] args) throws IOException{
 		
-		this.configuradorDeFactorizacion = new AdministradorDeArgumentos(this.numeroAFactorizar, args, this.factorizacion);
+		this.configuradorDeFactorizacion = new AnalizadorDeArgumentos(this.numeroAFactorizar, args, this.factorizacion);
 		this.factorizacion = this.configuradorDeFactorizacion.getSalidaConfigurada();
 		
 		return this.factorizacion;

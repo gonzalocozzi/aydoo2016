@@ -2,20 +2,23 @@ package ar.edu.untref.aydoo;
 
 import java.util.List;
 
+/**
+ * @author gonzalo alejandro cozzi
+ */
 public class Formateador {
 
 	private Integer numeroAFactorizar;
 	private String factorizacion;
 	private String factorizacionFormateada;
-	
+
 	public Formateador(Integer numeroAFactorizar){
-		
+
 		this.setNumeroAFactorizar(numeroAFactorizar);
 		this.factorizacionFormateada = "Factores primos " + this.numeroAFactorizar + ": ";
 	}	
 
 	public String formatearFactorizacion(List<String> listaDeArgumentos, String factorizacion){	
-		
+
 		this.setFactorizacion(factorizacion);
 
 		if(listaDeArgumentos.size() == 1 || listaDeArgumentos.contains("--format=pretty")){
@@ -25,12 +28,12 @@ public class Formateador {
 		} else if(listaDeArgumentos.contains("--format=quiet")) {
 
 			this.formatoQuiet();
-			
+
 		} else {			
-			
+
 			this.formatoPretty();
 		}
-		
+
 		return this.factorizacionFormateada;
 	}
 
@@ -48,7 +51,6 @@ public class Formateador {
 			this.factorizacionFormateada += "\n";
 			this.factorizacionFormateada += arregloDeLaFactorizacion[i];
 		}
-
 	}
 
 	public void setNumeroAFactorizar(Integer numeroAFactorizar) {

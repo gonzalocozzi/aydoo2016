@@ -6,16 +6,6 @@ import org.junit.Test;
 public class FactorizadorPrimoTest{		
 
 	@Test
-	public void factorizadorIngresaNumeroAFactorizar(){	
-
-		FactorizadorPrimo factorizador = new FactorizadorPrimo(null);
-
-		factorizador.setNumeroAFactorizar(1);
-
-		Assert.assertEquals(1, factorizador.getNumeroAFactorizar(), 0.0);
-	}
-
-	@Test
 	public void factorizadorIngresaNumeroAFactorizarAlComienzo(){
 
 		FactorizadorPrimo factorizador = new FactorizadorPrimo(1);

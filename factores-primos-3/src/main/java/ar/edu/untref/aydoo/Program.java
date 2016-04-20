@@ -3,9 +3,7 @@ package ar.edu.untref.aydoo;
 import java.io.IOException;
 
 /**
- * 
  * @author gonzalo alejandro cozzi
- *
  */
 public class Program {
 
@@ -17,7 +15,7 @@ public class Program {
 			
 		} else {
 			
-			Integer numeroAFactorizar = Math.abs(Integer.parseInt(args[0]));				
+			Integer numeroAFactorizar = Integer.parseInt(args[0]);				
 			FactorizadorPrimo factorizadorPrimo = new FactorizadorPrimo(numeroAFactorizar);
 			factorizadorPrimo.calcularFactoresPrimos();			
 			String factorizacion = factorizadorPrimo.getFactorizacionFormateada(args);
