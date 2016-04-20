@@ -13,7 +13,7 @@ public class AnalizadorDeArgumentos {
 
 	private Integer numeroAFactorizar;
 	private String factorizacion;
-	private List<String> listaDeArgumentos;
+	private List<String> listaDeArgumentos;	
 	private Formateador formateador;
 	private Ordenador ordenador;
 	private EscritorDeArchivo escritor;
@@ -21,9 +21,9 @@ public class AnalizadorDeArgumentos {
 	public AnalizadorDeArgumentos(String[] args, String factorizacion){
 
 		this.setNumeroAFactorizar(Integer.parseInt(args[0]));
-		this.factorizacion = factorizacion;		
+		this.setFactorizacion(factorizacion);		
 		this.listaDeArgumentos =  new ArrayList<String>();
-		this.formateador = new Formateador(this.numeroAFactorizar);		
+		this.formateador = new Formateador(this.getNumeroAFactorizar());		
 
 		for(int i = 0; i < args.length; i++){
 
@@ -35,7 +35,7 @@ public class AnalizadorDeArgumentos {
 
 		if(listaDeArgumentos.size() < 2){
 
-			this.factorizacion = this.formateador.formatearFactorizacion(this.listaDeArgumentos, this.factorizacion);
+			this.setFactorizacion(this.formateador.formatearFactorizacion(this.listaDeArgumentos, this.getFactorizacion()));
 
 		} else if(listaDeArgumentos.size() < 5){
 
@@ -43,10 +43,10 @@ public class AnalizadorDeArgumentos {
 
 		} else {
 
-			this.factorizacion = "Ha ingresado al menos un parámetro de más";
+			this.setFactorizacion("Ha ingresado al menos un parámetro de más");
 		}
 
-		return this.factorizacion;
+		return this.getFactorizacion();
 	}
 
 	private void analisisDeArgumentos() throws IOException {
@@ -77,8 +77,8 @@ public class AnalizadorDeArgumentos {
 	private void busquedaDeArgumentoFormat() {
 
 		if(this.listaDeArgumentos.contains("--format=pretty") || this.listaDeArgumentos.contains("--format=quiet")){
-
-			this.factorizacion = this.formateador.formatearFactorizacion(this.listaDeArgumentos, this.factorizacion);
+			
+			this.setFactorizacion(this.formateador.formatearFactorizacion(this.listaDeArgumentos, this.getFactorizacion()));
 
 		} else {
 
@@ -95,12 +95,12 @@ public class AnalizadorDeArgumentos {
 			//Caso de FORMAT erroneo
 			if(contieneFormatErroneo){
 
-				this.factorizacion = "Formato no aceptado. Las opciones posibles son: pretty o quiet.";	
+				this.setFactorizacion("Formato no aceptado. Las opciones posibles son: pretty o quiet.");	
 
 				//Caso de FORMAT no especificado
 			} else {
-
-				this.factorizacion = this.formateador.formatearFactorizacion(this.listaDeArgumentos, this.factorizacion);
+				
+				this.setFactorizacion(this.formateador.formatearFactorizacion(this.listaDeArgumentos, this.getFactorizacion()));
 			}
 
 		}
@@ -136,18 +136,42 @@ public class AnalizadorDeArgumentos {
 	}
 
 	public Integer getNumeroAFactorizar() {
-		
+
 		return this.numeroAFactorizar;
 	}
 
 	private void setNumeroAFactorizar(Integer numeroAFactorizar) {
-		
+
 		this.numeroAFactorizar = numeroAFactorizar;
+	}	
+
+	public String getFactorizacion() {
+		return this.factorizacion;
 	}
-	
+
+	private void setFactorizacion(String factorizacion) {
+
+		this.factorizacion = factorizacion;
+	}
+
 	public List<String> getListaDeArgumentos() {
-		
+
 		return this.listaDeArgumentos;
+	}
+
+	public Formateador getFormateador() {
+
+		return this.formateador;
+	}
+
+	public Ordenador getOrdenador() {
+
+		return this.ordenador;
+	}
+
+	public EscritorDeArchivo getEscritor() {
+
+		return this.escritor;
 	}
 
 }

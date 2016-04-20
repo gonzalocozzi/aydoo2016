@@ -1,5 +1,6 @@
 package ar.edu.untref.aydoo;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.junit.Assert;
@@ -38,6 +39,30 @@ public class AnalizadorDeArgumentosTest {
 		List<String> listaDeArgumentos = analizador.getListaDeArgumentos();
 		
 		Assert.assertTrue(listaDeArgumentos.contains("--sort:des"));
+	}
+	
+	@Test
+	public void analizadorDeArgumentosSeCreaYCreaUnFormateadorAlCualLePasaElNumeroAFormatear(){
+		
+		String[] args = {"90"};
+		AnalizadorDeArgumentos analizador = new AnalizadorDeArgumentos(args, null);		
+		Formateador formateadorCreadoPorElAnalizador = analizador.getFormateador();
+		
+		Integer numeroAFactorizar = formateadorCreadoPorElAnalizador.getNumeroAFactorizar();
+		
+		Assert.assertEquals(90, numeroAFactorizar, 0.0);
+	}
+	
+	@Test
+	public void analizadorDeArgumentosRecibeUnUnicoArgumentoYLlamaAlFormateador() throws IOException{
+		
+		String[] args = {"90"};
+		String factorizacion = "2 3 3 5 ";		
+		AnalizadorDeArgumentos analizador = new AnalizadorDeArgumentos(args, factorizacion);
+		
+		String salidaConfigurada = analizador.getSalidaConfigurada();
+		
+		Assert.assertEquals("Factores primos 90: 2 3 3 5 ", salidaConfigurada);
 	}
 
 }

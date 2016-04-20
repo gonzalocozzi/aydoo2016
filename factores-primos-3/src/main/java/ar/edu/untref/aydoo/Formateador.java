@@ -52,6 +52,11 @@ public class Formateador {
 			this.factorizacionFormateada += arregloDeLaFactorizacion[i];
 		}
 	}
+	
+	public Integer getNumeroAFactorizar(){
+		
+		return this.numeroAFactorizar;
+	}
 
 	public void setNumeroAFactorizar(Integer numeroAFactorizar) {
 
