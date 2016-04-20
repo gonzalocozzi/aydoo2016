@@ -18,9 +18,9 @@ public class EscritorDeArchivo {
 		this.setDireccionDelJAR();
 	}
 
-	public String escribirArchivo(Integer numeroAFactorizar, String parametroDeEscrituraEnArchivo, String factorizacion) throws IOException{
+	public String escribirArchivo(Integer numeroAFactorizar, String argumentoDeEscrituraEnArchivo, String factorizacion) throws IOException{
 
-		this.setNombreDelArchivo(parametroDeEscrituraEnArchivo.substring(14));
+		this.nombreDelArchivo = argumentoDeEscrituraEnArchivo.substring(14);
 		File archivoConLaFactorizacion = new File(nombreDelArchivo);
 		FileWriter escritor = new FileWriter(archivoConLaFactorizacion);
 		escritor.write(factorizacion);
@@ -28,8 +28,8 @@ public class EscritorDeArchivo {
 
 		String mensajeDeEscrituraEnConsola = "La factorización del numero " + numeroAFactorizar + 
 				" fue almacenada en " + this.getDireccionDelJAR() + "/" + this.getNombreDelArchivo();
-		
-		this.setFactorizacion(mensajeDeEscrituraEnConsola);
+
+		this.factorizacion = mensajeDeEscrituraEnConsola;
 
 		return this.getFactorizacion();
 	}	
@@ -39,9 +39,10 @@ public class EscritorDeArchivo {
 		return this.nombreDelArchivo;
 	}
 
-	public void setNombreDelArchivo(String nombreDelArchivo){
 
-		this.nombreDelArchivo = nombreDelArchivo;
+	public String getFactorizacion() {
+
+		return this.factorizacion;
 	}
 
 	public String getDireccionDelJAR(){
@@ -49,21 +50,11 @@ public class EscritorDeArchivo {
 		return this.direccionDelJAR;
 	}
 
-	public void setDireccionDelJAR(){
+	private void setDireccionDelJAR(){
 
 		File archivo = new File(System.getProperty("java.class.path"));
 		File direccion = archivo.getAbsoluteFile().getParentFile();		
 		this.direccionDelJAR = direccion.toString();
-	}
-
-	public String getFactorizacion() {
-
-		return this.factorizacion;
-	}
-
-	public void setFactorizacion(String factorizacion) {
-
-		this.factorizacion = factorizacion;
 	}
 
 }
