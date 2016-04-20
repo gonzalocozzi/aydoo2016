@@ -33,6 +33,15 @@ public class ProgramTest {
 	}
 	
 	@Test
+	public void programDevuelveFactorizacionDelModuloDeUnNumeroNegativo() throws IOException{
+		
+		String[] args = {"-150"};
+		Program.main(args);
+		
+		Assert.assertEquals("Factores primos -150: 2 3 5 5 \n", outContent.toString());
+	}
+	
+	@Test
 	public void programDevuelveFactorizacionDeUnNumeroSinArgumentosAparteDelNumero() throws IOException{
 		
 		String[] args = {"82"};
