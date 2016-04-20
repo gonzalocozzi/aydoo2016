@@ -20,15 +20,15 @@ public class AnalizadorDeArgumentos {
 
 	public AnalizadorDeArgumentos(Integer numeroAFactorizar, String[] args, String factorizacion){
 
-		this.numeroAFactorizar = numeroAFactorizar;
+		this.setNumeroAFactorizar(numeroAFactorizar);
 		this.factorizacion = factorizacion;		
 		this.listaDeArgumentos =  new ArrayList<String>();
 		this.formateador = new Formateador(this.numeroAFactorizar);		
 
-		for(int i = 0; i < args.length; i++){
+		/**for(int i = 0; i < args.length; i++){
 
 			listaDeArgumentos.add(i, args[i].toLowerCase());
-		}
+		}*/
 	}
 
 	public String getSalidaConfigurada() throws IOException{	
@@ -133,6 +133,16 @@ public class AnalizadorDeArgumentos {
 
 			this.factorizacion = escritor.escribirArchivo(this.numeroAFactorizar, parametroDeEscrituraEnArchivo, this.factorizacion);
 		}
+	}
+
+	public Integer getNumeroAFactorizar() {
+		
+		return this.numeroAFactorizar;
+	}
+
+	private void setNumeroAFactorizar(Integer numeroAFactorizar) {
+		
+		this.numeroAFactorizar = numeroAFactorizar;
 	}
 
 }
