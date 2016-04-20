@@ -10,7 +10,8 @@ public class FactorizadorPrimoTest{
 	@Test
 	public void factorizadorIngresaNumeroAFactorizarAlComienzo(){
 
-		FactorizadorPrimo factorizador = new FactorizadorPrimo(1);
+		String[] args = {"1"}; 
+		FactorizadorPrimo factorizador = new FactorizadorPrimo(args);
 
 		Assert.assertEquals(1, factorizador.getNumeroAFactorizar(), 0.0);
 	}
@@ -18,7 +19,8 @@ public class FactorizadorPrimoTest{
 	@Test
 	public void factorizadorIndicaQueNumeroUnoEsPrimo(){
 
-		FactorizadorPrimo factorizador = new FactorizadorPrimo(1);	
+		String[] args = {"1"};
+		FactorizadorPrimo factorizador = new FactorizadorPrimo(args);	
 		factorizador.calcularFactoresPrimos();
 
 		String factorizacion = factorizador.getFactorizacion();
@@ -27,20 +29,10 @@ public class FactorizadorPrimoTest{
 	}
 
 	@Test
-	public void factorizadorIndicaQueNumeroCincoEsPrimo(){
-
-		FactorizadorPrimo factorizador = new FactorizadorPrimo(5);		
-		factorizador.calcularFactoresPrimos();
-
-		String factorizacion = factorizador.getFactorizacion();
-
-		Assert.assertEquals("5", factorizacion);
-	}
-
-	@Test
 	public void factorizadorIndicaQueNumeroDiecisieteEsPrimo(){
 
-		FactorizadorPrimo factorizador = new FactorizadorPrimo(17);	
+		String[] args = {"17"};
+		FactorizadorPrimo factorizador = new FactorizadorPrimo(args);	
 		factorizador.calcularFactoresPrimos();
 
 		String factorizacion = factorizador.getFactorizacion();
@@ -51,7 +43,8 @@ public class FactorizadorPrimoTest{
 	@Test
 	public void factorizadorIndicaQueNumeroNoventaYSieteEsPrimo(){
 
-		FactorizadorPrimo factorizador = new FactorizadorPrimo(97);
+		String[] args = {"97"};
+		FactorizadorPrimo factorizador = new FactorizadorPrimo(args);
 		factorizador.calcularFactoresPrimos();
 
 		String factorizacion = factorizador.getFactorizacion();
@@ -62,7 +55,8 @@ public class FactorizadorPrimoTest{
 	@Test
 	public void factorizadorIndicaQueNumeroSetecientosDiecinueveEsPrimo(){
 
-		FactorizadorPrimo factorizador = new FactorizadorPrimo(719);
+		String[] args = {"719"};
+		FactorizadorPrimo factorizador = new FactorizadorPrimo(args);
 		factorizador.calcularFactoresPrimos();
 
 		String factorizacion = factorizador.getFactorizacion();
@@ -72,7 +66,8 @@ public class FactorizadorPrimoTest{
 	@Test
 	public void factorizacionCorrectaDelNumeroNoventa(){
 
-		FactorizadorPrimo factorizador = new FactorizadorPrimo(90);
+		String[] args = {"90"};
+		FactorizadorPrimo factorizador = new FactorizadorPrimo(args);
 		factorizador.calcularFactoresPrimos();
 
 		String factorizacion = factorizador.getFactorizacion();
@@ -83,7 +78,8 @@ public class FactorizadorPrimoTest{
 	@Test
 	public void factorizacionCorrectaDelNumeroTrescientosSesenta(){
 
-		FactorizadorPrimo factorizador = new FactorizadorPrimo(360);
+		String[] args = {"360"};
+		FactorizadorPrimo factorizador = new FactorizadorPrimo(args);
 		factorizador.calcularFactoresPrimos();
 
 		String factorizacion = factorizador.getFactorizacion();
@@ -94,11 +90,11 @@ public class FactorizadorPrimoTest{
 	@Test
 	public void factorizadorPrimoDevuelveFactorizacionFormateada() throws IOException{
 		
-		FactorizadorPrimo factorizador = new FactorizadorPrimo(360);
-		String[] args = {"--sort:des", "--format=quiet"};
+		String[] args = {"360", "--sort:des", "--format=quiet"};
+		FactorizadorPrimo factorizador = new FactorizadorPrimo(args);
 		factorizador.calcularFactoresPrimos();
 
-		String factorizacionFormateada = factorizador.getFactorizacionFormateada(args);
+		String factorizacionFormateada = factorizador.getFactorizacionFormateada();
 		
 		Assert.assertEquals("Factores primos 360: \n5\n3\n3\n2\n2\n2", factorizacionFormateada);
 	}
@@ -106,7 +102,8 @@ public class FactorizadorPrimoTest{
 	@Test
 	public void factorizadorPrimoDevuelveFactorizacionDelModuloDeUnNumeroNegativo(){
 		
-		FactorizadorPrimo factorizador = new FactorizadorPrimo(-90);
+		String[] args = {"-90"};
+		FactorizadorPrimo factorizador = new FactorizadorPrimo(args);
 		factorizador.calcularFactoresPrimos();
 
 		String factorizacion = factorizador.getFactorizacion();

@@ -15,10 +15,9 @@ public class Program {
 			
 		} else {
 			
-			Integer numeroAFactorizar = Integer.parseInt(args[0]);				
-			FactorizadorPrimo factorizadorPrimo = new FactorizadorPrimo(numeroAFactorizar);
+			FactorizadorPrimo factorizadorPrimo = new FactorizadorPrimo(args);
 			factorizadorPrimo.calcularFactoresPrimos();			
-			String factorizacion = factorizadorPrimo.getFactorizacionFormateada(args);
+			String factorizacion = factorizadorPrimo.getFactorizacionFormateada();
 			
 			System.out.println(factorizacion);
 		}
