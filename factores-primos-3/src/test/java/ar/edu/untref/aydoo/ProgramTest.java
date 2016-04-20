@@ -67,5 +67,14 @@ public class ProgramTest {
 		
 		Assert.assertEquals("Factores primos 150: 5 5 3 2 \n", outContent.toString());
 	}
+	
+	@Test
+	public void programDevuelveFactorizacionDeUnNumeroConArgumentoSortAsc() throws IOException{
+		
+		String[] args = {"150", "--sort:asc"};
+		Program.main(args);
+		
+		Assert.assertEquals("Factores primos 150: 2 3 5 5 \n", outContent.toString());
+	}
 
 }
