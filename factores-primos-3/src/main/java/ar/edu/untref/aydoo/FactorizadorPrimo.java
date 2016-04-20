@@ -10,7 +10,7 @@ public class FactorizadorPrimo {
 	private Integer numeroAFactorizar;	
 	private String[] args;
 	private String factorizacion;
-	private AnalizadorDeArgumentos configuradorDeFactorizacion;
+	private AnalizadorDeArgumentos analizadorDeArgumentos;
 
 	/**
 	 * @post se almacena en la clase el valor absoluto del numero a factorizar
@@ -95,8 +95,8 @@ public class FactorizadorPrimo {
 	 */
 	public String getFactorizacionFormateada() throws IOException{
 		
-		this.configuradorDeFactorizacion = new AnalizadorDeArgumentos(this.getArgs(), this.factorizacion);
-		this.factorizacion = this.configuradorDeFactorizacion.getSalidaConfigurada();
+		this.analizadorDeArgumentos = new AnalizadorDeArgumentos(this.getArgs(), this.factorizacion);
+		this.factorizacion = this.analizadorDeArgumentos.getSalidaConfigurada();
 		
 		return this.factorizacion;
 	}

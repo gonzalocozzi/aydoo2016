@@ -23,19 +23,20 @@ public class AnalizadorDeArgumentos {
 		this.setNumeroAFactorizar(Integer.parseInt(args[0]));
 		this.setFactorizacion(factorizacion);		
 		this.listaDeArgumentos =  new ArrayList<String>();
-		this.formateador = new Formateador(this.getNumeroAFactorizar());		
 
 		for(int i = 0; i < args.length; i++){
 
 			listaDeArgumentos.add(i, args[i].toLowerCase());
 		}
+		
+		this.formateador = new Formateador(this.listaDeArgumentos);		
 	}
 
 	public String getSalidaConfigurada() throws IOException{	
 
 		if(listaDeArgumentos.size() < 2){
 
-			this.setFactorizacion(this.formateador.formatearFactorizacion(this.listaDeArgumentos, this.getFactorizacion()));
+			this.setFactorizacion(this.formateador.formatearFactorizacion(this.getFactorizacion()));
 
 		} else if(listaDeArgumentos.size() < 5){
 
@@ -78,7 +79,7 @@ public class AnalizadorDeArgumentos {
 
 		if(this.listaDeArgumentos.contains("--format=pretty") || this.listaDeArgumentos.contains("--format=quiet")){
 			
-			this.setFactorizacion(this.formateador.formatearFactorizacion(this.listaDeArgumentos, this.getFactorizacion()));
+			this.setFactorizacion(this.formateador.formatearFactorizacion(this.getFactorizacion()));
 
 		} else {
 
@@ -100,7 +101,7 @@ public class AnalizadorDeArgumentos {
 				//Caso de FORMAT no especificado
 			} else {
 				
-				this.setFactorizacion(this.formateador.formatearFactorizacion(this.listaDeArgumentos, this.getFactorizacion()));
+				this.setFactorizacion(this.formateador.formatearFactorizacion(this.getFactorizacion()));
 			}
 
 		}

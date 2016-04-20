@@ -8,16 +8,18 @@ import java.util.List;
 public class Formateador {
 
 	private Integer numeroAFactorizar;
+	private List<String> listaDeArgumentos;
 	private String factorizacion;
 	private String factorizacionFormateada;
 
-	public Formateador(Integer numeroAFactorizar){
+	public Formateador(List<String> listaDeArgumentos){
 
-		this.setNumeroAFactorizar(numeroAFactorizar);
+		this.listaDeArgumentos = listaDeArgumentos;
+		this.setNumeroAFactorizar(Integer.parseInt(this.listaDeArgumentos.get(0)));
 		this.factorizacionFormateada = "Factores primos " + this.numeroAFactorizar + ": ";
 	}	
 
-	public String formatearFactorizacion(List<String> listaDeArgumentos, String factorizacion){	
+	public String formatearFactorizacion(String factorizacion){	
 
 		this.setFactorizacion(factorizacion);
 
