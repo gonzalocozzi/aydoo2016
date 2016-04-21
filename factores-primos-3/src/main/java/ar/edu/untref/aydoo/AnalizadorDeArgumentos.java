@@ -20,15 +20,15 @@ public class AnalizadorDeArgumentos {
 
 	public AnalizadorDeArgumentos(String[] args, String factorizacion){
 
-		this.setNumeroAFactorizar(Integer.parseInt(args[0]));
-		this.setFactorizacion(factorizacion);		
+		this.numeroAFactorizar = Integer.parseInt(args[0]);
+		this.factorizacion = factorizacion;		
 		this.listaDeArgumentos =  new ArrayList<String>();
 
 		for(int i = 0; i < args.length; i++){
 
 			listaDeArgumentos.add(i, args[i].toLowerCase());
 		}
-		
+
 		this.formateador = new Formateador(this.listaDeArgumentos);		
 	}
 
@@ -36,7 +36,7 @@ public class AnalizadorDeArgumentos {
 
 		if(listaDeArgumentos.size() < 2){
 
-			this.setFactorizacion(this.formateador.formatearFactorizacion(this.getFactorizacion()));
+			this.factorizacion = this.formateador.formatearFactorizacion(this.getFactorizacion());
 
 		} else if(listaDeArgumentos.size() < 5){
 
@@ -44,7 +44,7 @@ public class AnalizadorDeArgumentos {
 
 		} else {
 
-			this.setFactorizacion("Ha ingresado al menos un parametro de mas");
+			this.factorizacion = "Ha ingresado al menos un parametro de mas";
 		}
 
 		return this.getFactorizacion();
@@ -78,8 +78,8 @@ public class AnalizadorDeArgumentos {
 	private void busquedaDeArgumentoFormat() {
 
 		if(this.listaDeArgumentos.contains("--format=pretty") || this.listaDeArgumentos.contains("--format=quiet")){
-			
-			this.setFactorizacion(this.formateador.formatearFactorizacion(this.getFactorizacion()));
+
+			this.factorizacion = this.formateador.formatearFactorizacion(this.getFactorizacion());
 
 		} else {
 
@@ -96,12 +96,12 @@ public class AnalizadorDeArgumentos {
 			//Caso de FORMAT erroneo
 			if(contieneFormatErroneo){
 
-				this.setFactorizacion("Formato no aceptado. Las opciones posibles son: pretty o quiet.");	
+				this.factorizacion = "Formato no aceptado. Las opciones posibles son: pretty o quiet.";	
 
 				//Caso de FORMAT no especificado
 			} else {
-				
-				this.setFactorizacion(this.formateador.formatearFactorizacion(this.getFactorizacion()));
+
+				this.factorizacion = this.formateador.formatearFactorizacion(this.getFactorizacion());
 			}
 
 		}
@@ -139,20 +139,10 @@ public class AnalizadorDeArgumentos {
 	public Integer getNumeroAFactorizar() {
 
 		return this.numeroAFactorizar;
-	}
-
-	private void setNumeroAFactorizar(Integer numeroAFactorizar) {
-
-		this.numeroAFactorizar = numeroAFactorizar;
 	}	
 
 	public String getFactorizacion() {
 		return this.factorizacion;
-	}
-
-	private void setFactorizacion(String factorizacion) {
-
-		this.factorizacion = factorizacion;
 	}
 
 	public List<String> getListaDeArgumentos() {

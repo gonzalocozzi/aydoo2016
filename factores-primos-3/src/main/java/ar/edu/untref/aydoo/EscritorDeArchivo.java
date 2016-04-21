@@ -15,7 +15,9 @@ public class EscritorDeArchivo {
 
 	public EscritorDeArchivo(){
 
-		this.setDireccionDelJAR();
+		File archivo = new File(System.getProperty("java.class.path"));
+		File direccion = archivo.getAbsoluteFile().getParentFile();		
+		this.direccionDelJAR = direccion.toString();
 	}
 
 	public String escribirArchivo(Integer numeroAFactorizar, String argumentoDeEscrituraEnArchivo, String factorizacion) throws IOException{
@@ -48,13 +50,6 @@ public class EscritorDeArchivo {
 	public String getDireccionDelJAR(){
 
 		return this.direccionDelJAR;
-	}
-
-	private void setDireccionDelJAR(){
-
-		File archivo = new File(System.getProperty("java.class.path"));
-		File direccion = archivo.getAbsoluteFile().getParentFile();		
-		this.direccionDelJAR = direccion.toString();
 	}
 
 }

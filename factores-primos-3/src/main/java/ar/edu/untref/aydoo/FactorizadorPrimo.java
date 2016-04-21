@@ -20,7 +20,7 @@ public class FactorizadorPrimo {
 
 		this.setNumeroAFactorizar(Math.abs(Integer.parseInt(args[0])));
 		this.factorizacion = new String("");
-		this.setArgumentos(args);
+		this.argumentos = args;
 	}
 
 	public boolean esPrimo(int numero){
@@ -64,11 +64,6 @@ public class FactorizadorPrimo {
 	public String[] getArgumentos() {
 		
 		return this.argumentos;
-	}
-
-	private void setArgumentos(String[] argumentos) {
-		
-		this.argumentos = argumentos;
 	}
 
 	public Integer getNumeroAFactorizar() {

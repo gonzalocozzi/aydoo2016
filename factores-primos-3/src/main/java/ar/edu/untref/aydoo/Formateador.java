@@ -15,13 +15,13 @@ public class Formateador {
 	public Formateador(List<String> listaDeArgumentos){
 
 		this.listaDeArgumentos = listaDeArgumentos;
-		this.setNumeroAFactorizar(Integer.parseInt(this.listaDeArgumentos.get(0)));
+		this.numeroAFactorizar = Integer.parseInt(this.listaDeArgumentos.get(0));
 		this.factorizacionFormateada = "Factores primos " + this.numeroAFactorizar + ": ";
 	}	
 
 	public String formatearFactorizacion(String factorizacion){	
 
-		this.setFactorizacion(factorizacion);
+		this.factorizacion = factorizacion;
 
 		if(listaDeArgumentos.size() == 1 || listaDeArgumentos.contains("--format=pretty")){
 
@@ -54,24 +54,14 @@ public class Formateador {
 			this.factorizacionFormateada += arregloDeLaFactorizacion[i];
 		}
 	}
-	
+
 	public Integer getNumeroAFactorizar(){
-		
+
 		return this.numeroAFactorizar;
-	}
-
-	private void setNumeroAFactorizar(Integer numeroAFactorizar) {
-
-		this.numeroAFactorizar = numeroAFactorizar;
-	}
-
-	private void setFactorizacion(String factorizacion) {
-
-		this.factorizacion = factorizacion;
 	}	
 
 	public String getFactorizacionFormateada() {
-		
+
 		return this.factorizacionFormateada;
 	}
 
