@@ -22,6 +22,8 @@ public class ClienteTest {
 	private ComprasDelMes enero;
 	@SuppressWarnings("unused")
 	private ComprasDelMes febrero;
+	
+	Libreria miLibreria;
 
 	@Before
 	public void inicializar() throws RepeatedMonthException {
@@ -36,31 +38,35 @@ public class ClienteTest {
 		pagina12 = new RevistayPeriodico("Pagina12", 12.0, 30);
 		pagina12.setFrecuenciaMensual(30);
 
-		SuscripcionesMaria = new Suscripcion("Suscripcion anual revista Barcelona", 0);
+		SuscripcionesMaria = new SuscripcionAnual("Suscripcion anual revista Barcelona", 0);
 		SuscripcionesMaria.AgregarRevistaOPeriodico(barcelona);
 
 		agosto = new ComprasDelMes("Compras del mes de agosto", Month.AUGUST);
 		enero = new ComprasDelMes("Enero", Month.JANUARY);
 		febrero = new ComprasDelMes("Febrero", Month.FEBRUARY);
 
-		juan.agregarComprasDelMes(agosto);
-		maria.agregarComprasDelMes(enero);
+		juan.agregarCompraDelMes(agosto);
+		maria.agregarCompraDelMes(enero);
+		
+		miLibreria = new Libreria("Libreria de prueba");
+		miLibreria.registrarCliente(juan);
+		miLibreria.registrarCliente(maria);
 	}
 
 	@Test
-	public void cobrarleAJuanMesDeAgosto() {
-		juan.comprar(Month.AUGUST, elHobbit);
-		juan.comprar(Month.AUGUST, lapicera);
-		juan.comprar(Month.AUGUST, lapicera);
-		juan.comprar(Month.AUGUST, elGrafico);
+	public void cobrarleAJuanMesDeAgosto() throws UnregisteredClientException {
+		juan.comprar(miLibreria, Month.AUGUST, elHobbit);
+		juan.comprar(miLibreria, Month.AUGUST, lapicera);
+		juan.comprar(miLibreria, Month.AUGUST, lapicera);
+		juan.comprar(miLibreria, Month.AUGUST, elGrafico);
 
 		Assert.assertEquals(92.1, juan.calcularGastoDelMes(Month.AUGUST), 0.1);
 	}
 
 	@Test
-	public void cobrarleAMariaMesDeEnero() {
-		maria.comprar(Month.JANUARY, SuscripcionesMaria);
-		maria.comprar(Month.JANUARY, pagina12);
+	public void cobrarleAMariaMesDeEnero() throws UnregisteredClientException {
+		maria.comprar(miLibreria, Month.JANUARY, SuscripcionesMaria);
+		maria.comprar(miLibreria, Month.JANUARY, pagina12);
 		Assert.assertEquals(44.0, maria.calcularGastoDelMes(Month.JANUARY), 0.1);
 	}
 
@@ -80,8 +86,8 @@ public class ClienteTest {
 	}
 	
 	@Test(expected = Error.class)
-	public void MesNoIngresado() {
-		maria.comprar(Month.FEBRUARY, SuscripcionesMaria);
+	public void MesNoIngresado() throws UnregisteredClientException {
+		maria.comprar(miLibreria, Month.FEBRUARY, SuscripcionesMaria);
 	}
 
 }

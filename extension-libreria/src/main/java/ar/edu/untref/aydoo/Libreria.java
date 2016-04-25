@@ -21,51 +21,38 @@ public class Libreria {
 		return this.nombre;
 	}
 
-	public void agregarCliente(Cliente unCliente) {
+	public void registrarCliente(Cliente unCliente) {
 
 		this.clientes.add(unCliente);
+	}
+	
+	public boolean esClienteRegistrado(Cliente unCliente){
+		
+		return this.clientes.contains(unCliente);
 	}
 
 	public double calcularMontoACobrar(Month mes, Cliente unCliente) {
 
-		if(!clientes.contains(unCliente)){
+		if(!esClienteRegistrado(unCliente)){
 			throw new Error("El cliente no existe");
 		}
 
 		double total = 0;
 		Iterator<Cliente> iteradorClientes = clientes.iterator();
-
-		while (iteradorClientes.hasNext()) {
+		boolean clienteEncontrado = false;
+		
+		while (iteradorClientes.hasNext() && !clienteEncontrado) {
 
 			Cliente clienteActual = iteradorClientes.next();
 
 			if (unCliente.getDNI().equals(clienteActual.getDNI())) {
 
 				total = clienteActual.calcularGastoDelMes(mes);
+				clienteEncontrado = true;
 			}
 		}
 
 		return total;
-	}
-
-	public void comprar(Cliente unCliente, Producto unProducto, Month mes) {
-
-		if(!clientes.contains(unCliente)){
-
-			throw new Error("El cliente no existe");
-		}
-
-		Iterator<Cliente> iteradorClientes = clientes.iterator();
-
-		while (iteradorClientes.hasNext()) {
-
-			Cliente clienteActual = iteradorClientes.next();
-
-			if (unCliente.getDNI().equals(clienteActual.getDNI())) {
-
-				clienteActual.comprar(mes, unProducto);
-			}
-		}
 	}
 
 }

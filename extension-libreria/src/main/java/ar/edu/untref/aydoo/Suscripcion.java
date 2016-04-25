@@ -12,14 +12,17 @@ public class Suscripcion extends Producto {
 		
 		super(nombre, precio);
 		this.productos = new LinkedList<RevistayPeriodico>();
-		
 	}
 
 	public void AgregarRevistaOPeriodico(RevistayPeriodico unaRevistaOPeriodico) {
 		
 		this.productos.add(unaRevistaOPeriodico);
-		this.setPrecio();
+		this.setPrecio();		
+	}	
+
+	public List<RevistayPeriodico> getProductos() {
 		
+		return productos;
 	}
 	
 	private void setPrecio(){
@@ -30,7 +33,7 @@ public class Suscripcion extends Producto {
 		while (iteradorProductos.hasNext()) {
 			
 			RevistayPeriodico revistaOPeriodicoActual = iteradorProductos.next();
-			total += revistaOPeriodicoActual.getPrecioMensualConSuscripcionAnual();
+			total += revistaOPeriodicoActual.getPrecio() * revistaOPeriodicoActual.getFrecuenciaMensual();
 		}
 		
 		super.setPrecio(total);

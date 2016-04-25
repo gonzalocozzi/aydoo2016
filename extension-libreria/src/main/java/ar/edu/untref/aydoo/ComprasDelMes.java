@@ -28,7 +28,7 @@ public class ComprasDelMes {
 		return this.nombre;
 	}
 
-	public void AgregarCompra(Producto unProducto) {
+	public void agregarCompra(Producto unProducto) {
 		
 		this.compras.add(unProducto);
 	}

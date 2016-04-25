@@ -34,7 +34,7 @@ public class Cliente {
 		return this.direccion;
 	}
 
-	public void agregarComprasDelMes(ComprasDelMes compra) throws RepeatedMonthException {
+	public void agregarCompraDelMes(ComprasDelMes compra) throws RepeatedMonthException {
 
 		if(mesIngresado(compra.getMes())){
 
@@ -44,11 +44,17 @@ public class Cliente {
 		this.compras.add(compra);
 	}
 
-	public void comprar(Month mes, Producto unProducto) {				
+	public void comprar(Libreria libreria, Month mes, Producto unProducto) throws UnregisteredClientException {
+		
+		if(!libreria.esClienteRegistrado(this)){
+			
+			throw new UnregisteredClientException();
+		}
 
 		Iterator<ComprasDelMes> iteradorMeses = compras.iterator();
+		boolean mesEncontrado = false;
 
-		while (iteradorMeses.hasNext()) {
+		while (iteradorMeses.hasNext() && !mesEncontrado) {
 
 			ComprasDelMes compraActual = iteradorMeses.next();
 
@@ -58,7 +64,8 @@ public class Cliente {
 
 			if (compraActual.getMes().equals(mes)) {
 
-				compraActual.AgregarCompra(unProducto);
+				compraActual.agregarCompra(unProducto);
+				mesEncontrado = true;
 			}
 		}
 	}
@@ -70,16 +77,17 @@ public class Cliente {
 		}
 
 		double total = 0;
-
 		Iterator<ComprasDelMes> iteradorMeses = compras.iterator();
+		boolean mesEncontrado = false;
 
-		while (iteradorMeses.hasNext()) {
+		while (iteradorMeses.hasNext() && !mesEncontrado) {
 
 			ComprasDelMes compraActual = iteradorMeses.next();
 
 			if (compraActual.getMes().equals(mes)) {
 
 				total += compraActual.calcularGastoDelMes();
+				mesEncontrado = true;
 			}
 		}
 

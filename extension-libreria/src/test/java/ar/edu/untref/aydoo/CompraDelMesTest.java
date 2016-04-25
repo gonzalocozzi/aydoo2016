@@ -22,9 +22,9 @@ public class CompraDelMesTest {
 		lapicera = new ArticuloDeLibreria("Lapicera", 5.0);
 		elGrafico = new RevistayPeriodico("El Grafico", 30.0, 4);
 
-		agosto.AgregarCompra(elHobbit);
-		agosto.AgregarCompra(lapicera);
-		agosto.AgregarCompra(elGrafico);
+		agosto.agregarCompra(elHobbit);
+		agosto.agregarCompra(lapicera);
+		agosto.agregarCompra(elGrafico);
 	}
 
 	@Test
