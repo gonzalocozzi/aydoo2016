@@ -26,7 +26,7 @@ public class ClienteTest {
 	Libreria miLibreria;
 
 	@Before
-	public void inicializar() throws RepeatedMonthException {
+	public void inicializar() throws RepeatedMonthException, NegativePriceException {
 
 		juan = new Cliente("Juan Olmos", "15.263.998", "Asamble 2314");
 		maria = new Cliente("Maria Rosales", "32.654.789", "Mosconi 1445");
@@ -54,7 +54,7 @@ public class ClienteTest {
 	}
 
 	@Test
-	public void cobrarleAJuanMesDeAgosto() throws UnregisteredClientException {
+	public void cobrarleAJuanMesDeAgosto() throws UnregisteredClientException, InexistentMonthException {
 		juan.comprar(miLibreria, Month.AUGUST, elHobbit);
 		juan.comprar(miLibreria, Month.AUGUST, lapicera);
 		juan.comprar(miLibreria, Month.AUGUST, lapicera);
@@ -64,7 +64,7 @@ public class ClienteTest {
 	}
 
 	@Test
-	public void cobrarleAMariaMesDeEnero() throws UnregisteredClientException {
+	public void cobrarleAMariaMesDeEnero() throws UnregisteredClientException, InexistentMonthException {
 		maria.comprar(miLibreria, Month.JANUARY, SuscripcionesMaria);
 		maria.comprar(miLibreria, Month.JANUARY, pagina12);
 		Assert.assertEquals(44.0, maria.calcularGastoDelMes(Month.JANUARY), 0.1);
@@ -85,8 +85,8 @@ public class ClienteTest {
 		Assert.assertEquals("Asamble 2314", juan.getDireccion());
 	}
 	
-	@Test(expected = Error.class)
-	public void MesNoIngresado() throws UnregisteredClientException {
+	@Test(expected = InexistentMonthException.class)
+	public void MesNoIngresado() throws UnregisteredClientException, InexistentMonthException {
 		maria.comprar(miLibreria, Month.FEBRUARY, SuscripcionesMaria);
 	}
 

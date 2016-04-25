@@ -5,7 +5,7 @@ public class Producto {
 	private String nombre;
 	private double precio;
 
-	public Producto(String nombre, double precio) {
+	public Producto(String nombre, double precio) throws NegativePriceException {
 		this.nombre = nombre;
 		this.setPrecio(precio);
 	}
@@ -22,11 +22,10 @@ public class Producto {
 		this.nombre = nuevoNombre;
 	}
 
-	public void setPrecio(double precio) {
+	public void setPrecio(double precio) throws NegativePriceException {
 		
-		if (precio < 0) {
-			
-			throw new Error("El precio es incorrecto");
+		if (precio < 0) {			
+			throw new NegativePriceException();
 		}
 		
 		this.precio = precio;

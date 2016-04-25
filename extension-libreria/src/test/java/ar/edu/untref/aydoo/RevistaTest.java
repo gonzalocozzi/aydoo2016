@@ -9,7 +9,7 @@ public class RevistaTest {
 	private RevistayPeriodico miRevista;
 
 	@Before
-	public void inicializar() {
+	public void inicializar() throws NegativePriceException {
 		miRevista = new RevistayPeriodico("Ole", 25.0, 4);
 	}
 
@@ -23,8 +23,8 @@ public class RevistaTest {
 		Assert.assertEquals("Ole", miRevista.getNombre());
 	}
 
-	@Test(expected = Error.class)
-	public void elPrecioEsIncorrecto() {
+	@Test(expected = NegativePriceException.class)
+	public void elPrecioEsIncorrecto() throws NegativePriceException {
 		Producto unaRevista = new RevistayPeriodico("NBA", 23.0, 4);
 		unaRevista.setPrecio(-10.0);
 	}

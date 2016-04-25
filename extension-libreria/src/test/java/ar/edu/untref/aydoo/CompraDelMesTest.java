@@ -15,7 +15,7 @@ public class CompraDelMesTest {
 	private RevistayPeriodico elGrafico;
 
 	@Before
-	public void inicializar() {
+	public void inicializar() throws NegativePriceException {
 		agosto = new ComprasDelMes("Compras de agosto", Month.AUGUST);
 
 		elHobbit = new Libro("El Hobbit", 50.0);

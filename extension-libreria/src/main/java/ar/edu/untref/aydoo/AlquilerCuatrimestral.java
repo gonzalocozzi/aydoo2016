@@ -4,7 +4,7 @@ public class AlquilerCuatrimestral extends AlquilerMensual {
 	
 	private int cuatrimestresDelAlquiler;
 
-	public AlquilerCuatrimestral(String nombre, double precio, int precioMensual) {
+	public AlquilerCuatrimestral(String nombre, double precio, int precioMensual) throws NegativePriceException {
 		super(nombre, precio, precioMensual);
 		this.cuatrimestresDelAlquiler = 0;		
 	}
@@ -13,7 +13,7 @@ public class AlquilerCuatrimestral extends AlquilerMensual {
 		return this.cuatrimestresDelAlquiler;
 	}	
 
-	public void setCuatrimestresDelAlquiler(int numeroDeCuatrimestres) throws InvalidRentalException {
+	public void setCuatrimestresDelAlquiler(int numeroDeCuatrimestres) throws InvalidRentalException, NegativePriceException {
 
 		if(numeroDeCuatrimestres < 1 || numeroDeCuatrimestres > 2){			
 			throw new InvalidRentalException();

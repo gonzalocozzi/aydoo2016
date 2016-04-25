@@ -4,6 +4,8 @@ import java.time.Month;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import ar.edu.untref.aydoo.UnregisteredClientException;
+import ar.edu.untref.aydoo.RepeatedMonthException;
 
 public class Cliente {
 
@@ -20,34 +22,29 @@ public class Cliente {
 	}
 
 	public String getNombre() {
-
 		return this.nombre;
 	}
 
 	public String getDNI() {
-
 		return this.dni;
 	}
 
 	public String getDireccion() {
-
 		return this.direccion;
 	}
 
 	public void agregarCompraDelMes(ComprasDelMes compra) throws RepeatedMonthException {
 
 		if(mesIngresado(compra.getMes())){
-
 			throw new RepeatedMonthException();
 		}
 
 		this.compras.add(compra);
 	}
 
-	public void comprar(Libreria libreria, Month mes, Producto unProducto) throws UnregisteredClientException {
+	public void comprar(Libreria libreria, Month mes, Producto unProducto) throws UnregisteredClientException, InexistentMonthException {
 		
-		if(!libreria.esClienteRegistrado(this)){
-			
+		if(!libreria.esClienteRegistrado(this)){			
 			throw new UnregisteredClientException();
 		}
 
@@ -59,11 +56,10 @@ public class Cliente {
 			ComprasDelMes compraActual = iteradorMeses.next();
 
 			if(!mesIngresado(mes)){
-				throw new Error("Mes no ingresado");
+				throw new InexistentMonthException();
 			}
 
 			if (compraActual.getMes().equals(mes)) {
-
 				compraActual.agregarCompra(unProducto);
 				mesEncontrado = true;
 			}
@@ -80,12 +76,9 @@ public class Cliente {
 		Iterator<ComprasDelMes> iteradorMeses = compras.iterator();
 		boolean mesEncontrado = false;
 
-		while (iteradorMeses.hasNext() && !mesEncontrado) {
-
-			ComprasDelMes compraActual = iteradorMeses.next();
-
+		while (iteradorMeses.hasNext() && !mesEncontrado) {			ComprasDelMes compraActual = iteradorMeses.next();
+			
 			if (compraActual.getMes().equals(mes)) {
-
 				total += compraActual.calcularGastoDelMes();
 				mesEncontrado = true;
 			}
@@ -97,7 +90,6 @@ public class Cliente {
 	private boolean mesIngresado(Month mes){
 
 		boolean mesIngresado = false;
-
 		Iterator<ComprasDelMes> iteradorMeses = compras.iterator();
 
 		while (iteradorMeses.hasNext()) {
@@ -105,7 +97,6 @@ public class Cliente {
 			ComprasDelMes compraActual = iteradorMeses.next();
 
 			if(compraActual.getMes().equals(mes)){
-
 				mesIngresado = true;
 			}
 		}

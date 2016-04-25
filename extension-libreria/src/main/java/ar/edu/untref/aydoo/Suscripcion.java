@@ -8,30 +8,26 @@ public class Suscripcion extends Producto {
 
 	private List<RevistayPeriodico> productos;
 
-	public Suscripcion(String nombre, double precio) {
-		
+	public Suscripcion(String nombre, double precio) throws NegativePriceException {		
 		super(nombre, precio);
 		this.productos = new LinkedList<RevistayPeriodico>();
 	}
 
-	public void agregarRevistaOPeriodico(RevistayPeriodico unaRevistaOPeriodico) {
-		
+	public void agregarRevistaOPeriodico(RevistayPeriodico unaRevistaOPeriodico) throws NegativePriceException {		
 		this.productos.add(unaRevistaOPeriodico);
 		this.setPrecio();		
 	}	
 
-	public List<RevistayPeriodico> getProductos() {
-		
+	public List<RevistayPeriodico> getProductos() {		
 		return productos;
 	}
 	
-	private void setPrecio(){
+	private void setPrecio() throws NegativePriceException{		
 		
 		double total = 0;
 		Iterator<RevistayPeriodico> iteradorProductos = productos.iterator();
 		
-		while (iteradorProductos.hasNext()) {
-			
+		while (iteradorProductos.hasNext()) {			
 			RevistayPeriodico revistaOPeriodicoActual = iteradorProductos.next();
 			total += revistaOPeriodicoActual.getPrecio() * revistaOPeriodicoActual.getFrecuenciaMensual();
 		}

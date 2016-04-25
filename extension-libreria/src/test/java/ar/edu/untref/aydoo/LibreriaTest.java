@@ -34,7 +34,7 @@ public class LibreriaTest {
 	private ComprasDelMes comprasDeAbril;
 
 	@Before
-	public void inicializar() throws RepeatedMonthException, InvalidRentalException {
+	public void inicializar() throws RepeatedMonthException, InvalidRentalException, NegativePriceException {
 
 		miLibreria = new Libreria("La Libreria de Pepe");
 
@@ -89,7 +89,7 @@ public class LibreriaTest {
 	}
 
 	@Test
-	public void cobrarleAJuanMesDeAgosto() throws UnregisteredClientException {
+	public void cobrarleAJuanMesDeAgosto() throws UnregisteredClientException, InexistentMonthException {
 		
 		juan.comprar(miLibreria, Month.AUGUST, elHobbit);
 		juan.comprar(miLibreria, Month.AUGUST, lapicera);
@@ -100,7 +100,7 @@ public class LibreriaTest {
 	}
 
 	@Test
-	public void cobrarleAMariaMesDeEnero() throws UnregisteredClientException {
+	public void cobrarleAMariaMesDeEnero() throws UnregisteredClientException, InexistentMonthException {
 		
 		maria.comprar(miLibreria, Month.JANUARY, suscripcionesMaria);
 		maria.comprar(miLibreria, Month.JANUARY, pagina12);
@@ -115,7 +115,7 @@ public class LibreriaTest {
 	}
 
 	@Test
-	public void cobrarleAJuanMesDeEnero() throws UnregisteredClientException {
+	public void cobrarleAJuanMesDeEnero() throws UnregisteredClientException, InexistentMonthException {
 
 		juan.comprar(miLibreria, Month.JANUARY, elHobbit);
 		juan.comprar(miLibreria, Month.JANUARY, lapicera);
@@ -126,12 +126,12 @@ public class LibreriaTest {
 	}
 	
 	@Test(expected = UnregisteredClientException.class)
-	public void ElClienteNoExiste() throws UnregisteredClientException {
+	public void ElClienteNoExiste() throws UnregisteredClientException, InexistentMonthException {
 		mario.comprar(miLibreria, Month.JANUARY, pagina12);
 	}
 	
 	@Test
-	public void cobrarleAJuanMesDeAbrilConAlquilerDiarioPorUnaSemana() throws UnregisteredClientException{
+	public void cobrarleAJuanMesDeAbrilConAlquilerDiarioPorUnaSemana() throws UnregisteredClientException, InexistentMonthException{
 		
 		juan.comprar(miLibreria, Month.APRIL, alquilerSemanal);
 		
@@ -139,7 +139,7 @@ public class LibreriaTest {
 	}
 	
 	@Test
-	public void cobrarleAJuanMesDeAbrilConDosAlquileresDiariosPorDiferentesPeriodos() throws UnregisteredClientException{
+	public void cobrarleAJuanMesDeAbrilConDosAlquileresDiariosPorDiferentesPeriodos() throws UnregisteredClientException, InexistentMonthException{
 		
 		juan.comprar(miLibreria, Month.APRIL, alquilerSemanal);
 		juan.comprar(miLibreria, Month.APRIL, alquilerPorTresSemanas);
@@ -147,14 +147,14 @@ public class LibreriaTest {
 	}
 	
 	@Test
-	public void cobrarleAJuanMesDeAbrilConUnAlquilerPorElMesCompleto() throws UnregisteredClientException{
+	public void cobrarleAJuanMesDeAbrilConUnAlquilerPorElMesCompleto() throws UnregisteredClientException, InexistentMonthException{
 		
 		juan.comprar(miLibreria, Month.APRIL, alquilerPorUnMes);
 		Assert.assertEquals(200.0, miLibreria.calcularMontoACobrar(Month.APRIL, juan), 0.1);
 	}
 	
 	@Test
-	public void cobrarleAJuanMesDeAbrilConUnAlquilerPorElMesCompletoYOtroAlquilerPorUnMes() throws UnregisteredClientException{
+	public void cobrarleAJuanMesDeAbrilConUnAlquilerPorElMesCompletoYOtroAlquilerPorUnMes() throws UnregisteredClientException, InexistentMonthException{
 		
 		juan.comprar(miLibreria, Month.APRIL, alquilerPorUnMes);
 		juan.comprar(miLibreria, Month.APRIL, alquilerPorTresMeses);
@@ -162,7 +162,7 @@ public class LibreriaTest {
 	}
 	
 	@Test
-	public void cobrarleAJuanMesDeAbrilConUnAlquilerPorUnCuatrimestre() throws UnregisteredClientException{
+	public void cobrarleAJuanMesDeAbrilConUnAlquilerPorUnCuatrimestre() throws UnregisteredClientException, InexistentMonthException{
 		
 		juan.comprar(miLibreria, Month.APRIL, alquilerPorUnCuatrimestre);
 		
@@ -170,7 +170,7 @@ public class LibreriaTest {
 	}
 	
 	@Test
-	public void cobrarleAMariaMesDeEneroConVariosProductos() throws UnregisteredClientException{
+	public void cobrarleAMariaMesDeEneroConVariosProductos() throws UnregisteredClientException, InexistentMonthException{
 		
 		maria.comprar(miLibreria, Month.JANUARY, lapicera);
 		maria.comprar(miLibreria, Month.JANUARY, lapicera);

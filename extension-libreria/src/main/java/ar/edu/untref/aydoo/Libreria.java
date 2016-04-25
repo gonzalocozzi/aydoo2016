@@ -31,10 +31,10 @@ public class Libreria {
 		return this.clientes.contains(unCliente);
 	}
 
-	public double calcularMontoACobrar(Month mes, Cliente unCliente) {
+	public double calcularMontoACobrar(Month mes, Cliente unCliente) throws UnregisteredClientException {
 
 		if(!esClienteRegistrado(unCliente)){
-			throw new Error("El cliente no existe");
+			throw new UnregisteredClientException();
 		}
 
 		double total = 0;

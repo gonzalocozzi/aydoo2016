@@ -4,7 +4,7 @@ public class RevistayPeriodico extends Producto {
 
 	private int frecuenciaMensual;
 
-	public RevistayPeriodico(String nombre, double precio, int frecuencia) {
+	public RevistayPeriodico(String nombre, double precio, int frecuencia) throws NegativePriceException {
 		super(nombre, precio);
 		this.frecuenciaMensual = frecuencia;
 	}
@@ -24,7 +24,6 @@ public class RevistayPeriodico extends Producto {
 	public double getPrecioSuscripcionAnual() {
 		double aux = ((this.getPrecio() * this.frecuenciaMensual) * 12);
 		double descuento = ((aux * 20) / 100);
-
 		return aux - descuento;
 	}
 

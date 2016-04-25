@@ -14,7 +14,7 @@ public class AlquilerCuatrimestralTest {
 	ComprasDelMes comprasDeDiciembre;
 
 	@Before
-	public void inicializar() throws RepeatedMonthException {
+	public void inicializar() throws RepeatedMonthException, NegativePriceException {
 
 		miLibreria = new Libreria("La Libreria de Pepe");
 		maria = new Cliente("Maria Rosales", "32.654.789", "Mosconi 1445");
@@ -25,7 +25,7 @@ public class AlquilerCuatrimestralTest {
 	}
 	
 	@Test
-	public void alquilerCuatrimestralRegistraLibroAlquilado(){
+	public void alquilerCuatrimestralRegistraLibroAlquilado() throws NegativePriceException{
 		
 		AlquilerCuatrimestral alquilerDelHobbit = new AlquilerCuatrimestral("Alquiler de El Hobbit", 0, 0);
 		alquilerDelHobbit.setLibroAlquilado(elHobbit);
@@ -34,7 +34,7 @@ public class AlquilerCuatrimestralTest {
 	}
 	
 	@Test
-	public void alquilerMensualRegistraCuatrimestresDelAlquiler() throws InvalidRentalException{
+	public void alquilerMensualRegistraCuatrimestresDelAlquiler() throws InvalidRentalException, NegativePriceException{
 		
 		AlquilerCuatrimestral alquilerDelHobbit = new AlquilerCuatrimestral("Alquiler por dos meses de El Hobbit", 0, 0);
 		alquilerDelHobbit.setCuatrimestresDelAlquiler(2);
@@ -43,7 +43,7 @@ public class AlquilerCuatrimestralTest {
 	}
 	
 	@Test
-	public void clienteAlquilaUnEjemplarDelHobbitPorUnCuatrimestre() throws UnregisteredClientException, RepeatedMonthException, InvalidRentalException{		
+	public void clienteAlquilaUnEjemplarDelHobbitPorUnCuatrimestre() throws UnregisteredClientException, RepeatedMonthException, InvalidRentalException, NegativePriceException, InexistentMonthException{		
 
 		AlquilerCuatrimestral alquilerDelHobbit = new AlquilerCuatrimestral("Alquiler por un cuatrimestre de El Hobbit", 0, 200);
 		alquilerDelHobbit.setCuatrimestresDelAlquiler(1);
@@ -55,7 +55,7 @@ public class AlquilerCuatrimestralTest {
 	}
 	
 	@Test
-	public void clienteAlquilaUnEjemplarDelHobbitPorDosCuatrimestres() throws UnregisteredClientException, RepeatedMonthException, InvalidRentalException{		
+	public void clienteAlquilaUnEjemplarDelHobbitPorDosCuatrimestres() throws UnregisteredClientException, RepeatedMonthException, InvalidRentalException, NegativePriceException, InexistentMonthException{		
 
 		AlquilerCuatrimestral alquilerDelHobbit = new AlquilerCuatrimestral("Alquiler por un cuatrimestre de El Hobbit", 0, 200);
 		alquilerDelHobbit.setCuatrimestresDelAlquiler(2);
@@ -67,14 +67,14 @@ public class AlquilerCuatrimestralTest {
 	}
 	
 	@Test(expected=InvalidRentalException.class)
-	public void clienteNoPuedeAlquilarUnLibroPorMenosDeUnCuatrimestre() throws InvalidRentalException{
+	public void clienteNoPuedeAlquilarUnLibroPorMenosDeUnCuatrimestre() throws InvalidRentalException, NegativePriceException{
 
 		AlquilerCuatrimestral alquilerDelHobbit = new AlquilerCuatrimestral("Alquiler por un cuatrimestre de El Hobbit", 0, 0);
 		alquilerDelHobbit.setCuatrimestresDelAlquiler(0);
 	}
 	
 	@Test(expected=InvalidRentalException.class)
-	public void clienteNoPuedeAlquilarUnLibroPorMasDe2Cuatrimestre() throws InvalidRentalException{
+	public void clienteNoPuedeAlquilarUnLibroPorMasDe2Cuatrimestre() throws InvalidRentalException, NegativePriceException{
 
 		AlquilerCuatrimestral alquilerDelHobbit = new AlquilerCuatrimestral("Alquiler por un cuatrimestre de El Hobbit", 0, 0);
 		alquilerDelHobbit.setCuatrimestresDelAlquiler(3);

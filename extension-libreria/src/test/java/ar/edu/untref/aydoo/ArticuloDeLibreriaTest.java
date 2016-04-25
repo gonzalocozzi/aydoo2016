@@ -9,7 +9,7 @@ public class ArticuloDeLibreriaTest {
 	private ArticuloDeLibreria miArticuloDeLibreria;
 
 	@Before
-	public void inicializar() {
+	public void inicializar() throws NegativePriceException {
 		miArticuloDeLibreria = new ArticuloDeLibreria("Lapicera", 10.0);
 	}
 
@@ -23,8 +23,8 @@ public class ArticuloDeLibreriaTest {
 		Assert.assertEquals("Lapicera", miArticuloDeLibreria.getNombre());
 	}
 
-	@Test(expected = Error.class)
-	public void elPrecioEsIncorrecto() {
+	@Test(expected = NegativePriceException.class)
+	public void elPrecioEsIncorrecto() throws NegativePriceException {
 		Producto unArticuloDeLibreria = new ArticuloDeLibreria("Lapicera", 10.0);
 		unArticuloDeLibreria.setPrecio(-10.0);
 	}

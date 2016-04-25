@@ -6,7 +6,7 @@ public class Alquiler extends Producto {
 	private int precioPorPeriodo;
 	private int periodoDelAlquiler;
 
-	public Alquiler(String nombre, double precio) {
+	public Alquiler(String nombre, double precio) throws NegativePriceException {
 		super(nombre, precio);
 	}		
 	

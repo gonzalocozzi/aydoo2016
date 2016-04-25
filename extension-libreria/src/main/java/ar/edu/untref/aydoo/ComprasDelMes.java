@@ -11,25 +11,21 @@ public class ComprasDelMes {
 	private Month mes;
 	private List<Producto> compras;
 
-	public ComprasDelMes(String nombre, Month mes) {
-		
+	public ComprasDelMes(String nombre, Month mes) {		
 		this.nombre = nombre;
 		this.mes = mes;
 		this.compras = new LinkedList<Producto>();
 	}
 
-	public Month getMes() {
-		
+	public Month getMes() {		
 		return mes;
 	}
 
-	public String getNombre() {
-		
+	public String getNombre() {		
 		return this.nombre;
 	}
 
-	public void agregarCompra(Producto unProducto) {
-		
+	public void agregarCompra(Producto unProducto) {		
 		this.compras.add(unProducto);
 	}
 
@@ -38,11 +34,11 @@ public class ComprasDelMes {
 		double total = 0;
 		Iterator<Producto> iteradorDeProductos = compras.iterator();
 		
-		while (iteradorDeProductos.hasNext()) {
-			
+		while (iteradorDeProductos.hasNext()) {			
 			Producto productoActual = iteradorDeProductos.next();
 			total += productoActual.getPrecio();
 		}
+		
 		return total;
 	}
 
