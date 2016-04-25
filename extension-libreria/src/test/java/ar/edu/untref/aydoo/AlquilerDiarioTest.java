@@ -54,5 +54,4 @@ public class AlquilerDiarioTest {
 		AlquilerDiario alquilerDelHobbit = new AlquilerDiario("Alquiler por 2 dias de El Hobbit", 0);
 		alquilerDelHobbit.setDiasDelAlquiler(2);
 	}
-	
 }
