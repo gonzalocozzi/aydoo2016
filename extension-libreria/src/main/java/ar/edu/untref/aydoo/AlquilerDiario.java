@@ -11,11 +11,15 @@ public class AlquilerDiario extends Producto {
 	}
 
 	public Libro getLibroAlquilado() {
-		return libroAlquilado;
+		return this.libroAlquilado;
 	}
 
 	public void setLibroAlquilado(Libro libroAlquilado) {
 		this.libroAlquilado = libroAlquilado;
+	}
+	
+	public int getDiasDelAlquiler() {		
+		return this.diasDelAlquiler;
 	}
 
 	public void setDiasDelAlquiler(int dias) throws InvalidRentalException {
@@ -26,10 +30,6 @@ public class AlquilerDiario extends Producto {
 		
 		this.diasDelAlquiler = dias;
 		super.setPrecio(diasDelAlquiler * 10);
-	}
-
-	public int getDiasDelAlquiler() {		
-		return this.diasDelAlquiler;
 	}
 
 }
