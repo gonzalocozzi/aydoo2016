@@ -20,11 +20,11 @@ public class AlquilerCuatrimestral extends AlquilerMensual {
 
 	public int getCuatrimestresDelAlquiler() {
 		return this.cuatrimestresDelAlquiler;
-	}
+	}	
 
 	public void setCuatrimestresDelAlquiler(int numeroDeCuatrimestres) throws InvalidRentalException {
 
-		if(numeroDeCuatrimestres < 1 || numeroDeCuatrimestres > 2){			
+		if(numeroDeCuatrimestres < 1){			
 			throw new InvalidRentalException();
 		}
 		

@@ -65,5 +65,12 @@ public class AlquilerCuatrimestralTest {
 
 		Assert.assertEquals(1440.0, miLibreria.calcularMontoACobrar(Month.DECEMBER, maria), 0.1);
 	}
+	
+	@Test(expected=InvalidRentalException.class)
+	public void clienteNoPuedeAlquilarUnLibroPorMenosDeUnCuatrimestre() throws InvalidRentalException{
+
+		AlquilerCuatrimestral alquilerDelHobbit = new AlquilerCuatrimestral("Alquiler por un cuatrimestre de El Hobbit", 0, 0);
+		alquilerDelHobbit.setCuatrimestresDelAlquiler(0);
+	}
 
 }
