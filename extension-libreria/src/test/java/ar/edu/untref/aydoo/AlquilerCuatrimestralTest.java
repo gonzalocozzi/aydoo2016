@@ -36,10 +36,22 @@ public class AlquilerCuatrimestralTest {
 	@Test
 	public void alquilerMensualRegistraCuatrimestresDelAlquiler() throws InvalidRentalException{
 		
-		AlquilerCuatrimestral alquilerDelHobbit = new AlquilerCuatrimestral("Alquiler por un mes de El Hobbit", 0);
-		alquilerDelHobbit.setCuatrimestresDelAlquiler(2);
+		AlquilerCuatrimestral alquilerDelHobbit = new AlquilerCuatrimestral("Alquiler por dos meses de El Hobbit", 0);
+		alquilerDelHobbit.setMesesDelAlquiler(2);
 		
 		Assert.assertEquals(2, alquilerDelHobbit.getCuatrimestresDelAlquiler());
+	}
+	
+	@Test
+	public void clienteAlquilaUnEjemplarDelHobbitPorUnMes() throws UnregisteredClientException, RepeatedMonthException, InvalidRentalException{		
+
+		AlquilerCuatrimestral alquilerDelHobbit = new AlquilerCuatrimestral("Alquiler por un cuatrimestre de El Hobbit", 0);
+		alquilerDelHobbit.setMesesDelAlquiler(1);
+		alquilerDelHobbit.setLibroAlquilado(elHobbit);
+		
+		maria.comprar(miLibreria, Month.DECEMBER, alquilerDelHobbit);
+
+		Assert.assertEquals(720.0, miLibreria.calcularMontoACobrar(Month.DECEMBER, maria), 0.1);
 	}
 
 }
