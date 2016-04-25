@@ -26,6 +26,7 @@ public class LibreriaTest {
 	private AlquilerDiario alquilerSemanalJuan;
 	private AlquilerDiario alquilerPorTresSemanasJuan;
 	private AlquilerMensual alquilerPorUnMesJuan;
+	private AlquilerMensual alquilerPorTresMesesJuan;
 	
 	private ComprasDelMes comprasDeAgosto;
 	private ComprasDelMes comprasDeEnero;
@@ -60,6 +61,10 @@ public class LibreriaTest {
 		alquilerPorUnMesJuan = new AlquilerMensual("Alquiler por un mes de El Hobbit", 0, 200);
 		alquilerPorUnMesJuan.setLibroAlquilado(elHobbit);
 		alquilerPorUnMesJuan.setMesesDelAlquiler(1);		
+		
+		alquilerPorTresMesesJuan = new AlquilerMensual("Alquiler por 3 meses de El Hobbit", 0, 200);
+		alquilerPorTresMesesJuan.setLibroAlquilado(elHobbit);
+		alquilerPorTresMesesJuan.setMesesDelAlquiler(3);	
 		
 		alquilerPorTresSemanasJuan = new AlquilerDiario("Alquiler de juan por 21 dias", 0, 10);
 		alquilerPorTresSemanasJuan.setLibroAlquilado(elHobbit);
@@ -141,6 +146,14 @@ public class LibreriaTest {
 		
 		juan.comprar(miLibreria, Month.APRIL, alquilerPorUnMesJuan);
 		Assert.assertEquals(200.0, miLibreria.calcularMontoACobrar(Month.APRIL, juan), 0.1);
+	}
+	
+	@Test
+	public void cobrarleAJuanMesDeAbrilConUnAlquilerPorElMesCompletoYOtroAlquilerPorUnMes() throws UnregisteredClientException{
+		
+		juan.comprar(miLibreria, Month.APRIL, alquilerPorUnMesJuan);
+		juan.comprar(miLibreria, Month.APRIL, alquilerPorTresMesesJuan);
+		Assert.assertEquals(800.0, miLibreria.calcularMontoACobrar(Month.APRIL, juan), 0.1);
 	}
 
 }
