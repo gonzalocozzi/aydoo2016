@@ -11,7 +11,6 @@ public class ArticuloDeLibreriaTest {
 	@Before
 	public void inicializar() {
 		miArticuloDeLibreria = new ArticuloDeLibreria("Lapicera", 10.0);
-		miArticuloDeLibreria.aplicarIva();
 	}
 
 	@Test

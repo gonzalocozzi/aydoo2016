@@ -1,5 +1,6 @@
 package ar.edu.untref.aydoo;
 
+import java.time.Month;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -19,47 +20,89 @@ public class Cliente {
 	}
 
 	public String getNombre() {
+
 		return this.nombre;
 	}
 
 	public String getDNI() {
+
 		return this.dni;
 	}
 
 	public String getDireccion() {
+
 		return this.direccion;
 	}
 
-	public void agregarComprasDelMes(ComprasDelMes unMes) {
-		this.compras.add(unMes);
+	public void agregarComprasDelMes(ComprasDelMes compra) throws RepeatedMonthException {
+
+		if(mesIngresado(compra.getMes())){
+
+			throw new RepeatedMonthException();
+		}
+
+		this.compras.add(compra);
 	}
 
-	public void comprar(ComprasDelMes unMes, Producto unProducto) {
-		if(!compras.contains(unMes)){
-			throw new Error("Mes no ingresado");
-		}
+	public void comprar(Month mes, Producto unProducto) {				
+
 		Iterator<ComprasDelMes> iteradorMeses = compras.iterator();
+
 		while (iteradorMeses.hasNext()) {
-			ComprasDelMes mesActual = iteradorMeses.next();
-			if (mesActual.getNombre().equals(unMes.getNombre())) {
-				mesActual.AgregarCompra(unProducto);
+
+			ComprasDelMes compraActual = iteradorMeses.next();
+
+			if(!mesIngresado(mes)){
+				throw new Error("Mes no ingresado");
+			}
+
+			if (compraActual.getMes().equals(mes)) {
+
+				compraActual.AgregarCompra(unProducto);
 			}
 		}
 	}
 
-	public double calcularGastoDelMes(ComprasDelMes unMes) {
-		if(!compras.contains(unMes)){
+	public double calcularGastoDelMes(Month mes) {
+
+		if(!mesIngresado(mes)){
 			throw new Error("Mes no ingresado");
 		}
+
 		double total = 0;
+
 		Iterator<ComprasDelMes> iteradorMeses = compras.iterator();
+
 		while (iteradorMeses.hasNext()) {
-			ComprasDelMes mesActual = iteradorMeses.next();
-			if (mesActual.getNombre().equals(unMes.getNombre())) {
-				total += mesActual.calcularGastoDelMes();
+
+			ComprasDelMes compraActual = iteradorMeses.next();
+
+			if (compraActual.getMes().equals(mes)) {
+
+				total += compraActual.calcularGastoDelMes();
 			}
 		}
+
 		return total;
+	}
+
+	private boolean mesIngresado(Month mes){
+
+		boolean mesIngresado = false;
+
+		Iterator<ComprasDelMes> iteradorMeses = compras.iterator();
+
+		while (iteradorMeses.hasNext()) {
+
+			ComprasDelMes compraActual = iteradorMeses.next();
+
+			if(compraActual.getMes().equals(mes)){
+
+				mesIngresado = true;
+			}
+		}
+
+		return mesIngresado;
 	}
 
 }

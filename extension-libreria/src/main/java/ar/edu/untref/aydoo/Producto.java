@@ -7,7 +7,7 @@ public class Producto {
 
 	public Producto(String nombre, double precio) {
 		this.nombre = nombre;
-		this.precio = this.validarPrecio(precio);
+		this.setPrecio(precio);
 	}
 
 	public String getNombre() {
@@ -22,18 +22,13 @@ public class Producto {
 		this.nombre = nuevoNombre;
 	}
 
-	public void setPrecio(double nuevoPrecio) {
-		this.precio = this.validarPrecio(nuevoPrecio);
-	}
-
-	public void aplicarIva() {
-		this.precio = this.precio * 1.21;
-	}
-
-	private double validarPrecio(double precio) {
+	public void setPrecio(double precio) {
+		
 		if (precio < 0) {
+			
 			throw new Error("El precio es incorrecto");
 		}
-		return precio;
+		
+		this.precio = precio;
 	}
 }

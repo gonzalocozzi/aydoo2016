@@ -1,5 +1,7 @@
 package ar.edu.untref.aydoo;
 
+import java.time.Month;
+
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -14,11 +16,10 @@ public class CompraDelMesTest {
 
 	@Before
 	public void inicializar() {
-		agosto = new ComprasDelMes("Agosto");
+		agosto = new ComprasDelMes("Compras de agosto", Month.AUGUST);
 
 		elHobbit = new Libro("El Hobbit", 50.0);
 		lapicera = new ArticuloDeLibreria("Lapicera", 5.0);
-		lapicera.aplicarIva();
 		elGrafico = new RevistayPeriodico("El Grafico", 30.0, 4);
 
 		agosto.AgregarCompra(elHobbit);
@@ -28,7 +29,7 @@ public class CompraDelMesTest {
 
 	@Test
 	public void NombreDeCompraDelMesEsCorrecto() {
-		Assert.assertEquals("Agosto", agosto.getNombre());
+		Assert.assertEquals("Compras de agosto", agosto.getNombre());
 	}
 
 	@Test

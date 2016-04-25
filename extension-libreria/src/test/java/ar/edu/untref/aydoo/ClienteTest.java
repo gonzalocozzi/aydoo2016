@@ -1,5 +1,7 @@
 package ar.edu.untref.aydoo;
 
+import java.time.Month;
+
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -18,17 +20,17 @@ public class ClienteTest {
 
 	private ComprasDelMes agosto;
 	private ComprasDelMes enero;
+	@SuppressWarnings("unused")
 	private ComprasDelMes febrero;
 
 	@Before
-	public void inicializar() {
+	public void inicializar() throws RepeatedMonthException {
 
 		juan = new Cliente("Juan Olmos", "15.263.998", "Asamble 2314");
 		maria = new Cliente("Maria Rosales", "32.654.789", "Mosconi 1445");
 
 		elHobbit = new Libro("El Hobbit", 50.0);
-		lapicera = new ArticuloDeLibreria("Lapicera", 5.0);
-		lapicera.aplicarIva();
+		lapicera = new ArticuloDeLibreria("Lapicera", 5.0);;
 		elGrafico = new RevistayPeriodico("El grafico", 30.0, 4);
 		barcelona = new RevistayPeriodico("Barcelona", 20.0, 2);
 		pagina12 = new RevistayPeriodico("Pagina12", 12.0, 30);
@@ -36,33 +38,30 @@ public class ClienteTest {
 
 		SuscripcionesMaria = new Suscripcion("Suscripcion anual revista Barcelona", 0);
 		SuscripcionesMaria.AgregarRevistaOPeriodico(barcelona);
-		SuscripcionesMaria.setPrecio(SuscripcionesMaria.getMontoACobrarSuscripciones());
 
-		agosto = new ComprasDelMes("Agosto");
-		enero = new ComprasDelMes("Enero");
-		febrero = new ComprasDelMes("Febrero");
+		agosto = new ComprasDelMes("Compras del mes de agosto", Month.AUGUST);
+		enero = new ComprasDelMes("Enero", Month.JANUARY);
+		febrero = new ComprasDelMes("Febrero", Month.FEBRUARY);
 
 		juan.agregarComprasDelMes(agosto);
 		maria.agregarComprasDelMes(enero);
-
 	}
 
 	@Test
 	public void cobrarleAJuanMesDeAgosto() {
-		juan.comprar(agosto, elHobbit);
-		juan.comprar(agosto, lapicera);
-		juan.comprar(agosto, lapicera);
-		juan.comprar(agosto, elGrafico);
+		juan.comprar(Month.AUGUST, elHobbit);
+		juan.comprar(Month.AUGUST, lapicera);
+		juan.comprar(Month.AUGUST, lapicera);
+		juan.comprar(Month.AUGUST, elGrafico);
 
-		Assert.assertEquals(92.1, juan.calcularGastoDelMes(agosto), 0.1);
+		Assert.assertEquals(92.1, juan.calcularGastoDelMes(Month.AUGUST), 0.1);
 	}
 
 	@Test
 	public void cobrarleAMariaMesDeEnero() {
-		maria.comprar(enero, SuscripcionesMaria);
-		maria.comprar(enero, pagina12);
-
-		Assert.assertEquals(44.0, maria.calcularGastoDelMes(enero), 0.1);
+		maria.comprar(Month.JANUARY, SuscripcionesMaria);
+		maria.comprar(Month.JANUARY, pagina12);
+		Assert.assertEquals(44.0, maria.calcularGastoDelMes(Month.JANUARY), 0.1);
 	}
 
 	@Test
@@ -82,7 +81,7 @@ public class ClienteTest {
 	
 	@Test(expected = Error.class)
 	public void MesNoIngresado() {
-		maria.comprar(febrero, SuscripcionesMaria);
+		maria.comprar(Month.FEBRUARY, SuscripcionesMaria);
 	}
 
 }
