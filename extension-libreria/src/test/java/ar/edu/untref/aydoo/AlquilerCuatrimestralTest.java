@@ -72,5 +72,12 @@ public class AlquilerCuatrimestralTest {
 		AlquilerCuatrimestral alquilerDelHobbit = new AlquilerCuatrimestral("Alquiler por un cuatrimestre de El Hobbit", 0, 0);
 		alquilerDelHobbit.setCuatrimestresDelAlquiler(0);
 	}
+	
+	@Test(expected=InvalidRentalException.class)
+	public void clienteNoPuedeAlquilarUnLibroPorMasDe2Cuatrimestre() throws InvalidRentalException{
+
+		AlquilerCuatrimestral alquilerDelHobbit = new AlquilerCuatrimestral("Alquiler por un cuatrimestre de El Hobbit", 0, 0);
+		alquilerDelHobbit.setCuatrimestresDelAlquiler(3);
+	}
 
 }
