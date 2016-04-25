@@ -72,5 +72,12 @@ public class AlquilerMensualTest {
 		AlquilerMensual alquilerDelHobbit = new AlquilerMensual("Alquiler de El Hobbit", 0);
 		alquilerDelHobbit.setMesesDelAlquiler(0);
 	}
+	
+	@Test(expected=InvalidRentalException.class)
+	public void clienteNoPuedeAlquilarUnLibroPorMasDe3Meses() throws InvalidRentalException{
+
+		AlquilerMensual alquilerDelHobbit = new AlquilerMensual("Alquiler de El Hobbit", 0);
+		alquilerDelHobbit.setMesesDelAlquiler(4);
+	}
 
 }

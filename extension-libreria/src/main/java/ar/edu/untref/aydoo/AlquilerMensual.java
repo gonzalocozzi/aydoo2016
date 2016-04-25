@@ -19,7 +19,7 @@ public class AlquilerMensual extends Producto {
 
 	public void setMesesDelAlquiler(int meses) throws InvalidRentalException {
 		
-		if(meses < 1){			
+		if(meses < 1 || meses > 3){			
 			throw new InvalidRentalException();
 		}
 		
