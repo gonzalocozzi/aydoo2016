@@ -22,13 +22,13 @@ public class AlquilerDiario extends Producto {
 		return this.diasDelAlquiler;
 	}
 
-	public void setDiasDelAlquiler(int dias) throws InvalidRentalException {
+	public void setDiasDelAlquiler(int numeroDeDias) throws InvalidRentalException {
 		
-		if(dias < 3 || dias > 25){			
+		if(numeroDeDias < 3 || numeroDeDias > 25){			
 			throw new InvalidRentalException();
 		}
 		
-		this.diasDelAlquiler = dias;
+		this.diasDelAlquiler = numeroDeDias;
 		super.setPrecio(diasDelAlquiler * 10);
 	}
 

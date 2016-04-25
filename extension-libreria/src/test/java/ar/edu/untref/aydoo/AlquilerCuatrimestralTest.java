@@ -33,5 +33,13 @@ public class AlquilerCuatrimestralTest {
 		Assert.assertEquals("El Hobbit", alquilerDelHobbit.getLibroAlquilado().getNombre());
 	}
 	
+	@Test
+	public void alquilerMensualRegistraCuatrimestresDelAlquiler() throws InvalidRentalException{
+		
+		AlquilerCuatrimestral alquilerDelHobbit = new AlquilerCuatrimestral("Alquiler por un mes de El Hobbit", 0);
+		alquilerDelHobbit.setCuatrimestresDelAlquiler(2);
+		
+		Assert.assertEquals(2, alquilerDelHobbit.getCuatrimestresDelAlquiler());
+	}
 
 }
