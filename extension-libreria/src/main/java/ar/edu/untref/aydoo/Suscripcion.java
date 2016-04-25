@@ -17,22 +17,24 @@ public class Suscripcion extends Producto {
 		this.productos.add(unaRevistaOPeriodico);
 		this.setPrecio();		
 	}	
-
-	public List<RevistayPeriodico> getProductos() {		
-		return productos;
-	}
 	
-	private void setPrecio() throws NegativePriceException{		
-		
+	private void setPrecio() throws NegativePriceException{				
 		double total = 0;
 		Iterator<RevistayPeriodico> iteradorProductos = productos.iterator();
 		
 		while (iteradorProductos.hasNext()) {			
 			RevistayPeriodico revistaOPeriodicoActual = iteradorProductos.next();
 			total += revistaOPeriodicoActual.getPrecio() * revistaOPeriodicoActual.getFrecuenciaMensual();
-		}
-		
+		}		
 		super.setPrecio(total);
 	}
 
+	public List<RevistayPeriodico> getProductos() {		
+		return productos;
+	}
+
+	public boolean contiene(RevistayPeriodico revista) {
+		
+		return this.productos.contains(revista);
+	}
 }
