@@ -3,6 +3,7 @@ package ar.edu.untref.aydoo;
 public class AlquilerMensual extends Producto {
 	
 	private Libro libroAlquilado;
+	private int mesesDelAlquiler;
 
 	public AlquilerMensual(String nombre, double precio) {		
 		super(nombre, precio);
@@ -14,6 +15,14 @@ public class AlquilerMensual extends Producto {
 
 	public void setLibroAlquilado(Libro libroAlquilado) {
 		this.libroAlquilado = libroAlquilado;
+	}
+
+	public void setMesesDelAlquiler(int meses) {
+		this.mesesDelAlquiler = meses;
+	}
+
+	public int getMesesDelAlquiler() {
+		return this.mesesDelAlquiler;
 	}
 
 

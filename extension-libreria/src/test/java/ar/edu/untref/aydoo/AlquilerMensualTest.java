@@ -32,5 +32,14 @@ public class AlquilerMensualTest {
 		
 		Assert.assertEquals("El Hobbit", alquilerDelHobbit.getLibroAlquilado().getNombre());
 	}
+	
+	@Test
+	public void alquilerMensualRegistraMesesDelAlquiler(){
+		
+		AlquilerMensual alquilerDelHobbit = new AlquilerMensual("Alquiler por 7 dias de El Hobbit", 0);
+		alquilerDelHobbit.setMesesDelAlquiler(1);
+		
+		Assert.assertEquals(1, alquilerDelHobbit.getMesesDelAlquiler());
+	}
 
 }
