@@ -48,4 +48,11 @@ public class AlquilerDiarioTest {
 		Assert.assertEquals(250.0, miLibreria.calcularMontoACobrar(Month.OCTOBER, juan), 0.1);
 	}
 
+	@Test(expected=InvalidRentalException.class)
+	public void clienteNoPuedeAlquilarUnLibroPorMenosDe3Dias() throws InvalidRentalException{
+
+		AlquilerDiario alquilerDelHobbit = new AlquilerDiario("Alquiler por 2 dias de El Hobbit", 0);
+		alquilerDelHobbit.setDiasDelAlquiler(2);
+	}
+	
 }
