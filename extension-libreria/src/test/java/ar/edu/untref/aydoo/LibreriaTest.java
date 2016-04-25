@@ -27,6 +27,7 @@ public class LibreriaTest {
 	private AlquilerDiario alquilerPorTresSemanasJuan;
 	private AlquilerMensual alquilerPorUnMesJuan;
 	private AlquilerMensual alquilerPorTresMesesJuan;
+	private AlquilerCuatrimestral alquilerPorUnCuatrimestreJuan;
 	
 	private ComprasDelMes comprasDeAgosto;
 	private ComprasDelMes comprasDeEnero;
@@ -57,6 +58,10 @@ public class LibreriaTest {
 		alquilerSemanalJuan = new AlquilerDiario("Alquiler de juan por 7 dias", 0, 10);
 		alquilerSemanalJuan.setLibroAlquilado(elHobbit);
 		alquilerSemanalJuan.setDiasDelAlquiler(7);
+
+		alquilerPorTresSemanasJuan = new AlquilerDiario("Alquiler de juan por 21 dias", 0, 10);
+		alquilerPorTresSemanasJuan.setLibroAlquilado(elHobbit);
+		alquilerPorTresSemanasJuan.setDiasDelAlquiler(21);
 		
 		alquilerPorUnMesJuan = new AlquilerMensual("Alquiler por un mes de El Hobbit", 0, 200);
 		alquilerPorUnMesJuan.setLibroAlquilado(elHobbit);
@@ -66,10 +71,10 @@ public class LibreriaTest {
 		alquilerPorTresMesesJuan.setLibroAlquilado(elHobbit);
 		alquilerPorTresMesesJuan.setMesesDelAlquiler(3);	
 		
-		alquilerPorTresSemanasJuan = new AlquilerDiario("Alquiler de juan por 21 dias", 0, 10);
-		alquilerPorTresSemanasJuan.setLibroAlquilado(elHobbit);
-		alquilerPorTresSemanasJuan.setDiasDelAlquiler(21);
-
+		alquilerPorUnCuatrimestreJuan = new AlquilerCuatrimestral("Alquiler por un cuatrimestre de El Hobbit", 0, 200);
+		alquilerPorUnCuatrimestreJuan.setLibroAlquilado(elHobbit);
+		alquilerPorUnCuatrimestreJuan.setCuatrimestresDelAlquiler(1);
+		
 		comprasDeAgosto = new ComprasDelMes("Compras de agosto", Month.AUGUST);
 		comprasDeEnero = new ComprasDelMes("Compras de enero", Month.JANUARY);
 		comprasDeAbril = new ComprasDelMes("Compras de abril", Month.APRIL);
@@ -155,5 +160,14 @@ public class LibreriaTest {
 		juan.comprar(miLibreria, Month.APRIL, alquilerPorTresMesesJuan);
 		Assert.assertEquals(800.0, miLibreria.calcularMontoACobrar(Month.APRIL, juan), 0.1);
 	}
+	
+	@Test
+	public void cobrarleAJuanMesDeAbrilConUnAlquilerPorUnCuatrimestre() throws UnregisteredClientException{
+		
+		juan.comprar(miLibreria, Month.APRIL, alquilerPorUnCuatrimestreJuan);
+		
+		Assert.assertEquals(720.0, miLibreria.calcularMontoACobrar(Month.APRIL, juan), 0.1);
+	}
+	
 
 }
