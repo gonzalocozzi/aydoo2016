@@ -23,6 +23,15 @@ public class AlquilerDiarioTest {
 		juan.agregarCompraDelMes(comprasDeOctubre);
 		miLibreria.registrarCliente(juan);
 	}
+	
+	@Test
+	public void alquilerDiarioRegistraLibroAlquilado(){
+		
+		AlquilerDiario alquilerDelHobbit = new AlquilerDiario("Alquiler por 3 dias de El Hobbit", 0);
+		alquilerDelHobbit.setLibroAlquilado(elHobbit);
+		
+		Assert.assertEquals("El Hobbit", alquilerDelHobbit.getLibroAlquilado().getNombre());
+	}
 
 	@Test
 	public void clienteAlquilaUnEjemplarDelHobbitPor3Dias() throws UnregisteredClientException, RepeatedMonthException, InvalidRentalException{		
