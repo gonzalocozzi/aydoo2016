@@ -34,7 +34,7 @@ public class AlquilerMensualTest {
 	}
 	
 	@Test
-	public void alquilerMensualRegistraMesesDelAlquiler(){
+	public void alquilerMensualRegistraMesesDelAlquiler() throws InvalidRentalException{
 		
 		AlquilerMensual alquilerDelHobbit = new AlquilerMensual("Alquiler por un mes de El Hobbit", 0);
 		alquilerDelHobbit.setMesesDelAlquiler(1);
@@ -64,6 +64,13 @@ public class AlquilerMensualTest {
 		maria.comprar(miLibreria, Month.DECEMBER, alquilerDelHobbit);
 
 		Assert.assertEquals(600.0, miLibreria.calcularMontoACobrar(Month.DECEMBER, maria), 0.1);
+	}
+	
+	@Test(expected=InvalidRentalException.class)
+	public void clienteNoPuedeAlquilarUnLibroPorMenosDeUnMes() throws InvalidRentalException{
+
+		AlquilerMensual alquilerDelHobbit = new AlquilerMensual("Alquiler de El Hobbit", 0);
+		alquilerDelHobbit.setMesesDelAlquiler(0);
 	}
 
 }

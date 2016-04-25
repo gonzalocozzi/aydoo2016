@@ -17,7 +17,12 @@ public class AlquilerMensual extends Producto {
 		this.libroAlquilado = libroAlquilado;
 	}
 
-	public void setMesesDelAlquiler(int meses) {
+	public void setMesesDelAlquiler(int meses) throws InvalidRentalException {
+		
+		if(meses < 1){			
+			throw new InvalidRentalException();
+		}
+		
 		this.mesesDelAlquiler = meses;
 		super.setPrecio(200 * meses);
 	}
