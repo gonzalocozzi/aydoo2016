@@ -38,5 +38,15 @@ public class SuscripcionAnualTest {
 		
 		Assert.assertEquals(104.0, precioDeLaSuscripcion, 0.0);
 	}
+	
+	@Test
+	public void suscripcionInformaSuPrecioTotalConteniendoUnProducto() throws NegativePriceException{
+		
+		suscripcionDePrueba.agregarRevistaOPeriodico(viva);
+		
+		double precioTotalDeLaSuscripcion = suscripcionDePrueba.getPrecioTotal();
+		
+		Assert.assertEquals(768.0, precioTotalDeLaSuscripcion, 0.0);
+	}
 
 }
