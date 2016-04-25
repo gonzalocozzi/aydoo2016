@@ -19,10 +19,13 @@ public class LibreriaTest {
 	private RevistayPeriodico elGrafico;
 	private RevistayPeriodico barcelona;
 	private RevistayPeriodico pagina12;
+	
 	private Suscripcion suscripcionesMaria;
 	private Suscripcion suscripcionesJuan;
-	private AlquilerDiario alquilerDiarioJuan;
-
+	
+	private AlquilerDiario alquilerSemanalJuan;
+	private AlquilerDiario alquilerPorTresSemanasJuan;
+	
 	private ComprasDelMes comprasDeAgosto;
 	private ComprasDelMes comprasDeEnero;
 	private ComprasDelMes comprasDeAbril;
@@ -49,9 +52,13 @@ public class LibreriaTest {
 		suscripcionesJuan.agregarRevistaOPeriodico(elGrafico);
 		suscripcionesJuan.agregarRevistaOPeriodico(barcelona);		
 		
-		alquilerDiarioJuan = new AlquilerDiario("Alquiler de juan por 7 dias", 0, 10);
-		alquilerDiarioJuan.setLibroAlquilado(elHobbit);
-		alquilerDiarioJuan.setDiasDelAlquiler(7);
+		alquilerSemanalJuan = new AlquilerDiario("Alquiler de juan por 7 dias", 0, 10);
+		alquilerSemanalJuan.setLibroAlquilado(elHobbit);
+		alquilerSemanalJuan.setDiasDelAlquiler(7);
+		
+		alquilerPorTresSemanasJuan = new AlquilerDiario("Alquiler de juan por 21 dias", 0, 10);
+		alquilerPorTresSemanasJuan.setLibroAlquilado(elHobbit);
+		alquilerPorTresSemanasJuan.setDiasDelAlquiler(21);
 
 		comprasDeAgosto = new ComprasDelMes("Compras de agosto", Month.AUGUST);
 		comprasDeEnero = new ComprasDelMes("Compras de enero", Month.JANUARY);
@@ -111,9 +118,17 @@ public class LibreriaTest {
 	@Test
 	public void cobrarleAJuanMesDeAbrilConAlquilerDiarioPorUnaSemana() throws UnregisteredClientException{
 		
-		juan.comprar(miLibreria, Month.APRIL, alquilerDiarioJuan);
+		juan.comprar(miLibreria, Month.APRIL, alquilerSemanalJuan);
 		
 		Assert.assertEquals(70.0, miLibreria.calcularMontoACobrar(Month.APRIL, juan), 0.1);
+	}
+	
+	@Test
+	public void cobrarleAJuanMesDeAbrilConDosAlquileresDiariosPorDiferentesPeriodos() throws UnregisteredClientException{
+		
+		juan.comprar(miLibreria, Month.APRIL, alquilerSemanalJuan);
+		juan.comprar(miLibreria, Month.APRIL, alquilerPorTresSemanasJuan);
+		Assert.assertEquals(280.0, miLibreria.calcularMontoACobrar(Month.APRIL, juan), 0.1);
 	}
 
 }
