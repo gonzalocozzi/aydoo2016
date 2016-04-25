@@ -36,4 +36,16 @@ public class AlquilerDiarioTest {
 		Assert.assertEquals(30.0, miLibreria.calcularMontoACobrar(Month.OCTOBER, juan), 0.1);
 	}
 
+	@Test
+	public void clienteAlquilaUnEjemplarDelHobbitPor25Dias() throws UnregisteredClientException, RepeatedMonthException, InvalidRentalException{		
+
+		AlquilerDiario alquilerDelHobbit = new AlquilerDiario("Alquiler por 25 dias de El Hobbit", 0);
+		alquilerDelHobbit.setDiasDelAlquiler(25);
+		alquilerDelHobbit.setLibroAlquilado(elHobbit);
+
+		juan.comprar(miLibreria, Month.OCTOBER, alquilerDelHobbit);
+
+		Assert.assertEquals(250.0, miLibreria.calcularMontoACobrar(Month.OCTOBER, juan), 0.1);
+	}
+
 }
