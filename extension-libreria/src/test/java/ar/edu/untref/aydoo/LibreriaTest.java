@@ -21,12 +21,14 @@ public class LibreriaTest {
 	private RevistayPeriodico pagina12;
 	private Suscripcion suscripcionesMaria;
 	private Suscripcion suscripcionesJuan;
+	private AlquilerDiario alquilerDiarioJuan;
 
 	private ComprasDelMes comprasDeAgosto;
 	private ComprasDelMes comprasDeEnero;
+	private ComprasDelMes comprasDeAbril;
 
 	@Before
-	public void inicializar() throws RepeatedMonthException {
+	public void inicializar() throws RepeatedMonthException, InvalidRentalException {
 
 		miLibreria = new Libreria("La Libreria de Pepe");
 
@@ -46,12 +48,18 @@ public class LibreriaTest {
 		suscripcionesJuan = new SuscripcionAnual("Suscripciones Juan Olmos", 0);
 		suscripcionesJuan.agregarRevistaOPeriodico(elGrafico);
 		suscripcionesJuan.agregarRevistaOPeriodico(barcelona);		
+		
+		alquilerDiarioJuan = new AlquilerDiario("Alquiler de juan por 7 dias", 0, 10);
+		alquilerDiarioJuan.setLibroAlquilado(elHobbit);
+		alquilerDiarioJuan.setDiasDelAlquiler(7);
 
 		comprasDeAgosto = new ComprasDelMes("Compras de agosto", Month.AUGUST);
 		comprasDeEnero = new ComprasDelMes("Compras de enero", Month.JANUARY);
+		comprasDeAbril = new ComprasDelMes("Compras de abril", Month.APRIL);
 		
 		juan.agregarCompraDelMes(comprasDeAgosto);		
 		juan.agregarCompraDelMes(comprasDeEnero);
+		juan.agregarCompraDelMes(comprasDeAbril);
 		maria.agregarCompraDelMes(comprasDeEnero);		
 
 		miLibreria.registrarCliente(juan);
@@ -98,6 +106,14 @@ public class LibreriaTest {
 	@Test(expected = UnregisteredClientException.class)
 	public void ElClienteNoExiste() throws UnregisteredClientException {
 		mario.comprar(miLibreria, Month.JANUARY, pagina12);
+	}
+	
+	@Test
+	public void cobrarleAJuanMesDeAbrilConAlquilerDiarioPorUnaSemana() throws UnregisteredClientException{
+		
+		juan.comprar(miLibreria, Month.APRIL, alquilerDiarioJuan);
+		
+		Assert.assertEquals(70.0, miLibreria.calcularMontoACobrar(Month.APRIL, juan), 0.1);
 	}
 
 }
