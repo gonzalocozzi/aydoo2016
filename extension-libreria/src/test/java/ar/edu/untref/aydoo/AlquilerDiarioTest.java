@@ -1,0 +1,39 @@
+package ar.edu.untref.aydoo;
+
+import java.time.Month;
+
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
+
+public class AlquilerDiarioTest {
+
+	private Libreria miLibreria;
+	private Cliente juan;
+	private Libro elHobbit;
+	ComprasDelMes comprasDeOctubre;
+
+	@Before
+	public void inicializar() throws RepeatedMonthException {
+
+		miLibreria = new Libreria("La Libreria de Pepe");
+		juan = new Cliente("Juan Olmos", "15.263.998", "Asamblea 2314");
+		elHobbit = new Libro("El Hobbit", 50.0);
+		comprasDeOctubre = new ComprasDelMes("Compras del mes de octubre", Month.OCTOBER);	
+		juan.agregarCompraDelMes(comprasDeOctubre);
+		miLibreria.registrarCliente(juan);
+	}
+
+	@Test
+	public void clienteAlquilaUnEjemplarDelHobbitPor3Dias() throws UnregisteredClientException, RepeatedMonthException, InvalidRentalException{		
+
+		AlquilerDiario alquilerDelHobbit = new AlquilerDiario("Alquiler por 3 dias de El Hobbit", 0);
+		alquilerDelHobbit.setDiasDelAlquiler(3);
+		alquilerDelHobbit.setLibroAlquilado(elHobbit);
+
+		juan.comprar(miLibreria, Month.OCTOBER, alquilerDelHobbit);
+
+		Assert.assertEquals(30.0, miLibreria.calcularMontoACobrar(Month.OCTOBER, juan), 0.1);
+	}
+
+}

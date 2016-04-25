@@ -39,7 +39,7 @@ public class ClienteTest {
 		pagina12.setFrecuenciaMensual(30);
 
 		SuscripcionesMaria = new SuscripcionAnual("Suscripcion anual revista Barcelona", 0);
-		SuscripcionesMaria.AgregarRevistaOPeriodico(barcelona);
+		SuscripcionesMaria.agregarRevistaOPeriodico(barcelona);
 
 		agosto = new ComprasDelMes("Compras del mes de agosto", Month.AUGUST);
 		enero = new ComprasDelMes("Enero", Month.JANUARY);

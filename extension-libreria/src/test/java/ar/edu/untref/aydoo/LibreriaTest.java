@@ -41,11 +41,11 @@ public class LibreriaTest {
 		pagina12 = new RevistayPeriodico("Pagina12", 12.0, 30);
 
 		suscripcionesMaria = new SuscripcionAnual("Suscripciones Maria Rosales", 0);
-		suscripcionesMaria.AgregarRevistaOPeriodico(barcelona);	
+		suscripcionesMaria.agregarRevistaOPeriodico(barcelona);	
 
 		suscripcionesJuan = new SuscripcionAnual("Suscripciones Juan Olmos", 0);
-		suscripcionesJuan.AgregarRevistaOPeriodico(elGrafico);
-		suscripcionesJuan.AgregarRevistaOPeriodico(barcelona);		
+		suscripcionesJuan.agregarRevistaOPeriodico(elGrafico);
+		suscripcionesJuan.agregarRevistaOPeriodico(barcelona);		
 
 		comprasDeAgosto = new ComprasDelMes("Compras de agosto", Month.AUGUST);
 		comprasDeEnero = new ComprasDelMes("Compras de enero", Month.JANUARY);

@@ -9,7 +9,7 @@ public class SuscripcionAnual extends Suscripcion {
 		super(nombre, precio);
 	}
 	
-	public void AgregarRevistaOPeriodico(RevistayPeriodico unaRevistaOPeriodico) {
+	public void agregarRevistaOPeriodico(RevistayPeriodico unaRevistaOPeriodico) {
 		
 		super.getProductos().add(unaRevistaOPeriodico);
 		this.setPrecio();		

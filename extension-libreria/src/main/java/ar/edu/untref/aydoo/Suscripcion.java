@@ -14,7 +14,7 @@ public class Suscripcion extends Producto {
 		this.productos = new LinkedList<RevistayPeriodico>();
 	}
 
-	public void AgregarRevistaOPeriodico(RevistayPeriodico unaRevistaOPeriodico) {
+	public void agregarRevistaOPeriodico(RevistayPeriodico unaRevistaOPeriodico) {
 		
 		this.productos.add(unaRevistaOPeriodico);
 		this.setPrecio();		
