@@ -30,7 +30,7 @@ public class AlquilerDiarioTest {
 		AlquilerDiario alquilerDelHobbit = new AlquilerDiario("Alquiler por 7 dias de El Hobbit", 0, 0);
 		alquilerDelHobbit.setDiasDelAlquiler(7);
 		
-		Assert.assertEquals(7, alquilerDelHobbit.getDiasDelAlquiler(), 0);
+		Assert.assertEquals(7, alquilerDelHobbit.getPeriodoDelAlquiler(), 0);
 	}
 	
 	@Test

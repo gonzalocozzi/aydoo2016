@@ -1,22 +1,10 @@
 package ar.edu.untref.aydoo;
 
-public class AlquilerMensual extends Producto {
-	
-	private Libro libroAlquilado;
-	private int mesesDelAlquiler;
-	private int precioMensual;
+public class AlquilerMensual extends Alquiler {
 
 	public AlquilerMensual(String nombre, double precio, int precioMensual) {		
 		super(nombre, precio);
-		this.setPrecioMensual(precioMensual);
-	}
-	
-	public Libro getLibroAlquilado() {
-		return this.libroAlquilado;
-	}
-
-	public void setLibroAlquilado(Libro libroAlquilado) {
-		this.libroAlquilado = libroAlquilado;
+		super.setPrecioPorPeriodo(precioMensual);
 	}
 
 	public void setMesesDelAlquiler(int numeroDeMeses) throws InvalidRentalException {
@@ -25,20 +13,8 @@ public class AlquilerMensual extends Producto {
 			throw new InvalidRentalException();
 		}
 		
-		this.mesesDelAlquiler = numeroDeMeses;
-		super.setPrecio(this.precioMensual * numeroDeMeses);
-	}
-
-	public int getMesesDelAlquiler() {
-		return this.mesesDelAlquiler;
-	}
-
-	public int getPrecioMensual() {
-		return this.precioMensual;
-	}
-
-	public void setPrecioMensual(int precioMensual) {
-		this.precioMensual = precioMensual;
+		super.setPeriodoDelAlquiler(numeroDeMeses);
+		super.setPrecio(super.getPeriodoDelAlquiler() * super.getPrecioPorPeriodo());
 	}
 
 }

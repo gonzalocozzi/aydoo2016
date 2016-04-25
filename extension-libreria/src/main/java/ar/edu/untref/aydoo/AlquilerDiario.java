@@ -1,28 +1,12 @@
 package ar.edu.untref.aydoo;
 
-public class AlquilerDiario extends Producto {
-
-	private Libro libroAlquilado;
-	private int diasDelAlquiler;
-	private int precioDiario = 0;
+public class AlquilerDiario extends Alquiler {
 
 	public AlquilerDiario(String nombre, double precio, int precioDiario) {
 		super(nombre, precio);
-		this.diasDelAlquiler = 0;
-		this.setPrecioDiario(precioDiario);
-	}
-
-	public Libro getLibroAlquilado() {
-		return this.libroAlquilado;
-	}
-
-	public void setLibroAlquilado(Libro libroAlquilado) {
-		this.libroAlquilado = libroAlquilado;
-	}
-	
-	public int getDiasDelAlquiler() {		
-		return this.diasDelAlquiler;
-	}
+		super.setPeriodoDelAlquiler(0);
+		super.setPrecioPorPeriodo(precioDiario);
+	}	
 
 	public void setDiasDelAlquiler(int numeroDeDias) throws InvalidRentalException {
 		
@@ -30,18 +14,8 @@ public class AlquilerDiario extends Producto {
 			throw new InvalidRentalException();
 		}
 		
-		this.diasDelAlquiler = numeroDeDias;
-		super.setPrecio(diasDelAlquiler * this.precioDiario);
-	}
-
-	public int getPrecioDiario() {
-		
-		return precioDiario;
-	}
-
-	public void setPrecioDiario(int precioDiario) {
-		
-		this.precioDiario = precioDiario;
+		super.setPeriodoDelAlquiler(numeroDeDias);
+		super.setPrecio(super.getPeriodoDelAlquiler() * super.getPrecioPorPeriodo());
 	}
 
 }

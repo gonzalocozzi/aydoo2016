@@ -39,7 +39,7 @@ public class AlquilerMensualTest {
 		AlquilerMensual alquilerDelHobbit = new AlquilerMensual("Alquiler por un mes de El Hobbit", 0, 0);
 		alquilerDelHobbit.setMesesDelAlquiler(1);
 		
-		Assert.assertEquals(1, alquilerDelHobbit.getMesesDelAlquiler());
+		Assert.assertEquals(1, alquilerDelHobbit.getPeriodoDelAlquiler());
 	}
 	
 	@Test
