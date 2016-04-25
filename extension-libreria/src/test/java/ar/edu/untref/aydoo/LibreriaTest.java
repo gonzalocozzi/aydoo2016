@@ -23,11 +23,11 @@ public class LibreriaTest {
 	private Suscripcion suscripcionesMaria;
 	private Suscripcion suscripcionesJuan;
 	
-	private AlquilerDiario alquilerSemanalJuan;
-	private AlquilerDiario alquilerPorTresSemanasJuan;
-	private AlquilerMensual alquilerPorUnMesJuan;
-	private AlquilerMensual alquilerPorTresMesesJuan;
-	private AlquilerCuatrimestral alquilerPorUnCuatrimestreJuan;
+	private AlquilerDiario alquilerSemanal;
+	private AlquilerDiario alquilerPorTresSemanas;
+	private AlquilerMensual alquilerPorUnMes;
+	private AlquilerMensual alquilerPorTresMeses;
+	private AlquilerCuatrimestral alquilerPorUnCuatrimestre;
 	
 	private ComprasDelMes comprasDeAgosto;
 	private ComprasDelMes comprasDeEnero;
@@ -55,25 +55,25 @@ public class LibreriaTest {
 		suscripcionesJuan.agregarRevistaOPeriodico(elGrafico);
 		suscripcionesJuan.agregarRevistaOPeriodico(barcelona);		
 		
-		alquilerSemanalJuan = new AlquilerDiario("Alquiler de juan por 7 dias", 0, 10);
-		alquilerSemanalJuan.setLibroAlquilado(elHobbit);
-		alquilerSemanalJuan.setDiasDelAlquiler(7);
+		alquilerSemanal = new AlquilerDiario("Alquiler de juan por 7 dias", 0, 10);
+		alquilerSemanal.setLibroAlquilado(elHobbit);
+		alquilerSemanal.setDiasDelAlquiler(7);
 
-		alquilerPorTresSemanasJuan = new AlquilerDiario("Alquiler de juan por 21 dias", 0, 10);
-		alquilerPorTresSemanasJuan.setLibroAlquilado(elHobbit);
-		alquilerPorTresSemanasJuan.setDiasDelAlquiler(21);
+		alquilerPorTresSemanas = new AlquilerDiario("Alquiler de juan por 21 dias", 0, 10);
+		alquilerPorTresSemanas.setLibroAlquilado(elHobbit);
+		alquilerPorTresSemanas.setDiasDelAlquiler(21);
 		
-		alquilerPorUnMesJuan = new AlquilerMensual("Alquiler por un mes de El Hobbit", 0, 200);
-		alquilerPorUnMesJuan.setLibroAlquilado(elHobbit);
-		alquilerPorUnMesJuan.setMesesDelAlquiler(1);		
+		alquilerPorUnMes = new AlquilerMensual("Alquiler por un mes de El Hobbit", 0, 200);
+		alquilerPorUnMes.setLibroAlquilado(elHobbit);
+		alquilerPorUnMes.setMesesDelAlquiler(1);		
 		
-		alquilerPorTresMesesJuan = new AlquilerMensual("Alquiler por 3 meses de El Hobbit", 0, 200);
-		alquilerPorTresMesesJuan.setLibroAlquilado(elHobbit);
-		alquilerPorTresMesesJuan.setMesesDelAlquiler(3);	
+		alquilerPorTresMeses = new AlquilerMensual("Alquiler por 3 meses de El Hobbit", 0, 200);
+		alquilerPorTresMeses.setLibroAlquilado(elHobbit);
+		alquilerPorTresMeses.setMesesDelAlquiler(3);	
 		
-		alquilerPorUnCuatrimestreJuan = new AlquilerCuatrimestral("Alquiler por un cuatrimestre de El Hobbit", 0, 200);
-		alquilerPorUnCuatrimestreJuan.setLibroAlquilado(elHobbit);
-		alquilerPorUnCuatrimestreJuan.setCuatrimestresDelAlquiler(1);
+		alquilerPorUnCuatrimestre = new AlquilerCuatrimestral("Alquiler por un cuatrimestre de El Hobbit", 0, 200);
+		alquilerPorUnCuatrimestre.setLibroAlquilado(elHobbit);
+		alquilerPorUnCuatrimestre.setCuatrimestresDelAlquiler(1);
 		
 		comprasDeAgosto = new ComprasDelMes("Compras de agosto", Month.AUGUST);
 		comprasDeEnero = new ComprasDelMes("Compras de enero", Month.JANUARY);
@@ -133,7 +133,7 @@ public class LibreriaTest {
 	@Test
 	public void cobrarleAJuanMesDeAbrilConAlquilerDiarioPorUnaSemana() throws UnregisteredClientException{
 		
-		juan.comprar(miLibreria, Month.APRIL, alquilerSemanalJuan);
+		juan.comprar(miLibreria, Month.APRIL, alquilerSemanal);
 		
 		Assert.assertEquals(70.0, miLibreria.calcularMontoACobrar(Month.APRIL, juan), 0.1);
 	}
@@ -141,33 +141,46 @@ public class LibreriaTest {
 	@Test
 	public void cobrarleAJuanMesDeAbrilConDosAlquileresDiariosPorDiferentesPeriodos() throws UnregisteredClientException{
 		
-		juan.comprar(miLibreria, Month.APRIL, alquilerSemanalJuan);
-		juan.comprar(miLibreria, Month.APRIL, alquilerPorTresSemanasJuan);
+		juan.comprar(miLibreria, Month.APRIL, alquilerSemanal);
+		juan.comprar(miLibreria, Month.APRIL, alquilerPorTresSemanas);
 		Assert.assertEquals(280.0, miLibreria.calcularMontoACobrar(Month.APRIL, juan), 0.1);
 	}
 	
 	@Test
 	public void cobrarleAJuanMesDeAbrilConUnAlquilerPorElMesCompleto() throws UnregisteredClientException{
 		
-		juan.comprar(miLibreria, Month.APRIL, alquilerPorUnMesJuan);
+		juan.comprar(miLibreria, Month.APRIL, alquilerPorUnMes);
 		Assert.assertEquals(200.0, miLibreria.calcularMontoACobrar(Month.APRIL, juan), 0.1);
 	}
 	
 	@Test
 	public void cobrarleAJuanMesDeAbrilConUnAlquilerPorElMesCompletoYOtroAlquilerPorUnMes() throws UnregisteredClientException{
 		
-		juan.comprar(miLibreria, Month.APRIL, alquilerPorUnMesJuan);
-		juan.comprar(miLibreria, Month.APRIL, alquilerPorTresMesesJuan);
+		juan.comprar(miLibreria, Month.APRIL, alquilerPorUnMes);
+		juan.comprar(miLibreria, Month.APRIL, alquilerPorTresMeses);
 		Assert.assertEquals(800.0, miLibreria.calcularMontoACobrar(Month.APRIL, juan), 0.1);
 	}
 	
 	@Test
 	public void cobrarleAJuanMesDeAbrilConUnAlquilerPorUnCuatrimestre() throws UnregisteredClientException{
 		
-		juan.comprar(miLibreria, Month.APRIL, alquilerPorUnCuatrimestreJuan);
+		juan.comprar(miLibreria, Month.APRIL, alquilerPorUnCuatrimestre);
 		
 		Assert.assertEquals(720.0, miLibreria.calcularMontoACobrar(Month.APRIL, juan), 0.1);
 	}
 	
+	@Test
+	public void cobrarleAMariaMesDeEneroConVariosProductos() throws UnregisteredClientException{
+		
+		maria.comprar(miLibreria, Month.JANUARY, lapicera);
+		maria.comprar(miLibreria, Month.JANUARY, lapicera);
+		maria.comprar(miLibreria, Month.JANUARY, suscripcionesMaria);
+		maria.comprar(miLibreria, Month.JANUARY, pagina12);
+		maria.comprar(miLibreria, Month.JANUARY, alquilerPorTresSemanas);
+		maria.comprar(miLibreria, Month.JANUARY, alquilerPorUnMes);
+		maria.comprar(miLibreria, Month.JANUARY, alquilerPorUnCuatrimestre);
+		
+		Assert.assertEquals(1186.1, miLibreria.calcularMontoACobrar(Month.JANUARY, maria), 0.0);
+	}	
 
 }
