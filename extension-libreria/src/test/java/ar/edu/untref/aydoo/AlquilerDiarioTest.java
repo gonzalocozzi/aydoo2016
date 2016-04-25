@@ -27,7 +27,7 @@ public class AlquilerDiarioTest {
 	@Test
 	public void alquilerDiarioRegistraLibroAlquilado() throws InvalidRentalException{
 		
-		AlquilerDiario alquilerDelHobbit = new AlquilerDiario("Alquiler por 7 dias de El Hobbit", 0);
+		AlquilerDiario alquilerDelHobbit = new AlquilerDiario("Alquiler por 7 dias de El Hobbit", 0, 0);
 		alquilerDelHobbit.setDiasDelAlquiler(7);
 		
 		Assert.assertEquals(7, alquilerDelHobbit.getDiasDelAlquiler(), 0);
@@ -36,7 +36,7 @@ public class AlquilerDiarioTest {
 	@Test
 	public void alquilerDiarioRegistraDiasDelAlquiler(){
 		
-		AlquilerDiario alquilerDelHobbit = new AlquilerDiario("Alquiler por 3 dias de El Hobbit", 0);
+		AlquilerDiario alquilerDelHobbit = new AlquilerDiario("Alquiler por 3 dias de El Hobbit", 0, 0);
 		alquilerDelHobbit.setLibroAlquilado(elHobbit);
 		
 		Assert.assertEquals("El Hobbit", alquilerDelHobbit.getLibroAlquilado().getNombre());
@@ -45,7 +45,7 @@ public class AlquilerDiarioTest {
 	@Test
 	public void clienteAlquilaUnEjemplarDelHobbitPor3Dias() throws UnregisteredClientException, RepeatedMonthException, InvalidRentalException{		
 
-		AlquilerDiario alquilerDelHobbit = new AlquilerDiario("Alquiler por 3 dias de El Hobbit", 0);
+		AlquilerDiario alquilerDelHobbit = new AlquilerDiario("Alquiler por 3 dias de El Hobbit", 0, 10);
 		alquilerDelHobbit.setDiasDelAlquiler(3);
 		alquilerDelHobbit.setLibroAlquilado(elHobbit);
 
@@ -57,7 +57,7 @@ public class AlquilerDiarioTest {
 	@Test
 	public void clienteAlquilaUnEjemplarDelHobbitPor25Dias() throws UnregisteredClientException, RepeatedMonthException, InvalidRentalException{		
 
-		AlquilerDiario alquilerDelHobbit = new AlquilerDiario("Alquiler por 25 dias de El Hobbit", 0);
+		AlquilerDiario alquilerDelHobbit = new AlquilerDiario("Alquiler por 25 dias de El Hobbit", 0, 10);
 		alquilerDelHobbit.setDiasDelAlquiler(25);
 		alquilerDelHobbit.setLibroAlquilado(elHobbit);
 
@@ -69,14 +69,14 @@ public class AlquilerDiarioTest {
 	@Test(expected=InvalidRentalException.class)
 	public void clienteNoPuedeAlquilarUnLibroPorMenosDe3Dias() throws InvalidRentalException{
 
-		AlquilerDiario alquilerDelHobbit = new AlquilerDiario("Alquiler por 2 dias de El Hobbit", 0);
+		AlquilerDiario alquilerDelHobbit = new AlquilerDiario("Alquiler por 2 dias de El Hobbit", 0, 0);
 		alquilerDelHobbit.setDiasDelAlquiler(2);
 	}
 	
 	@Test(expected=InvalidRentalException.class)
 	public void clienteNoPuedeAlquilarUnLibroPorMasDe25Dias() throws InvalidRentalException{
 
-		AlquilerDiario alquilerDelHobbit = new AlquilerDiario("Alquiler por 26 dias de El Hobbit", 0);
+		AlquilerDiario alquilerDelHobbit = new AlquilerDiario("Alquiler por 26 dias de El Hobbit", 0, 0);
 		alquilerDelHobbit.setDiasDelAlquiler(26);
 	}
 }

@@ -4,9 +4,11 @@ public class AlquilerMensual extends Producto {
 	
 	private Libro libroAlquilado;
 	private int mesesDelAlquiler;
+	private int precioMensual;
 
-	public AlquilerMensual(String nombre, double precio) {		
+	public AlquilerMensual(String nombre, double precio, int precioMensual) {		
 		super(nombre, precio);
+		this.setPrecioMensual(precioMensual);
 	}
 	
 	public Libro getLibroAlquilado() {
@@ -24,12 +26,19 @@ public class AlquilerMensual extends Producto {
 		}
 		
 		this.mesesDelAlquiler = numeroDeMeses;
-		super.setPrecio(200 * numeroDeMeses);
+		super.setPrecio(this.precioMensual * numeroDeMeses);
 	}
 
 	public int getMesesDelAlquiler() {
 		return this.mesesDelAlquiler;
 	}
 
+	public int getPrecioMensual() {
+		return this.precioMensual;
+	}
+
+	public void setPrecioMensual(int precioMensual) {
+		this.precioMensual = precioMensual;
+	}
 
 }

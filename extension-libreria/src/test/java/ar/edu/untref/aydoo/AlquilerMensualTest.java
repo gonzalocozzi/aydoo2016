@@ -27,7 +27,7 @@ public class AlquilerMensualTest {
 	@Test
 	public void alquilerMensualRegistraLibroAlquilado(){
 		
-		AlquilerMensual alquilerDelHobbit = new AlquilerMensual("Alquiler de El Hobbit", 0);
+		AlquilerMensual alquilerDelHobbit = new AlquilerMensual("Alquiler de El Hobbit", 0, 0);
 		alquilerDelHobbit.setLibroAlquilado(elHobbit);
 		
 		Assert.assertEquals("El Hobbit", alquilerDelHobbit.getLibroAlquilado().getNombre());
@@ -36,7 +36,7 @@ public class AlquilerMensualTest {
 	@Test
 	public void alquilerMensualRegistraMesesDelAlquiler() throws InvalidRentalException{
 		
-		AlquilerMensual alquilerDelHobbit = new AlquilerMensual("Alquiler por un mes de El Hobbit", 0);
+		AlquilerMensual alquilerDelHobbit = new AlquilerMensual("Alquiler por un mes de El Hobbit", 0, 0);
 		alquilerDelHobbit.setMesesDelAlquiler(1);
 		
 		Assert.assertEquals(1, alquilerDelHobbit.getMesesDelAlquiler());
@@ -45,7 +45,7 @@ public class AlquilerMensualTest {
 	@Test
 	public void clienteAlquilaUnEjemplarDelHobbitPorUnMes() throws UnregisteredClientException, RepeatedMonthException, InvalidRentalException{		
 
-		AlquilerMensual alquilerDelHobbit = new AlquilerMensual("Alquiler por un mes de El Hobbit", 0);
+		AlquilerMensual alquilerDelHobbit = new AlquilerMensual("Alquiler por un mes de El Hobbit", 0, 200);
 		alquilerDelHobbit.setMesesDelAlquiler(1);
 		alquilerDelHobbit.setLibroAlquilado(elHobbit);
 		
@@ -57,7 +57,7 @@ public class AlquilerMensualTest {
 	@Test
 	public void clienteAlquilaUnEjemplarDelHobbitPorTresMeses() throws UnregisteredClientException, RepeatedMonthException, InvalidRentalException{		
 
-		AlquilerMensual alquilerDelHobbit = new AlquilerMensual("Alquiler por 3 meses de El Hobbit", 0);
+		AlquilerMensual alquilerDelHobbit = new AlquilerMensual("Alquiler por 3 meses de El Hobbit", 0, 200);
 		alquilerDelHobbit.setMesesDelAlquiler(3);
 		alquilerDelHobbit.setLibroAlquilado(elHobbit);
 		
@@ -69,14 +69,14 @@ public class AlquilerMensualTest {
 	@Test(expected=InvalidRentalException.class)
 	public void clienteNoPuedeAlquilarUnLibroPorMenosDeUnMes() throws InvalidRentalException{
 
-		AlquilerMensual alquilerDelHobbit = new AlquilerMensual("Alquiler de El Hobbit", 0);
+		AlquilerMensual alquilerDelHobbit = new AlquilerMensual("Alquiler de El Hobbit", 0, 0);
 		alquilerDelHobbit.setMesesDelAlquiler(0);
 	}
 	
 	@Test(expected=InvalidRentalException.class)
 	public void clienteNoPuedeAlquilarUnLibroPorMasDe3Meses() throws InvalidRentalException{
 
-		AlquilerMensual alquilerDelHobbit = new AlquilerMensual("Alquiler de El Hobbit", 0);
+		AlquilerMensual alquilerDelHobbit = new AlquilerMensual("Alquiler de El Hobbit", 0, 0);
 		alquilerDelHobbit.setMesesDelAlquiler(4);
 	}
 

@@ -1,14 +1,13 @@
 package ar.edu.untref.aydoo;
 
-public class AlquilerCuatrimestral extends Producto {
+public class AlquilerCuatrimestral extends AlquilerMensual {
 	
 	private Libro libroAlquilado;
 	private int cuatrimestresDelAlquiler;
 
-	public AlquilerCuatrimestral(String nombre, double precio) {
-		super(nombre, precio);
-		this.cuatrimestresDelAlquiler = 0;
-		
+	public AlquilerCuatrimestral(String nombre, double precio, int precioMensual) {
+		super(nombre, precio, precioMensual);
+		this.cuatrimestresDelAlquiler = 0;		
 	}
 	
 	public Libro getLibroAlquilado() {
@@ -23,14 +22,14 @@ public class AlquilerCuatrimestral extends Producto {
 		return this.cuatrimestresDelAlquiler;
 	}
 
-	public void setMesesDelAlquiler(int numeroDeCuatrimestres) throws InvalidRentalException {
+	public void setCuatrimestresDelAlquiler(int numeroDeCuatrimestres) throws InvalidRentalException {
 
 		if(numeroDeCuatrimestres < 1 || numeroDeCuatrimestres > 2){			
 			throw new InvalidRentalException();
 		}
 		
 		this.cuatrimestresDelAlquiler = numeroDeCuatrimestres;
-		super.setPrecio(200 * numeroDeCuatrimestres * 4 * 0.9);
+		super.setPrecio(super.getPrecioMensual() * this.cuatrimestresDelAlquiler * 4 * 0.9);
 	}
 
 }
