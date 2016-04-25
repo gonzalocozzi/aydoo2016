@@ -33,8 +33,7 @@ public class Suscripcion extends Producto {
 		return productos;
 	}
 
-	public boolean contiene(RevistayPeriodico revista) {
-		
+	public boolean contiene(RevistayPeriodico revista) {		
 		return this.productos.contains(revista);
 	}
 }
