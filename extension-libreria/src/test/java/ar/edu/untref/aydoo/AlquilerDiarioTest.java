@@ -25,7 +25,16 @@ public class AlquilerDiarioTest {
 	}
 	
 	@Test
-	public void alquilerDiarioRegistraLibroAlquilado(){
+	public void alquilerDiarioRegistraLibroAlquilado() throws InvalidRentalException{
+		
+		AlquilerDiario alquilerDelHobbit = new AlquilerDiario("Alquiler por 7 dias de El Hobbit", 0);
+		alquilerDelHobbit.setDiasDelAlquiler(7);
+		
+		Assert.assertEquals(7, alquilerDelHobbit.getDiasDelAlquiler());
+	}
+	
+	@Test
+	public void alquilerDiarioRegistraDiasDelAlquiler(){
 		
 		AlquilerDiario alquilerDelHobbit = new AlquilerDiario("Alquiler por 3 dias de El Hobbit", 0);
 		alquilerDelHobbit.setLibroAlquilado(elHobbit);

@@ -19,15 +19,17 @@ public class AlquilerDiario extends Producto {
 	}
 
 	public void setDiasDelAlquiler(int dias) throws InvalidRentalException {
-		// TODO Auto-generated method stub
 		
-		if(dias < 3 || dias > 25){
-			
+		if(dias < 3 || dias > 25){			
 			throw new InvalidRentalException();
 		}
 		
 		this.diasDelAlquiler = dias;
 		super.setPrecio(diasDelAlquiler * 10);
+	}
+
+	public int getDiasDelAlquiler() {		
+		return this.diasDelAlquiler;
 	}
 
 }
