@@ -19,6 +19,7 @@ public class AlquilerMensual extends Producto {
 
 	public void setMesesDelAlquiler(int meses) {
 		this.mesesDelAlquiler = meses;
+		super.setPrecio(200 * meses);
 	}
 
 	public int getMesesDelAlquiler() {
