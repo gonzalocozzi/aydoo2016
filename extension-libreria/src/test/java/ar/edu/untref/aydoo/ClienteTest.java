@@ -20,6 +20,7 @@ public class ClienteTest {
 
 	private ComprasDelMes agosto;
 	private ComprasDelMes enero;
+	private ComprasDelMes enero2;
 	@SuppressWarnings("unused")
 	private ComprasDelMes febrero;
 	
@@ -43,6 +44,7 @@ public class ClienteTest {
 
 		agosto = new ComprasDelMes("Compras del mes de agosto", Month.AUGUST);
 		enero = new ComprasDelMes("Enero", Month.JANUARY);
+		enero2 = new ComprasDelMes("Compras del mes de agosto", Month.JANUARY);
 		febrero = new ComprasDelMes("Febrero", Month.FEBRUARY);
 
 		juan.agregarCompraDelMes(agosto);
@@ -52,42 +54,72 @@ public class ClienteTest {
 		miLibreria.registrarCliente(juan);
 		miLibreria.registrarCliente(maria);
 	}
+	
+	@Test
+	public void nombreDelClienteEsCorrecto() {
+		
+		String nombreDelCliente = juan.getNombre();
+		
+		Assert.assertEquals("Juan Olmos", nombreDelCliente);
+	}
+	
+	@Test
+	public void DNIDelClienteEsCorrecto() {
+		
+		String dniDelCliente = juan.getDNI();
+		
+		Assert.assertEquals("15.263.998", dniDelCliente);
+	}
+	
+	@Test
+	public void direccionDelClienteEsCorrecto() {
+		
+		String direccionDelCliente = juan.getDireccion();
+		
+		Assert.assertEquals("Asamble 2314", direccionDelCliente);
+	}
 
 	@Test
 	public void cobrarleAJuanMesDeAgosto() throws UnregisteredClientException, InexistentMonthException {
+		
 		juan.comprar(miLibreria, Month.AUGUST, elHobbit);
 		juan.comprar(miLibreria, Month.AUGUST, lapicera);
 		juan.comprar(miLibreria, Month.AUGUST, lapicera);
 		juan.comprar(miLibreria, Month.AUGUST, elGrafico);
+		
+		double gastoDelMes = juan.calcularGastoDelMes(Month.AUGUST);
 
-		Assert.assertEquals(92.1, juan.calcularGastoDelMes(Month.AUGUST), 0.1);
+		Assert.assertEquals(92.1, gastoDelMes, 0.0);
 	}
 
 	@Test
 	public void cobrarleAMariaMesDeEnero() throws UnregisteredClientException, InexistentMonthException {
+		
 		maria.comprar(miLibreria, Month.JANUARY, SuscripcionesMaria);
 		maria.comprar(miLibreria, Month.JANUARY, pagina12);
-		Assert.assertEquals(44.0, maria.calcularGastoDelMes(Month.JANUARY), 0.1);
-	}
-
-	@Test
-	public void nombreDelClienteEsCorrecto() {
-		Assert.assertEquals("Juan Olmos", juan.getNombre());
-	}
-
-	@Test
-	public void DNIDelClienteEsCorrecto() {
-		Assert.assertEquals("15.263.998", juan.getDNI());
-	}
-
-	@Test
-	public void direccionDelClienteEsCorrecto() {
-		Assert.assertEquals("Asamble 2314", juan.getDireccion());
+		
+		double gastoDelMes = maria.calcularGastoDelMes(Month.JANUARY);
+		
+		Assert.assertEquals(44.0, gastoDelMes, 0.0);
 	}
 	
 	@Test(expected = InexistentMonthException.class)
-	public void MesNoIngresado() throws UnregisteredClientException, InexistentMonthException {
+	public void cobrarleAMariaMesDeFebrero() throws InexistentMonthException{
+		
+		maria.calcularGastoDelMes(Month.FEBRUARY);
+	}
+	
+	@Test(expected = InexistentMonthException.class)
+	public void mesNoIngresado() throws UnregisteredClientException, InexistentMonthException {
+		
 		maria.comprar(miLibreria, Month.FEBRUARY, SuscripcionesMaria);
+	}
+	
+	
+	@Test(expected = RepeatedMonthException.class)
+	public void mesYaIngresado() throws RepeatedMonthException {
+		
+		maria.agregarCompraDelMes(enero2);
 	}
 
 }

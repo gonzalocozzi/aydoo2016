@@ -16,6 +16,7 @@ public class CompraDelMesTest {
 
 	@Before
 	public void inicializar() throws NegativePriceException {
+		
 		agosto = new ComprasDelMes("Compras de agosto", Month.AUGUST);
 
 		elHobbit = new Libro("El Hobbit", 50.0);
@@ -29,12 +30,18 @@ public class CompraDelMesTest {
 
 	@Test
 	public void NombreDeCompraDelMesEsCorrecto() {
-		Assert.assertEquals("Compras de agosto", agosto.getNombre());
+		
+		String nombreDeLaCompra = agosto.getNombre();
+		
+		Assert.assertEquals("Compras de agosto", nombreDeLaCompra);
 	}
 
 	@Test
 	public void TotalAPagarDeCompraDelMesEsCorrecto() {
-		Assert.assertEquals(86.05, agosto.calcularGastoDelMes(), 0.1);
+		
+		double gastoDeLaCompra = agosto.calcularGastoDelMes();
+		
+		Assert.assertEquals(86.05, gastoDeLaCompra, 0.0);
 	}
 
 }

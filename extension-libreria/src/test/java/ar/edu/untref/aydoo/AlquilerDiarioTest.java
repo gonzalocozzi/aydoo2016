@@ -11,7 +11,7 @@ public class AlquilerDiarioTest {
 	private Libreria miLibreria;
 	private Cliente juan;
 	private Libro elHobbit;
-	ComprasDelMes comprasDeOctubre;
+	private ComprasDelMes comprasDeOctubre;
 
 	@Before
 	public void inicializar() throws RepeatedMonthException, NegativePriceException {
@@ -30,7 +30,9 @@ public class AlquilerDiarioTest {
 		AlquilerDiario alquilerDelHobbit = new AlquilerDiario("Alquiler por 7 dias de El Hobbit", 0, 0);
 		alquilerDelHobbit.setDiasDelAlquiler(7);
 		
-		Assert.assertEquals(7, alquilerDelHobbit.getPeriodoDelAlquiler(), 0);
+		int numeroDeDias = alquilerDelHobbit.getPeriodoDelAlquiler();
+		
+		Assert.assertEquals(7, numeroDeDias, 0);
 	}
 	
 	@Test
@@ -39,7 +41,9 @@ public class AlquilerDiarioTest {
 		AlquilerDiario alquilerDelHobbit = new AlquilerDiario("Alquiler por 3 dias de El Hobbit", 0, 0);
 		alquilerDelHobbit.setLibroAlquilado(elHobbit);
 		
-		Assert.assertEquals("El Hobbit", alquilerDelHobbit.getLibroAlquilado().getNombre());
+		String nombreDelLibroAlquilado = alquilerDelHobbit.getLibroAlquilado().getNombre();
+		
+		Assert.assertEquals("El Hobbit", nombreDelLibroAlquilado);
 	}
 
 	@Test
@@ -48,10 +52,11 @@ public class AlquilerDiarioTest {
 		AlquilerDiario alquilerDelHobbit = new AlquilerDiario("Alquiler por 3 dias de El Hobbit", 0, 10);
 		alquilerDelHobbit.setDiasDelAlquiler(3);
 		alquilerDelHobbit.setLibroAlquilado(elHobbit);
-
 		juan.comprar(miLibreria, Month.OCTOBER, alquilerDelHobbit);
+		
+		double montoACobrar = miLibreria.calcularMontoACobrar(Month.OCTOBER, juan);
 
-		Assert.assertEquals(30.0, miLibreria.calcularMontoACobrar(Month.OCTOBER, juan), 0.1);
+		Assert.assertEquals(30.0, montoACobrar, 0.0);
 	}
 
 	@Test
@@ -60,10 +65,11 @@ public class AlquilerDiarioTest {
 		AlquilerDiario alquilerDelHobbit = new AlquilerDiario("Alquiler por 25 dias de El Hobbit", 0, 10);
 		alquilerDelHobbit.setDiasDelAlquiler(25);
 		alquilerDelHobbit.setLibroAlquilado(elHobbit);
-
 		juan.comprar(miLibreria, Month.OCTOBER, alquilerDelHobbit);
+		
+		double montoACobrar = miLibreria.calcularMontoACobrar(Month.OCTOBER, juan);
 
-		Assert.assertEquals(250.0, miLibreria.calcularMontoACobrar(Month.OCTOBER, juan), 0.1);
+		Assert.assertEquals(250.0, montoACobrar, 0.0);
 	}
 
 	@Test(expected=InvalidRentalException.class)

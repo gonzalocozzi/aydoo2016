@@ -43,7 +43,7 @@ public class Cliente {
 	}
 
 	public void comprar(Libreria libreria, Month mes, Producto unProducto) throws UnregisteredClientException, InexistentMonthException {
-		
+
 		if(!libreria.esClienteRegistrado(this)){			
 			throw new UnregisteredClientException();
 		}
@@ -66,24 +66,25 @@ public class Cliente {
 		}
 	}
 
-	public double calcularGastoDelMes(Month mes) {
+	public double calcularGastoDelMes(Month mes) throws InexistentMonthException {
 
 		if(!mesIngresado(mes)){
-			throw new Error("Mes no ingresado");
+			throw new InexistentMonthException();
 		}
 
 		double total = 0;
 		Iterator<ComprasDelMes> iteradorMeses = compras.iterator();
 		boolean mesEncontrado = false;
 
-		while (iteradorMeses.hasNext() && !mesEncontrado) {			ComprasDelMes compraActual = iteradorMeses.next();
-			
+		while (iteradorMeses.hasNext() && !mesEncontrado) {			
+
+			ComprasDelMes compraActual = iteradorMeses.next();
+
 			if (compraActual.getMes().equals(mes)) {
 				total += compraActual.calcularGastoDelMes();
 				mesEncontrado = true;
 			}
 		}
-
 		return total;
 	}
 
@@ -100,7 +101,6 @@ public class Cliente {
 				mesIngresado = true;
 			}
 		}
-
 		return mesIngresado;
 	}
 

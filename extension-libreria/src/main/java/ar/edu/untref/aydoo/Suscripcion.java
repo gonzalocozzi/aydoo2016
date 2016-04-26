@@ -17,11 +17,11 @@ public class Suscripcion extends Producto {
 		this.productos.add(unaRevistaOPeriodico);
 		this.setPrecio();		
 	}	
-	
+
 	private void setPrecio() throws NegativePriceException{				
 		double total = 0;
 		Iterator<RevistayPeriodico> iteradorProductos = productos.iterator();
-		
+
 		while (iteradorProductos.hasNext()) {			
 			RevistayPeriodico revistaOPeriodicoActual = iteradorProductos.next();
 			total += revistaOPeriodicoActual.getPrecio() * revistaOPeriodicoActual.getFrecuenciaMensual();

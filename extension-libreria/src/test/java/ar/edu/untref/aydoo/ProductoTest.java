@@ -10,28 +10,40 @@ public class ProductoTest {
 
 	@Before
 	public void inicializar() throws NegativePriceException {
+		
 		miProducto = new Producto("El Hobbit", 50.0);
 	}
 
 	@Test
 	public void ElPrecioEsCorrecto() {
-		Assert.assertEquals(50.0, miProducto.getPrecio(), 0.1);
+		
+		double precioDelProducto = miProducto.getPrecio();
+		
+		Assert.assertEquals(50.0, precioDelProducto, 0.1);
 	}
 
 	@Test
 	public void ElNombreEsCorrecto() {
-		Assert.assertEquals("El Hobbit", miProducto.getNombre());
+		
+		String nombreDelProducto = miProducto.getNombre();
+		
+		Assert.assertEquals("El Hobbit", nombreDelProducto);
 	}
 
 	@Test(expected = NegativePriceException.class)
 	public void elPrecioEsIncorrecto() throws NegativePriceException {
+		
 		Producto unProducto = new Producto("Lapicera", 9.0);
 		unProducto.setPrecio(-10.0);
 	}
 
 	@Test
 	public void ElCambioDeNombreEsCorrecto() {
+		
 		miProducto.setNombre("El señor de los Anillos: la Comunidad del Anillo");
-		Assert.assertEquals("El señor de los Anillos: la Comunidad del Anillo", miProducto.getNombre());
+		
+		String nombreDelProducto = miProducto.getNombre(); 
+		
+		Assert.assertEquals("El señor de los Anillos: la Comunidad del Anillo", nombreDelProducto);
 	}
 }

@@ -14,20 +14,18 @@ public class Producto {
 		return this.nombre;
 	}
 
+	public void setNombre(String nuevoNombre) {
+		this.nombre = nuevoNombre;
+	}
+	
 	public double getPrecio() {		
 		return this.precio;
 	}
 
-	public void setNombre(String nuevoNombre) {
-		this.nombre = nuevoNombre;
-	}
-
-	public void setPrecio(double precio) throws NegativePriceException {
-		
+	public void setPrecio(double precio) throws NegativePriceException {		
 		if (precio < 0) {			
 			throw new NegativePriceException();
-		}
-		
+		}		
 		this.precio = precio;
 	}
 }

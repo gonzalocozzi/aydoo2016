@@ -30,7 +30,9 @@ public class AlquilerCuatrimestralTest {
 		AlquilerCuatrimestral alquilerDelHobbit = new AlquilerCuatrimestral("Alquiler de El Hobbit", 0, 0);
 		alquilerDelHobbit.setLibroAlquilado(elHobbit);
 		
-		Assert.assertEquals("El Hobbit", alquilerDelHobbit.getLibroAlquilado().getNombre());
+		String nombreDelLibroAlquilado = alquilerDelHobbit.getLibroAlquilado().getNombre();
+		
+		Assert.assertEquals("El Hobbit", nombreDelLibroAlquilado);
 	}
 	
 	@Test
@@ -39,7 +41,9 @@ public class AlquilerCuatrimestralTest {
 		AlquilerCuatrimestral alquilerDelHobbit = new AlquilerCuatrimestral("Alquiler por dos meses de El Hobbit", 0, 0);
 		alquilerDelHobbit.setCuatrimestresDelAlquiler(2);
 		
-		Assert.assertEquals(2, alquilerDelHobbit.getCuatrimestresDelAlquiler());
+		int numeroDeCuatrimestres = alquilerDelHobbit.getCuatrimestresDelAlquiler();
+		
+		Assert.assertEquals(2, numeroDeCuatrimestres);
 	}
 	
 	@Test
@@ -50,8 +54,10 @@ public class AlquilerCuatrimestralTest {
 		alquilerDelHobbit.setLibroAlquilado(elHobbit);
 		
 		maria.comprar(miLibreria, Month.DECEMBER, alquilerDelHobbit);
+		
+		double montoACobrar = miLibreria.calcularMontoACobrar(Month.DECEMBER, maria);
 
-		Assert.assertEquals(720.0, miLibreria.calcularMontoACobrar(Month.DECEMBER, maria), 0.1);
+		Assert.assertEquals(720.0, montoACobrar, 0.0);
 	}
 	
 	@Test
@@ -62,8 +68,10 @@ public class AlquilerCuatrimestralTest {
 		alquilerDelHobbit.setLibroAlquilado(elHobbit);
 		
 		maria.comprar(miLibreria, Month.DECEMBER, alquilerDelHobbit);
+		
+		double montoACobrar = miLibreria.calcularMontoACobrar(Month.DECEMBER, maria);
 
-		Assert.assertEquals(1440.0, miLibreria.calcularMontoACobrar(Month.DECEMBER, maria), 0.1);
+		Assert.assertEquals(1440.0, montoACobrar, 0.0);
 	}
 	
 	@Test(expected=InvalidRentalException.class)

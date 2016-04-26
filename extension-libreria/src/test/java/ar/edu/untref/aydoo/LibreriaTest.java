@@ -87,6 +87,14 @@ public class LibreriaTest {
 		miLibreria.registrarCliente(juan);
 		miLibreria.registrarCliente(maria);
 	}
+	
+	@Test
+	public void nombreDelaLibreriaEsCorrecto() {
+		
+		String nombreDeLaLibreria = miLibreria.getNombre();
+		
+		Assert.assertEquals("La Libreria de Pepe", nombreDeLaLibreria);
+	}
 
 	@Test
 	public void cobrarleAJuanMesDeAgosto() throws UnregisteredClientException, InexistentMonthException {
@@ -95,8 +103,10 @@ public class LibreriaTest {
 		juan.comprar(miLibreria, Month.AUGUST, lapicera);
 		juan.comprar(miLibreria, Month.AUGUST, lapicera);
 		juan.comprar(miLibreria, Month.AUGUST, elGrafico);
+		
+		double montoACobrar = miLibreria.calcularMontoACobrar(Month.AUGUST, juan);
 
-		Assert.assertEquals(92.1, miLibreria.calcularMontoACobrar(Month.AUGUST, juan), 0.1);
+		Assert.assertEquals(92.1, montoACobrar, 0.0);
 	}
 
 	@Test
@@ -105,13 +115,9 @@ public class LibreriaTest {
 		maria.comprar(miLibreria, Month.JANUARY, suscripcionesMaria);
 		maria.comprar(miLibreria, Month.JANUARY, pagina12);
 		
-		Assert.assertEquals(44.0, miLibreria.calcularMontoACobrar(Month.JANUARY, maria), 0.1);
-	}
-
-	@Test
-	public void nombreDelaLibreriaEsCorrecto() {
+		double montoACobrar = miLibreria.calcularMontoACobrar(Month.JANUARY, maria);
 		
-		Assert.assertEquals("La Libreria de Pepe", miLibreria.getNombre());
+		Assert.assertEquals(44.0, montoACobrar, 0.0);
 	}
 
 	@Test
@@ -122,12 +128,21 @@ public class LibreriaTest {
 		juan.comprar(miLibreria, Month.JANUARY, lapicera);
 		juan.comprar(miLibreria, Month.JANUARY, suscripcionesJuan);
 		
-		Assert.assertEquals(190.1, miLibreria.calcularMontoACobrar(Month.JANUARY, juan), 0.1);
+		double montoACobrar = miLibreria.calcularMontoACobrar(Month.JANUARY, juan);
+		
+		Assert.assertEquals(190.1, montoACobrar, 0.0);
 	}
 	
 	@Test(expected = UnregisteredClientException.class)
-	public void ElClienteNoExiste() throws UnregisteredClientException, InexistentMonthException {
+	public void elClienteNoExisteYNoPuedeComprar() throws UnregisteredClientException, InexistentMonthException {
+		
 		mario.comprar(miLibreria, Month.JANUARY, pagina12);
+	}
+	
+	@Test(expected = UnregisteredClientException.class)
+	public void elClienteNoExisteYNoPuedeCalcularseElMontoDeLoQueCompra() throws UnregisteredClientException, InexistentMonthException {
+		
+		miLibreria.calcularMontoACobrar(Month.JULY, mario);
 	}
 	
 	@Test
@@ -135,7 +150,9 @@ public class LibreriaTest {
 		
 		juan.comprar(miLibreria, Month.APRIL, alquilerSemanal);
 		
-		Assert.assertEquals(70.0, miLibreria.calcularMontoACobrar(Month.APRIL, juan), 0.1);
+		double montoACobrar = miLibreria.calcularMontoACobrar(Month.APRIL, juan);
+		
+		Assert.assertEquals(70.0, montoACobrar, 0.0);
 	}
 	
 	@Test
@@ -143,14 +160,20 @@ public class LibreriaTest {
 		
 		juan.comprar(miLibreria, Month.APRIL, alquilerSemanal);
 		juan.comprar(miLibreria, Month.APRIL, alquilerPorTresSemanas);
-		Assert.assertEquals(280.0, miLibreria.calcularMontoACobrar(Month.APRIL, juan), 0.1);
+		
+		double montoACobrar = miLibreria.calcularMontoACobrar(Month.APRIL, juan);
+		
+		Assert.assertEquals(280.0, montoACobrar, 0.0);
 	}
 	
 	@Test
 	public void cobrarleAJuanMesDeAbrilConUnAlquilerPorElMesCompleto() throws UnregisteredClientException, InexistentMonthException{
 		
 		juan.comprar(miLibreria, Month.APRIL, alquilerPorUnMes);
-		Assert.assertEquals(200.0, miLibreria.calcularMontoACobrar(Month.APRIL, juan), 0.1);
+		
+		double montoACobrar = miLibreria.calcularMontoACobrar(Month.APRIL, juan);
+		
+		Assert.assertEquals(200.0, montoACobrar, 0.0);
 	}
 	
 	@Test
@@ -158,7 +181,10 @@ public class LibreriaTest {
 		
 		juan.comprar(miLibreria, Month.APRIL, alquilerPorUnMes);
 		juan.comprar(miLibreria, Month.APRIL, alquilerPorTresMeses);
-		Assert.assertEquals(800.0, miLibreria.calcularMontoACobrar(Month.APRIL, juan), 0.1);
+		
+		double montoACobrar = miLibreria.calcularMontoACobrar(Month.APRIL, juan);
+		
+		Assert.assertEquals(800.0, montoACobrar, 0.1);
 	}
 	
 	@Test
@@ -166,7 +192,9 @@ public class LibreriaTest {
 		
 		juan.comprar(miLibreria, Month.APRIL, alquilerPorUnCuatrimestre);
 		
-		Assert.assertEquals(720.0, miLibreria.calcularMontoACobrar(Month.APRIL, juan), 0.1);
+		double montoACobrar = miLibreria.calcularMontoACobrar(Month.APRIL, juan);
+		
+		Assert.assertEquals(720.0, montoACobrar, 0.0);
 	}
 	
 	@Test
@@ -180,7 +208,9 @@ public class LibreriaTest {
 		maria.comprar(miLibreria, Month.JANUARY, alquilerPorUnMes);
 		maria.comprar(miLibreria, Month.JANUARY, alquilerPorUnCuatrimestre);
 		
-		Assert.assertEquals(1186.1, miLibreria.calcularMontoACobrar(Month.JANUARY, maria), 0.0);
+		double montoACobrar = miLibreria.calcularMontoACobrar(Month.JANUARY, maria);
+		
+		Assert.assertEquals(1186.1, montoACobrar, 0.0);
 	}	
 
 }

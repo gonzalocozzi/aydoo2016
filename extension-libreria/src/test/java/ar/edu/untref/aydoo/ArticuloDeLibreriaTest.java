@@ -10,29 +10,41 @@ public class ArticuloDeLibreriaTest {
 
 	@Before
 	public void inicializar() throws NegativePriceException {
+		
 		miArticuloDeLibreria = new ArticuloDeLibreria("Lapicera", 10.0);
 	}
 
 	@Test
-	public void ElPrecioEsCorrectoConIvaIncluido() {
-		Assert.assertEquals(12.1, miArticuloDeLibreria.getPrecio(), 0.1);
+	public void elPrecioEsCorrectoConIvaIncluido() {
+		
+		double precioDelArticulo = miArticuloDeLibreria.getPrecio();
+		
+		Assert.assertEquals(12.1, precioDelArticulo, 0.0);
 	}
 
 	@Test
-	public void ElNombreEsCorrecto() {
-		Assert.assertEquals("Lapicera", miArticuloDeLibreria.getNombre());
+	public void elNombreEsCorrecto() {
+		
+		String nombreDelArticulo = miArticuloDeLibreria.getNombre();
+		
+		Assert.assertEquals("Lapicera", nombreDelArticulo);
 	}
 
 	@Test(expected = NegativePriceException.class)
 	public void elPrecioEsIncorrecto() throws NegativePriceException {
+		
 		Producto unArticuloDeLibreria = new ArticuloDeLibreria("Lapicera", 10.0);
 		unArticuloDeLibreria.setPrecio(-10.0);
 	}
 
 	@Test
-	public void ElCambioDeNombreEsCorrecto() {
+	public void elCambioDeNombreEsCorrecto() {
+		
 		miArticuloDeLibreria.setNombre("Tijera");
-		Assert.assertEquals("Tijera", miArticuloDeLibreria.getNombre());
+		
+		String nombreDelArticulo = miArticuloDeLibreria.getNombre();
+		
+		Assert.assertEquals("Tijera", nombreDelArticulo);
 	}
 
 }
